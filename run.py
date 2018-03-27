@@ -15,10 +15,16 @@ def index():
         return redirect(request.form["username"])
     return render_template("index.html")
 
-
-@app.route("/<username>")
+@app.route("/<username>") 
 def user(username):
     return render_template("game.html", username=username)
+
+@app.route("/<username>/scores")
+def scores(username):
+    print(username)
+    return render_template("scores.html", username=username)
+
+
 
 
 if __name__ == "__main__":

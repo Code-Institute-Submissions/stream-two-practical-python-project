@@ -9,5 +9,8 @@
 <body>
     <h1>Hi {{ username }}</h1>
     <a href="/{{ username }}/scores">Scores</a>
+    <a href="/{{ username }}/message">Message</a>
+    {% block content %}
+    {% endblock %}
 </body>
 </html>

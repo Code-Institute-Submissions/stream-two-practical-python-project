@@ -26,7 +26,7 @@ def scores(username):
 
 @app.route("/<username>/message")
 def message(username):
-    message = "Hello"
+    message = "loser"
     return render_template("message.html", username=username, message=message)
 
 

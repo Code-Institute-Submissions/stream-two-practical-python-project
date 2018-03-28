@@ -9,29 +9,58 @@
 <body>
     <h1>Hi {{ username }}</h1>
     <a href="/{{ username }}/scores">Scores</a>
-    <!--<a href="/{{ username }}/message">Message</a>-->
+    <a href="/{{ username }}/message">Message</a>
     <button id="message_button" value="{{ username }}">Click Me!</button>
-    {% block content %}
-    {% endblock %}
+   
+    
+    <div id="request">
+        {% block content %}
+        {% endblock %}
+    </div>
+    
 </body>
 <script>
     addEventListener("DOMContentLoaded", function() {
+        
         let message_button = document.getElementById("message_button");
-
+        
+        
         message_button.addEventListener("click", function(event) {
 
-            username = event.target.value;
+            let username = event.target.value;  
+            let displayMessage = document.getElementById("request");
 
             event.preventDefault();
 
-            const request = new XMLHttpRequest();
-            request.onload = function() {
-                alert(request.responseText);
-            };
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET",`http://127.0.0.1:5000/${username}/message`, true );
+            xhr.send();
+            xhr.responseType = "text";
+            xhr.onreadystatechange = function() {
+            
+            if (this.readyState == 4 && this.status == 200) { 
+                //template(JSON.parse(this.responseText));
+                document.getElementById("request").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+        }      
+    });
+    
+});
 
-            request.open("GET", "/" + username + "message" )
-        })
-        
-    })
+     /*var request = new XMLHttpRequest();
+      request.onload = function() {
+          // We could do more interesting things with the response
+          // or, we could ignore it entirely
+          alert(request.responseText);
+      };
+      // We point the request at the appropriate command
+      request.open("GET", "/" + command, true);
+      // and then we send it off
+      request.send();
+    });
+  }
+}, true);*/
 </script>
 </html>
+

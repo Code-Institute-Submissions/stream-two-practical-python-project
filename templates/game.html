@@ -9,8 +9,29 @@
 <body>
     <h1>Hi {{ username }}</h1>
     <a href="/{{ username }}/scores">Scores</a>
-    <a href="/{{ username }}/message">Message</a>
+    <!--<a href="/{{ username }}/message">Message</a>-->
+    <button id="message_button" value="{{ username }}">Click Me!</button>
     {% block content %}
     {% endblock %}
 </body>
+<script>
+    addEventListener("DOMContentLoaded", function() {
+        let message_button = document.getElementById("message_button");
+
+        message_button.addEventListener("click", function(event) {
+
+            username = event.target.value;
+
+            event.preventDefault();
+
+            const request = new XMLHttpRequest();
+            request.onload = function() {
+                alert(request.responseText);
+            };
+
+            request.open("GET", "/" + username + "message" )
+        })
+        
+    })
+</script>
 </html>

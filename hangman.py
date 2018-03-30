@@ -1,12 +1,42 @@
 import os
+import random
 from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
+
+################## DOCUMENT FUNCTIONS ###############################
 
 def write_to_doc(file, data):
     with open(file, "a") as file:
         file.writelines(data)
 
+
+def get_word():
+    with open("data/words.txt","r") as words:
+        word_list = words.read().split()
+        word = random.choice(word_list)
+        print(word)
+    return word
+
+def word_is_more_than_four_letters():
+    
+    letter_list = list(get_word())
+    print(letter_list)
+    while len(letter_list) < 4:
+        letter_list = list(get_word())
+    return letter_list
+
+            
+    
+
+    
+
+
+
+################# GAME LOGIC FUNCTIONS ##############################
+
+###################### ROUTES #######################################
+#####################################################################
 
 @app.route("/", methods=["GET","POST"])
 def index():

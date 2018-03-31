@@ -9,24 +9,27 @@
 <body>
     <h1>Hi {{ username }}</h1>
     <a href="/{{ username }}/scores">Scores</a>
-    <button id="message_button" value="{{ username }}">Click Me!</button>
+    <button id="generate" value="{{ username }}">Generate Word!</button>
     
     <div id="word-request">
-        {% block content %}
+        {% block word %}
         {% endblock %}
     </div>
+   <form method="POST" id="guess-form">
+        <input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>
+        <button id="guess-button" value="{{ username }}">Guess!</button>
+   </form>
     
 </body>
 <script>
     addEventListener("DOMContentLoaded", function() {
         
-        let message_button = document.getElementById("message_button");
+        let generate = document.getElementById("generate");
         
         
-        message_button.addEventListener("click", function(event) {
+        generate.addEventListener("click", function(event) {
 
             let username = event.target.value;  
-            let displayMessage = document.getElementById("request");
 
             event.preventDefault();
 
@@ -34,6 +37,7 @@
             xhr.open("GET",`/${username}/word`, true );
             xhr.send();
             xhr.responseType = "text";
+
             xhr.onreadystatechange = function() {
             
             if (this.readyState == 4 && this.status == 200) { 
@@ -42,6 +46,23 @@
                 console.log(this.responseText);
             }
         }      
+    });
+
+    let guessButton = document.getElementById("guess-button");
+    let guessForm = document.getElementById("guess-form");
+
+        document.getElementById("guess-form").addEventListener("submit", function(event) {
+        
+        
+        let username = document.getElementById("guess-button").value;
+
+        const xhr = new XMLHttpRequest();
+        
+        xhr.open("POST",`/${username}/guess`, true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+        xhr.send();
+        console.log(`/${username}/guess`)
+        
     });
     
 });

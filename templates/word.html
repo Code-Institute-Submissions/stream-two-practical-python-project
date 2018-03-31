@@ -1,0 +1,13 @@
+{% block content %}
+<p>
+    {% for letter in letter_list %}
+    {{ letter }}
+    {% endfor %}
+</p>
+    
+<p>
+    {% for dash in dashes_list %}
+    {{ dash }}
+    {% endfor %}
+</p>
+{% endblock %}

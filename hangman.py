@@ -21,7 +21,7 @@ def get_word():
         #print(word)
     return word
 
-def correct_length_word():
+def correct_length_letter_list():
     """ ONLY RETURN A LETTER LIST OF CERTAIN LENGHT """
     letter_list = list(get_word())
     is_correct_number_of_letters = len(letter_list)
@@ -33,19 +33,17 @@ def correct_length_word():
         
     return letter_list
     
-def make_dashes(letter_list):
+def make_dashes_list(letter_list):
     
-    dashes = []
+    dashes_list = []
     letters = letter_list
 
     for i in letters:
-        dashes.append("_")
+        dashes_list.append("_")
 
-    print(dashes)
+    print(dashes_list)
     print(letters)
-    return dashes
-
-
+    return dashes_list
 
 
 ###################### ROUTES #######################################
@@ -60,19 +58,20 @@ def index():
 
 @app.route("/<username>") 
 def user(username):
-    letter_list = correct_length_word()
-    dashes_list = make_dashes(letter_list)
-    return render_template("game.html", username=username, letter_list = letter_list, dashes_list = dashes_list)
+    
+    return render_template("game.html", username=username)
 
 @app.route("/<username>/scores")
 def scores(username):
     print(username)
     return render_template("scores.html", username=username)
 
-@app.route("/<username>/message")
+@app.route("/<username>/word")
 def message(username):
-    message = "loser"
-    return render_template("message.html", username=username, message=message)
+    letter_list = correct_length_letter_list()
+    dashes_list = make_dashes_list(letter_list)
+
+    return render_template("word.html", username=username, letter_list = letter_list, dashes_list = dashes_list)
 
 
 

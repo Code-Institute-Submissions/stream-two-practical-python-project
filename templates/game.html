@@ -9,12 +9,9 @@
 <body>
     <h1>Hi {{ username }}</h1>
     <a href="/{{ username }}/scores">Scores</a>
-    <a href="/{{ username }}/message">Message</a>
     <button id="message_button" value="{{ username }}">Click Me!</button>
     
-    <p>{{ letter_list }}</p>
-    <p>{{ dashes_list }}</p>
-    <div id="request">
+    <div id="word-request">
         {% block content %}
         {% endblock %}
     </div>
@@ -34,14 +31,14 @@
             event.preventDefault();
 
             const xhr = new XMLHttpRequest();
-            xhr.open("GET",`http://127.0.0.1:5000/${username}/message`, true );
+            xhr.open("GET",`/${username}/word`, true );
             xhr.send();
             xhr.responseType = "text";
             xhr.onreadystatechange = function() {
             
             if (this.readyState == 4 && this.status == 200) { 
                 //template(JSON.parse(this.responseText));
-                document.getElementById("request").innerHTML = this.responseText;
+                document.getElementById("word-request").innerHTML = this.responseText;
                 console.log(this.responseText);
             }
         }      

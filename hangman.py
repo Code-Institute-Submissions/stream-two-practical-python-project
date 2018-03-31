@@ -7,25 +7,45 @@ app = Flask(__name__)
 ################## DOCUMENT FUNCTIONS ###############################
 
 def write_to_doc(file, data):
+    
     with open(file, "a") as file:
         file.writelines(data)
 
-
 def get_word():
+    """ GET A WORD FROM THE WORD LIST """
     with open("data/words.txt","r") as words:
         word_list = words.read().split()
         word = random.choice(word_list)
-        print(word)
+        #print(word)
     return word
 
-def word_is_more_than_four_letters():
+#def make_letter_list():
+    """ MAKE A LIST FROM THE RETURNED WORD """
+    #letter_list = list(get_word())
+    #print(letter_list)
+    #return letter_list
+   
+def length_of_letter_list(letter_list):
+    """ FIND THE LENGTH OF THE LETTER LIST PASSED FROM BELOW FUNCTION """
+    number_of_letters = len(letter_list)
+    #print(number_of_letters)
+    return number_of_letters
+
+def letter_list_is_more_than_three_less_than_eleven():
     
     letter_list = list(get_word())
-    print(letter_list)
-    while len(letter_list) < 4:
+    is_correct_number_of_letters = length_of_letter_list(letter_list)
+   
+    while is_correct_number_of_letters < 4 or is_correct_number_of_letters > 10:
         letter_list = list(get_word())
-    return letter_list
+        is_correct_number_of_letters = length_of_letter_list(letter_list)
+        
+        #print(letter_list)
+    
+    print("the number of letters is {0} and word is {1}".format(is_correct_number_of_letters, letter_list))
 
+    return letter_list
+    
             
     
 

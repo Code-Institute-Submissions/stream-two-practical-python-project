@@ -11,8 +11,9 @@
     <a href="/{{ username }}/scores">Scores</a>
     <a href="/{{ username }}/message">Message</a>
     <button id="message_button" value="{{ username }}">Click Me!</button>
-   
     
+    <p>{{ letter_list }}</p>
+    <p>{{ dashes_list }}</p>
     <div id="request">
         {% block content %}
         {% endblock %}

@@ -8,30 +8,12 @@ class TestHangman(unittest.TestCase):
     def test_get_word_from_dict(self):
 
         word = hangman.get_word()
+
         self.assertIsInstance(word, str)
-        self.assertTrue(len(word), 0)
-
-    #def test_make_letters(self):
-        
-        #letters = hangman.make_letter_list()
-        #for letter in letters:
-            #return len(letter)
-
-        #self.assertIsInstance(letters, list)
-        #self.assertTrue(len(letters), 0)
-        #self.assertTrue(letter, 0)
-        
-        
-    #def test_letter_list_length_is_int(self, letter_list):
-
-
-        #letters = hangman.length_of_letter_list(letter_list)
-
-        #self.assertTrue(type(letters), int )
 
     def test_letter_list_is_more_than_three_less_than_eleven(self):
         
-        letters = hangman.letter_list_is_more_than_three_less_than_eleven()
+        letters = hangman.correct_length_word()
         letters_length = int(len(letters))
         answer = ""
         if letters_length >= 4 and letters_length <= 10:
@@ -43,5 +25,18 @@ class TestHangman(unittest.TestCase):
         #print(answer)
         
         self.assertEqual(answer, "correct number of letters")
+
+    def test_print_dashes_for_number_of_items_in_letter_list(self):
+        
+        letter_list = hangman.correct_length_word()
+        dashes_list = hangman.make_dashes(letter_list)
+        dashes_length = len(dashes_list)
+        letter_list_length = len(letter_list)
+      
+        """ IS A TUPLE RETURNED, IS THE DASHES LENGHT = TO LETTER LIST LENGTH """
+        self.assertIsInstance(dashes_list, list)
+        self.assertEqual(dashes_length, letter_list_length)
+        
+        
         
         

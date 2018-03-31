@@ -11,6 +11,8 @@ def write_to_doc(file, data):
     with open(file, "a") as file:
         file.writelines(data)
 
+################# GAME LOGIC FUNCTIONS ##############################
+
 def get_word():
     """ GET A WORD FROM THE WORD LIST """
     with open("data/words.txt","r") as words:
@@ -19,41 +21,32 @@ def get_word():
         #print(word)
     return word
 
-#def make_letter_list():
-    """ MAKE A LIST FROM THE RETURNED WORD """
-    #letter_list = list(get_word())
-    #print(letter_list)
-    #return letter_list
-   
-def length_of_letter_list(letter_list):
-    """ FIND THE LENGTH OF THE LETTER LIST PASSED FROM BELOW FUNCTION """
-    number_of_letters = len(letter_list)
-    #print(number_of_letters)
-    return number_of_letters
-
-def letter_list_is_more_than_three_less_than_eleven():
-    
+def correct_length_word():
+    """ ONLY RETURN A LETTER LIST OF CERTAIN LENGHT """
     letter_list = list(get_word())
-    is_correct_number_of_letters = length_of_letter_list(letter_list)
-   
+    is_correct_number_of_letters = len(letter_list)
+        
     while is_correct_number_of_letters < 4 or is_correct_number_of_letters > 10:
         letter_list = list(get_word())
-        is_correct_number_of_letters = length_of_letter_list(letter_list)
+        is_correct_number_of_letters = len(letter_list)
+        print("the number of letters is {0} and word is {1}".format(is_correct_number_of_letters, letter_list))
         
-        #print(letter_list)
-    
-    print("the number of letters is {0} and word is {1}".format(is_correct_number_of_letters, letter_list))
-
     return letter_list
     
-            
+def make_dashes(letter_list):
     
+    dashes = []
+    letters = letter_list
 
-    
+    for i in letters:
+        dashes.append("_")
+
+    print(dashes)
+    print(letters)
+    return dashes
 
 
 
-################# GAME LOGIC FUNCTIONS ##############################
 
 ###################### ROUTES #######################################
 #####################################################################
@@ -67,7 +60,9 @@ def index():
 
 @app.route("/<username>") 
 def user(username):
-    return render_template("game.html", username=username)
+    letter_list = correct_length_word()
+    dashes_list = make_dashes(letter_list)
+    return render_template("game.html", username=username, letter_list = letter_list, dashes_list = dashes_list)
 
 @app.route("/<username>/scores")
 def scores(username):

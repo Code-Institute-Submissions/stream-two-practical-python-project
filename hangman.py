@@ -56,13 +56,9 @@ def index():
         return redirect(request.form["username"])
     return render_template("index.html")
 
-@app.route("/<username>", methods=["GET","POST"]) 
+@app.route("/<username>") 
 def user(username):
-    if request.method=="POST":
-        print(request.form)
-        #return redirect('/guess')
-       
-   
+    
     return render_template("game.html", username=username)
 
 @app.route("/<username>/scores")
@@ -77,10 +73,10 @@ def message(username):
 
     return render_template("word.html", username=username, letter_list = letter_list, dashes_list = dashes_list)
 
-@app.route("/guess")
-def guess():
+@app.route("/<username>/guess")
+def guess(username):
     print("guess")
-    return "<h1>guess</h1>"
+    return render_template("guess.html", username=username)
     
 
 

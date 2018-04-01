@@ -15,10 +15,14 @@
         {% block word %}
         {% endblock %}
     </div>
-   <form method="POST" id="guess-form">
-        <input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>
-        <button id="guess-button" value="{{ username }}">Guess!</button>
-   </form>
+    <form method="" id="guess-form">
+            <input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>
+            <button type="button" id="guess-button" value="{{ username }}">Guess!</button>
+    </form>
+    <div id="guess-request">
+        {% block guess %}
+        {% endblock %}
+    </div>
     
 </body>
 <script>
@@ -51,16 +55,28 @@
     let guessButton = document.getElementById("guess-button");
     let guessForm = document.getElementById("guess-form");
 
-        document.getElementById("guess-form").addEventListener("submit", function(event) {
+        guessButton.addEventListener("click", function(event) {
         
         
         let username = document.getElementById("guess-button").value;
+        console.log(username);
 
         const xhr = new XMLHttpRequest();
         
-        xhr.open("POST",`/${username}/guess`, true);
+        xhr.open("GET",`/${username}/guess`, true);
         xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
         xhr.send();
+        xhr.responseType = "text"
+
+        xhr.onreadystatechange = function() {
+        
+            if (this.readyState == 4 && this.status == 200) { 
+                //template(JSON.parse(this.responseText));
+                document.getElementById("guess-request").innerHTML = this.responseText;
+                console.log(this.responseText);
+        
+            }
+        }
         console.log(`/${username}/guess`)
         
     });

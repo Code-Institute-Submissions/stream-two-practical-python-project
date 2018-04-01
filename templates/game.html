@@ -16,8 +16,8 @@
         {% endblock %}
     </div>
     <form method="" id="guess-form">
-            <input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>
-            <button type="button" id="guess-button" value="{{ username }}">Guess!</button>
+        <input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>
+        <button type ="button" id="guess-button" value="{{ username }}">Guess!</button>
     </form>
     <div id="guess-request">
         {% block guess %}
@@ -28,74 +28,101 @@
 <script>
     addEventListener("DOMContentLoaded", function() {
         
-        let generate = document.getElementById("generate");
-        
-        
-        generate.addEventListener("click", function(event) {
+        const generate = document.getElementById("generate");
+        const guessButton = document.getElementById("guess-button");
+        const guessForm = document.getElementById("guess-form");
+        let guessInput = document.getElementById("guess-letter").value;
+        const username = document.getElementById("generate").value;
+        //let data = guessInput;
 
-            let username = event.target.value;  
+        const getRequest = (url) => {
 
-            event.preventDefault();
+            return new Promise((resolve, reject) => {
 
-            const xhr = new XMLHttpRequest();
-            xhr.open("GET",`/${username}/word`, true );
-            xhr.send();
-            xhr.responseType = "text";
+                const xhr = new XMLHttpRequest();
 
-            xhr.onreadystatechange = function() {
+                xhr.open("GET",url, true)
+                xhr.responseType = "text";
+                xhr.onload = function() {
             
-            if (this.readyState == 4 && this.status == 200) { 
-                //template(JSON.parse(this.responseText));
-                document.getElementById("word-request").innerHTML = this.responseText;
-                console.log(this.responseText);
-            }
-        }      
+                    if (xhr.readyState == 4 && xhr.status == 200) { 
+                        //template(JSON.parse(this.responseText));
+                        const response = xhr.responseText;
+                        resolve(response)
+                        console.log(xhr.responseText);
+                    } else {
+                        const error = xhr.responseText;
+                        reject(error)
+                    }
+                };
+                
+                xhr.send()  
+            })
+        }
+        
+        const postRequest = (url) => {
+
+            return new Promise((resolve, reject) => {
+
+                const xhr = new XMLHttpRequest();
+                let data = document.getElementById("guess-letter").value;
+                xhr.open("POST", url, true)
+                xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+                xhr.responseType = "text";
+                xhr.onload = function() {
+            
+                    if (xhr.readyState == 4 && xhr.status == 200) { 
+                        //template(JSON.parse(this.responseText));
+                        const response = xhr.responseText;
+                        const sent_letter = data;
+                        resolve(response, sent_letter)
+                        console.log(xhr.responseText);
+                    } else {
+                        const error = xhr.responseText;
+                        reject(error)
+                    }
+                };
+                
+                xhr.send(data)
+                console.log(data);
+            })
+
+        }
+
+        generate.addEventListener("click", function() {
+            
+            getRequest(`/${username}/word`)
+                .then((response) => {
+                    document.getElementById("word-request").innerHTML = response;
+                })
+                .catch((error) => {
+
+                    console.log(`Could not get file ${error}`)
+                })
+            
+                
     });
 
-    let guessButton = document.getElementById("guess-button");
-    let guessForm = document.getElementById("guess-form");
+      
 
-        guessButton.addEventListener("click", function(event) {
-        
-        
-        let username = document.getElementById("guess-button").value;
-        console.log(username);
+        guessButton.addEventListener("click", function() {
+            //data.preventDefault();
+            postRequest(`/${username}/${data}`)
+                .then((response, sent_letter) => {
+                    
+                    console.log(`successful post of ${response} ${sent_letter}`)
 
-        const xhr = new XMLHttpRequest();
-        
-        xhr.open("GET",`/${username}/guess`, true);
-        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
-        xhr.send();
-        xhr.responseType = "text"
+                })
+                .catch((error) => {
 
-        xhr.onreadystatechange = function() {
-        
-            if (this.readyState == 4 && this.status == 200) { 
-                //template(JSON.parse(this.responseText));
-                document.getElementById("guess-request").innerHTML = this.responseText;
-                console.log(this.responseText);
-        
-            }
-        }
-        console.log(`/${username}/guess`)
+                    console.log(`unsuccessful post ${error}`)
+
+                })
         
     });
     
 });
 
-     /*var request = new XMLHttpRequest();
-      request.onload = function() {
-          // We could do more interesting things with the response
-          // or, we could ignore it entirely
-          alert(request.responseText);
-      };
-      // We point the request at the appropriate command
-      request.open("GET", "/" + command, true);
-      // and then we send it off
-      request.send();
-    });
-  }
-}, true);*/
 </script>
 </html>
 

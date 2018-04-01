@@ -73,10 +73,12 @@ def message(username):
 
     return render_template("word.html", username=username, letter_list = letter_list, dashes_list = dashes_list)
 
-@app.route("/<username>/guess")
-def guess(username):
-    print("guess")
-    return render_template("guess.html", username=username)
+@app.route("/<username>/<data>", methods=["GET","POST"])
+def guess(username, data):
+    if request.method=="POST":
+        print(data)
+        guess = data
+    return render_template("guess.html", guess = guess)
     
 
 

@@ -52,19 +52,12 @@ def create_alphabet_list():
     print(alphabet)
     return alphabet
 
-def is_guess_in_word(data):
-    guess = data[0]
-    word = data[1]
+def is_guess_in_word(guess, word):
 
-    if any(guess(word)):
-        print("{0} is in word".format(guess))
-        correct_guess = guess
-    else:
-        print("{0} is NOT in {1}".format(guess, word))
+    print(guess, word)
 
-    print("The word is {0}".format(word))
-    return correct_guess
-
+    return guess
+    
 
 ###################### ROUTES #######################################
 #####################################################################
@@ -96,14 +89,14 @@ def message(username):
 @app.route("/<username>/<data>", methods=["GET","POST"])
 def guess(username, data):
     if request.method=="POST":
-        print(data)
-
+        #print(data)
+        data = data.split(",")
         guess = data[0]
         word = data[1]
 
-        is_guess_in_word(data)
+        is_guess_in_word(guess, word)
 
-    return render_template("guess.html", guess=guess, word=word)
+    return render_template("guess.html", data=data, guess=guess, word=word)
     
 
 

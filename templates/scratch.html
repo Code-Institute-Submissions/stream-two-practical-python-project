@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HANGMAN | {{ username }}</title>
+</head>
+<body>
+    <h1>Hi {{ username }}</h1>
+    <a href="/{{ username }}/scores">Scores</a>
+    <button id="generate" value="{{ username }}">Generate Word!</button>
+    
+    <div id="word-request">
+        {% block word %}
+        {% endblock %}
+    </div>
+    <form method="" id="guess-form">
+            <input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>
+            <button type="button" id="guess-button" value="{{ username }}">Guess!</button>
+    </form>
+    <div id="guess-request">
+        {% block guess %}
+        {% endblock %}
+    </div>
+    
+</body>
+<script>
+    addEventListener("DOMContentLoaded", function() {
+        
+        let generate = document.getElementById("generate");
+        
+        
+        generate.addEventListener("click", function(event) {
+
+            let username = event.target.value;  
+
+            event.preventDefault();
+
+            const xhr = new XMLHttpRequest();
+            xhr.open("GET",`/${username}/word`, true );
+            xhr.send();
+            xhr.responseType = "text";
+
+            xhr.onreadystatechange = function() {
+            
+            if (this.readyState == 4 && this.status == 200) { 
+                //template(JSON.parse(this.responseText));
+                document.getElementById("word-request").innerHTML = this.responseText;
+                console.log(this.responseText);
+            }
+        }      
+    });
+
+    let guessButton = document.getElementById("guess-button");
+    let guessForm = document.getElementById("guess-form");
+
+        guessButton.addEventListener("click", function(event) {
+        
+        
+        let username = document.getElementById("guess-button").value;
+        console.log(username);
+
+        const xhr = new XMLHttpRequest();
+        
+        xhr.open("GET",`/${username}/guess`, true);
+        xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
+        xhr.send();
+        xhr.responseType = "text"
+
+        xhr.onreadystatechange = function() {
+        
+            if (this.readyState == 4 && this.status == 200) { 
+                //template(JSON.parse(this.responseText));
+                document.getElementById("guess-request").innerHTML = this.responseText;
+                console.log(this.responseText);
+        
+            }
+        }
+        console.log(`/${username}/guess`)
+        
+    });
+    
+});
+
+     /*var request = new XMLHttpRequest();
+      request.onload = function() {
+          // We could do more interesting things with the response
+          // or, we could ignore it entirely
+          alert(request.responseText);
+      };
+      // We point the request at the appropriate command
+      request.open("GET", "/" + command, true);
+      // and then we send it off
+      request.send();
+    });
+  }
+}, true);*/
+</script>
+</html>
+

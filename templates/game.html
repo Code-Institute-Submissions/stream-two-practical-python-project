@@ -17,8 +17,12 @@
         
     </div>
     <form method="" id="guess-form">
-        <input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>
-        <button id="guess-button" value="{{ username }}" placeholder="guess a letter" >Guess!</button>
+        <!--<input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>-->
+        <ul>
+        {% for letter in alphabet %}
+            <li><button class="guess-button" id="guess-button-{{ letter }}" value="guess-button" data="{{ letter }}">{{ letter }}</button></li>
+        {% endfor %}
+        </ul>
     </form>
     <div id="guess-request">
         {% block guess %}
@@ -30,13 +34,13 @@
     addEventListener("DOMContentLoaded", function() {
         
         const generate = document.getElementById("generate");
-        const guessButton = document.getElementById("guess-button");
+        const guessButton = document.getElementsByClassName("guess-button");
         const guessForm = document.getElementById("guess-form");
         const username = document.getElementById("generate").value;
         const wordRequestDiv = document.getElementById("word-request");
         const guessRequestDiv = document.getElementById("guess-request");
-        let guessInput = document.getElementById("guess-letter");
-        guessInput.value = "";
+       // let guessInput = document.getElementById("guess-letter-{{ letter }}");
+       // guessInput.value = "";
         //let data = guessInput;
 
         const getRequest = (url) => {
@@ -103,32 +107,33 @@
 
                     console.log(`Could not get file ${error}`)
                 })
-            
                 
-    });
-
-      
-
-        guessForm.addEventListener("submit", function(e) {
-            e.preventDefault();
-            let data = document.getElementById("guess-letter").value;
-            postRequest(`/${username}/${data}`, data)
-                .then((response, data) => {
                     
-                    guessInput.value = "";
-                    guessRequestDiv.innerHTML = response;
-                    console.log(`successful post of ${response} ${data}`)
+        });
 
-                })
-                .catch((error) => {
-
-                    console.log(`unsuccessful post ${error}`)
-
-                })
         
+        for (var i = 0; i < guessButton.length; i++){
+        
+            guessButton[i].addEventListener("click", function(e) {
+                e.preventDefault();
+                let data = this.getAttribute('data');
+                postRequest(`/${username}/${data}`, data)
+                    .then((response, data) => {
+                        
+                        guessInput.value = "";
+                        guessRequestDiv.innerHTML = response;
+                        console.log(`successful post of ${response} ${data}`)
+
+                    })
+                    .catch((error) => {
+
+                        console.log(`unsuccessful post ${error}`)
+
+                    })
+                
+            });
+        }
     });
-    
-});
 
 </script>
 </html>

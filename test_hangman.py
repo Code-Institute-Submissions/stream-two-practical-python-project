@@ -37,3 +37,13 @@ class TestHangman(unittest.TestCase):
         self.assertIsInstance(dashes_list, list)
         self.assertEqual(dashes_length, letter_list_length)
         
+    def test_create_alphabet_list(self):
+        
+        alphabet = hangman.create_alphabet_list()
+
+        i = "".join(alphabet)
+
+        self.assertIsInstance(alphabet, list)
+        self.assertIsInstance(i,str )
+        self.assertTrue(i.isupper(), True)
+        self.assertEqual(len(alphabet), 26)

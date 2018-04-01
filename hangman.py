@@ -1,5 +1,6 @@
 import os
 import random
+import string
 from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
@@ -17,8 +18,8 @@ def get_word():
     """ GET A WORD FROM THE WORD LIST """
     with open("data/words.txt","r") as words:
         word_list = words.read().split()
-        word = random.choice(word_list)
-        #print(word)
+        word = random.choice(word_list).upper()
+        print(word)
     return word
 
 def correct_length_letter_list():
@@ -45,6 +46,11 @@ def make_dashes_list(letter_list):
     print(letters)
     return dashes_list
 
+def create_alphabet_list():
+    alphabet = list(string.ascii_uppercase)
+   
+    print(alphabet)
+    return alphabet
 
 ###################### ROUTES #######################################
 #####################################################################
@@ -58,8 +64,8 @@ def index():
 
 @app.route("/<username>") 
 def user(username):
-    
-    return render_template("game.html", username=username)
+    alphabet = create_alphabet_list()
+    return render_template("game.html", username=username, alphabet=alphabet)
 
 @app.route("/<username>/scores")
 def scores(username):
@@ -77,6 +83,7 @@ def message(username):
 def guess(username, data):
     if request.method=="POST":
         print(data)
+
         guess = data
     return render_template("guess.html", guess = guess)
     

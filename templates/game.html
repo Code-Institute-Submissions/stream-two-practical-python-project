@@ -14,10 +14,11 @@
     <div id="word-request">
         {% block word %}
         {% endblock %}
+        
     </div>
     <form method="" id="guess-form">
         <input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>
-        <button type ="button" id="guess-button" value="{{ username }}">Guess!</button>
+        <button id="guess-button" value="{{ username }}" placeholder="guess a letter" >Guess!</button>
     </form>
     <div id="guess-request">
         {% block guess %}
@@ -31,8 +32,11 @@
         const generate = document.getElementById("generate");
         const guessButton = document.getElementById("guess-button");
         const guessForm = document.getElementById("guess-form");
-        let guessInput = document.getElementById("guess-letter").value;
         const username = document.getElementById("generate").value;
+        const wordRequestDiv = document.getElementById("word-request");
+        const guessRequestDiv = document.getElementById("guess-request");
+        let guessInput = document.getElementById("guess-letter");
+        guessInput.value = "";
         //let data = guessInput;
 
         const getRequest = (url) => {
@@ -60,12 +64,12 @@
             })
         }
         
-        const postRequest = (url) => {
+        const postRequest = (url, data) => {
 
             return new Promise((resolve, reject) => {
 
                 const xhr = new XMLHttpRequest();
-                let data = document.getElementById("guess-letter").value;
+                
                 xhr.open("POST", url, true)
                 xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
                 xhr.responseType = "text";
@@ -74,8 +78,8 @@
                     if (xhr.readyState == 4 && xhr.status == 200) { 
                         //template(JSON.parse(this.responseText));
                         const response = xhr.responseText;
-                        const sent_letter = data;
-                        resolve(response, sent_letter)
+                        
+                        resolve(response, data)
                         console.log(xhr.responseText);
                     } else {
                         const error = xhr.responseText;
@@ -93,7 +97,7 @@
             
             getRequest(`/${username}/word`)
                 .then((response) => {
-                    document.getElementById("word-request").innerHTML = response;
+                    wordRequestDiv.innerHTML = response;
                 })
                 .catch((error) => {
 
@@ -105,12 +109,15 @@
 
       
 
-        guessButton.addEventListener("click", function() {
-            //data.preventDefault();
-            postRequest(`/${username}/${data}`)
-                .then((response, sent_letter) => {
+        guessForm.addEventListener("submit", function(e) {
+            e.preventDefault();
+            let data = document.getElementById("guess-letter").value;
+            postRequest(`/${username}/${data}`, data)
+                .then((response, data) => {
                     
-                    console.log(`successful post of ${response} ${sent_letter}`)
+                    guessInput.value = "";
+                    guessRequestDiv.innerHTML = response;
+                    console.log(`successful post of ${response} ${data}`)
 
                 })
                 .catch((error) => {

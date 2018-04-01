@@ -13,8 +13,7 @@
     
     <div id="word-request">
         {% block word %}
-        {% endblock %}
-        
+        {% endblock %}  
     </div>
     <form method="" id="guess-form">
         <!--<input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>-->
@@ -39,6 +38,7 @@
         const username = document.getElementById("generate").value;
         const wordRequestDiv = document.getElementById("word-request");
         const guessRequestDiv = document.getElementById("guess-request");
+        
        // let guessInput = document.getElementById("guess-letter-{{ letter }}");
        // guessInput.value = "";
         //let data = guessInput;
@@ -112,15 +112,20 @@
         });
 
         
-        for (var i = 0; i < guessButton.length; i++){
+        for (let i = 0; i < guessButton.length; i++){
         
             guessButton[i].addEventListener("click", function(e) {
+
                 e.preventDefault();
-                let data = this.getAttribute('data');
+                let guess = this.getAttribute('data');
+                let word = document.getElementById("word");
+                let letter_list = word.getAttribute('data');
+                let data = [guess, letter_list];
+
                 postRequest(`/${username}/${data}`, data)
                     .then((response, data) => {
                         
-                        guessInput.value = "";
+                        //guessInput.value = "";
                         guessRequestDiv.innerHTML = response;
                         console.log(`successful post of ${response} ${data}`)
 

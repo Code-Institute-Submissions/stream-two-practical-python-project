@@ -1,5 +1,5 @@
 {% block content %}
-<p>
+<p id="word" data="{% for letter in letter_list %}{{ letter }}{% endfor %}">
     {% for letter in letter_list %}
     {{ letter }}
     {% endfor %}

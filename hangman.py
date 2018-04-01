@@ -52,6 +52,20 @@ def create_alphabet_list():
     print(alphabet)
     return alphabet
 
+def is_guess_in_word(data):
+    guess = data[0]
+    word = data[1]
+
+    if any(guess(word)):
+        print("{0} is in word".format(guess))
+        correct_guess = guess
+    else:
+        print("{0} is NOT in {1}".format(guess, word))
+
+    print("The word is {0}".format(word))
+    return correct_guess
+
+
 ###################### ROUTES #######################################
 #####################################################################
 
@@ -84,8 +98,12 @@ def guess(username, data):
     if request.method=="POST":
         print(data)
 
-        guess = data
-    return render_template("guess.html", guess = guess)
+        guess = data[0]
+        word = data[1]
+
+        is_guess_in_word(data)
+
+    return render_template("guess.html", guess=guess, word=word)
     
 
 

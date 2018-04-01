@@ -1,5 +1,7 @@
 import os
 import unittest
+import random
+import string
 import hangman
 
 
@@ -47,3 +49,18 @@ class TestHangman(unittest.TestCase):
         self.assertIsInstance(i,str )
         self.assertTrue(i.isupper(), True)
         self.assertEqual(len(alphabet), 26)
+
+    def test_is_guess_in_word(self):
+
+        word = ["H","A","N","G","M","A","N"]
+        guesses = ["H","A","N","G","M","A","N"]
+        alphabet = list(string.ascii_uppercase)
+        guess_letter_not_in = list(set(alphabet).difference(set(guesses)))
+        print(guess_letter_not_in)
+
+        for guess in guesses:
+            guess_letter = hangman.is_guess_in_word(guess, word)
+
+        self.assertIn(guess_letter, word)
+        self.assertNotIn(guess_letter_not_in, word)
+        

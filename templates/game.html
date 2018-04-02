@@ -10,6 +10,11 @@
     <h1>Hi {{ username }}</h1>
     <a href="/{{ username }}/scores">Scores</a>
     <button id="generate" value="{{ username }}">Generate Word!</button>
+
+    <div id="guess-request">
+        {% block guess %}
+        {% endblock %}
+    </div>
     
     <div id="word-request">
         {% block word %}
@@ -23,10 +28,7 @@
         {% endfor %}
         </ul>
     </form>
-    <div id="guess-request">
-        {% block guess %}
-        {% endblock %}
-    </div>
+    
     
 </body>
 <script>

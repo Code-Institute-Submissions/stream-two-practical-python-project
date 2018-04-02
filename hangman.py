@@ -34,17 +34,18 @@ def correct_length_letter_list():
         
     return letter_list
     
-def make_dashes_list(letter_list):
+def make_list_of_length_word(letter_list,item):
     
     dashes_list = []
     letters = letter_list
 
     for i in letters:
-        dashes_list.append("_")
+        dashes_list.append(item)
 
     print(dashes_list)
     print(letters)
     return dashes_list
+
 
 def create_alphabet_list():
     alphabet = list(string.ascii_uppercase)
@@ -54,24 +55,43 @@ def create_alphabet_list():
 
 def is_guess_in_word(guess, word):
 
-    word_list=list(word)
-
-    if guess in word_list:
-        #print(guess)
+    if guess in word:
         return guess
     else:
         return "Incorrect Guess"
     
 def get_list_number_of_correct_guess(guess, word):
     
-    word_list=list(word)
-    number_word_list = list(enumerate(word_list, 0))
-    print(number_word_list)
+    number_word_list = list(enumerate(word, 0))
 
+    letter_match = []
     for item in number_word_list:
         if guess == item[1]:
-            print(item)
-            return item
+            letter_match.append(item)
+            
+    print(letter_match)
+    return letter_match
+
+correct_guesses = []
+
+def display_correctly_guessed_letters(word, correct_guess_list):
+    global correct_guesses
+    #list_of_empty_strings = make_list_of_length_word(word, None)
+    #correct_guesses = correct_guesses
+
+    for item in correct_guess_list:
+        correct_guess_index = item[0]
+        correct_guess = item[1]
+        correct_guesses[correct_guess_index] = correct_guess
+    
+    join_correct_guesses = " ".join(correct_guesses)
+
+
+    print(correct_guess_index)
+    print(correct_guess)
+    print(join_correct_guesses)
+
+    return join_correct_guesses
 
 
 ###################### ROUTES #######################################
@@ -97,9 +117,11 @@ def scores(username):
 @app.route("/<username>/word")
 def message(username):
     letter_list = correct_length_letter_list()
-    dashes_list = make_dashes_list(letter_list)
+    dashes_list = make_list_of_length_word(letter_list, " _ ")
+    global correct_guesses 
+    correct_guesses = make_list_of_length_word(letter_list, " ")
 
-    return render_template("word.html", username=username, letter_list = letter_list, dashes_list = dashes_list)
+    return render_template("word.html", username=username, letter_list=letter_list, dashes_list=dashes_list, correct_guesses=correct_guesses)
 
 @app.route("/<username>/<guess_data>", methods=["GET","POST"])
 def guess(username, guess_data):
@@ -107,14 +129,18 @@ def guess(username, guess_data):
         #print(data)
         data = guess_data.split(",")
         guess = data[0]
-        word = data[1]
+        word = list(data[1])
 
-        correct_guess = is_guess_in_word(guess, word)
-        if correct_guess == guess:
-            get_list_number_of_correct_guess(guess, word)
-            
+        display_correct_guess=""   
+        check_guess = is_guess_in_word(guess, word)
 
-    return render_template("guess.html", guess=guess, word=word)
+        if check_guess == guess:
+            correct_guess_list = get_list_number_of_correct_guess(guess, word)
+            display_correct_guess = display_correctly_guessed_letters(word, correct_guess_list)
+            #return display_correct_guess
+
+            #make function to append correct guess based on list number to array of empty strings
+    return render_template("guess.html", guess=guess, word=word, correct_guess=display_correct_guess)
     
 
 

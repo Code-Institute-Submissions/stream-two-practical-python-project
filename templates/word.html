@@ -1,14 +1,16 @@
 {% block content %}
-<p >
+<!--<p >
     {% for letter in letter_list %}
     {{ letter }}
     {% endfor %}
-</p>
+</p>-->
     
 <p id="word" data="{% for letter in letter_list %}{{ letter }}{% endfor %}">
     {% for dash in dashes_list %}
-    {{ dash }}
+    {{ dash }}  
     {% endfor %}
+    <!--{{ correct_guesses}}-->
 </p>
+
 
 {% endblock %}

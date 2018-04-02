@@ -29,9 +29,10 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(answer, "correct number of letters")
 
     def test_print_dashes_for_number_of_items_in_letter_list(self):
-        
+
+        string = "_" 
         letter_list = hangman.correct_length_letter_list()
-        dashes_list = hangman.make_dashes_list(letter_list)
+        dashes_list = hangman.make_list_of_length_word(letter_list, string)
         dashes_length = len(dashes_list)
         letter_list_length = len(letter_list)
       
@@ -53,7 +54,7 @@ class TestHangman(unittest.TestCase):
     def test_is_guess_in_word(self):
         
         guesses = ["W","O","R","D"]
-        word = "WORD"
+        word = list("WORD")
         alphabet = list(string.ascii_uppercase)
         incorrect_letters = list(set(alphabet).difference(set(guesses)))
 
@@ -64,24 +65,31 @@ class TestHangman(unittest.TestCase):
         for guess in incorrect_letters:
             guess_not_in = hangman.is_guess_in_word(guess, word)
             self.assertEqual(guess_not_in, "Incorrect Guess")
-        
-        #self.assertNotIn(guess_letter_not_in, word)
-        
+    
+    def test_get_list_number_of_correct_guess(self):
 
-        """
-        word = ["H","A","N","G","M","A","N"]
-        guesses = ["H","A","N","G","M","A","N"]
-        alphabet = list(string.ascii_uppercase)
-        incorrect_letters = list(set(alphabet).difference(set(guesses)))
-        #print(guess_letter_not_in)
+        guesses = "W"
+        word = list("WORD")
+        counter = -1
 
         for guess in guesses:
-            guess_letter = hangman.is_guess_in_word(guess, word)
+            get_list_number = hangman.get_list_number_of_correct_guess(guess, word)
+            counter += 1
+            self.assertEqual(get_list_number, [(counter, guess)])
+    """
+    def test_make_empty_list_based_on_word_length(self):
+        
+        word = list("WORD")
+        make_array_of_empty_strings = hangman.make_array_of_empty_strings(word)
 
-       # for guess in incorrect_letters:
-           # guess_letter_not_in = hangman.is_guess_in_word(guess, word)
+    
+        for item in make_array_of_empty_strings:
+            i = item
+            self.assertIsInstance(i,str )
 
+        self.assertIsInstance(make_array_of_empty_strings, list)
+        self.assertTrue(i.isupper(), True)
+        self.assertEqual(len(make_array_of_empty_strings), word)
+    """
 
-        self.assertIn(guess_letter, word)
-        #self.assertNotIn(guess_letter_not_in, word)
-        """
+ 

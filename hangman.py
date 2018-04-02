@@ -5,6 +5,10 @@ from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
 
+################## GLOBAL VARIABLES ################################
+
+correct_guesses = []
+
 ################## DOCUMENT FUNCTIONS ###############################
 
 def write_to_doc(file, data):
@@ -72,26 +76,25 @@ def get_list_number_of_correct_guess(guess, word):
     print(letter_match)
     return letter_match
 
-correct_guesses = []
 
-def display_correctly_guessed_letters(word, correct_guess_list):
+def join_correct_guesses_list(updated_list):
+     
+    joined_correct_guesses_list = " ".join(updated_list)
+
+    return joined_correct_guesses_list
+
+def append_correct_guesses_list(correct_guess_list):
+    
     global correct_guesses
-    #list_of_empty_strings = make_list_of_length_word(word, None)
-    #correct_guesses = correct_guesses
 
     for item in correct_guess_list:
         correct_guess_index = item[0]
         correct_guess = item[1]
         correct_guesses[correct_guess_index] = correct_guess
-    
-    join_correct_guesses = " ".join(correct_guesses)
 
+    print(correct_guesses)    
 
-    print(correct_guess_index)
-    print(correct_guess)
-    print(join_correct_guesses)
-
-    return join_correct_guesses
+    return correct_guesses
 
 
 ###################### ROUTES #######################################
@@ -131,16 +134,21 @@ def guess(username, guess_data):
         guess = data[0]
         word = list(data[1])
 
-        display_correct_guess=""   
+        display_correct_guess=""
+
         check_guess = is_guess_in_word(guess, word)
 
         if check_guess == guess:
             correct_guess_list = get_list_number_of_correct_guess(guess, word)
-            display_correct_guess = display_correctly_guessed_letters(word, correct_guess_list)
+            update_correct_guesses_list = append_correct_guesses_list(correct_guess_list)
+            display_correct_guess = join_correct_guesses_list(update_correct_guesses_list)
+        else:
+            global correct_guesses
+            display_correct_guess = join_correct_guesses_list(correct_guesses)
             #return display_correct_guess
 
             #make function to append correct guess based on list number to array of empty strings
-    return render_template("guess.html", guess=guess, word=word, correct_guess=display_correct_guess)
+    return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess)
     
 
 

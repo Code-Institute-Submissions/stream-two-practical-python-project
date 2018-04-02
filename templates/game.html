@@ -22,11 +22,10 @@
     </div>
     <form method="" id="guess-form">
         <!--<input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>-->
-        <ul>
         {% for letter in alphabet %}
-            <li><button class="guess-button" id="guess-button-{{ letter }}" value="guess-button" data="{{ letter }}">{{ letter }}</button></li>
+        <button class="guess-button" id="guess-button-{{ letter }}" value="guess-button" data="{{ letter }}">{{ letter }}</button>
         {% endfor %}
-        </ul>
+        
     </form>
     
     

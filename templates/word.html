@@ -4,13 +4,14 @@
     {{ letter }}
     {% endfor %}
 </p>-->
-    
-<p id="word" data="{% for letter in letter_list %}{{ letter }}{% endfor %}">
-   {% for dash in dashes_list %}
-    {{ dash }}  
-    {% endfor %}
-    <!--{{ correct_guesses}}-->
-</p>
+<p>A word has been generated.   
+    <span id="word" data="{% for letter in letter_list %}{{ letter }}{% endfor %}">
+    <!--{% for dash in dashes_list %}
+        {{ dash }}  
+        {% endfor %}-->
+    <!--{{ correct_guesses }}-->
+    </span>
+</p> 
 
 
 {% endblock %}

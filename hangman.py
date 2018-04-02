@@ -92,8 +92,6 @@ def append_correct_guesses_list(correct_guess_list):
         correct_guess = item[1]
         correct_guesses[correct_guess_index] = correct_guess
 
-    print(correct_guesses)    
-
     return correct_guesses
 
 
@@ -120,9 +118,9 @@ def scores(username):
 @app.route("/<username>/word")
 def message(username):
     letter_list = correct_length_letter_list()
-    dashes_list = make_list_of_length_word(letter_list, "_")
-    global correct_guesses 
-    correct_guesses = make_list_of_length_word(letter_list, "_")
+    dashes_list = make_list_of_length_word(letter_list, "")
+    global correct_guesses
+    correct_guesses = make_list_of_length_word(letter_list, " _ ")
 
     return render_template("word.html", username=username, letter_list=letter_list, dashes_list=dashes_list, correct_guesses=correct_guesses)
 

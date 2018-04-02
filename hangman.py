@@ -133,6 +133,7 @@ def guess(username, guess_data):
         word = list(data[1])
 
         display_correct_guess=""
+        #incorrect_guess=""
 
         check_guess = is_guess_in_word(guess, word)
 
@@ -143,6 +144,7 @@ def guess(username, guess_data):
         else:
             global correct_guesses
             display_correct_guess = join_correct_guesses_list(correct_guesses)
+            #incorrect_guess = "{0] is an incorrect guess!!".format(guess)
             #return display_correct_guess
 
             #make function to append correct guess based on list number to array of empty strings

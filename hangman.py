@@ -117,9 +117,9 @@ def scores(username):
 @app.route("/<username>/word")
 def message(username):
     letter_list = correct_length_letter_list()
-    dashes_list = make_list_of_length_word(letter_list, " _ ")
+    dashes_list = make_list_of_length_word(letter_list, "_")
     global correct_guesses 
-    correct_guesses = make_list_of_length_word(letter_list, " ")
+    correct_guesses = make_list_of_length_word(letter_list, "_")
 
     return render_template("word.html", username=username, letter_list=letter_list, dashes_list=dashes_list, correct_guesses=correct_guesses)
 

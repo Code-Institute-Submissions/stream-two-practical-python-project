@@ -54,10 +54,25 @@ def create_alphabet_list():
 
 def is_guess_in_word(guess, word):
 
-    print(guess, word)
+    word_list=list(word)
 
-    return guess
+    if guess in word_list:
+        #print(guess)
+        return guess
+    else:
+        return "Incorrect Guess"
     
+def get_list_number_of_correct_guess(guess, word):
+    
+    word_list=list(word)
+    number_word_list = list(enumerate(word_list, 0))
+    print(number_word_list)
+
+    for item in number_word_list:
+        if guess == item[1]:
+            print(item)
+            return item
+
 
 ###################### ROUTES #######################################
 #####################################################################
@@ -86,17 +101,20 @@ def message(username):
 
     return render_template("word.html", username=username, letter_list = letter_list, dashes_list = dashes_list)
 
-@app.route("/<username>/<data>", methods=["GET","POST"])
-def guess(username, data):
+@app.route("/<username>/<guess_data>", methods=["GET","POST"])
+def guess(username, guess_data):
     if request.method=="POST":
         #print(data)
-        data = data.split(",")
+        data = guess_data.split(",")
         guess = data[0]
         word = data[1]
 
-        is_guess_in_word(guess, word)
+        correct_guess = is_guess_in_word(guess, word)
+        if correct_guess == guess:
+            get_list_number_of_correct_guess(guess, word)
+            
 
-    return render_template("guess.html", data=data, guess=guess, word=word)
+    return render_template("guess.html", guess=guess, word=word)
     
 
 

@@ -51,20 +51,37 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(len(alphabet), 26)
 
     def test_is_guess_in_word(self):
+        
+        guesses = ["W","O","R","D"]
+        word = "WORD"
+        alphabet = list(string.ascii_uppercase)
+        incorrect_letters = list(set(alphabet).difference(set(guesses)))
 
+        for guess in guesses:
+            guess_is_in = hangman.is_guess_in_word(guess, word)
+            self.assertEqual(guess_is_in, guess)
+
+        for guess in incorrect_letters:
+            guess_not_in = hangman.is_guess_in_word(guess, word)
+            self.assertEqual(guess_not_in, "Incorrect Guess")
+        
+        #self.assertNotIn(guess_letter_not_in, word)
+        
+
+        """
         word = ["H","A","N","G","M","A","N"]
         guesses = ["H","A","N","G","M","A","N"]
         alphabet = list(string.ascii_uppercase)
         incorrect_letters = list(set(alphabet).difference(set(guesses)))
-        print(guess_letter_not_in)
+        #print(guess_letter_not_in)
 
         for guess in guesses:
             guess_letter = hangman.is_guess_in_word(guess, word)
 
-        for guess in incorrect_letters:
-            guess_letter_not_in = hangman.is_guess_in_word(guess, word)
+       # for guess in incorrect_letters:
+           # guess_letter_not_in = hangman.is_guess_in_word(guess, word)
 
 
         self.assertIn(guess_letter, word)
-        self.assertNotIn(guess_letter_not_in, word)
-        
+        #self.assertNotIn(guess_letter_not_in, word)
+        """

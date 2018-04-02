@@ -68,7 +68,7 @@
             })
         }
         
-        const postRequest = (url, data) => {
+        const postRequest = (url, guess_data) => {
 
             return new Promise((resolve, reject) => {
 
@@ -83,7 +83,7 @@
                         //template(JSON.parse(this.responseText));
                         const response = xhr.responseText;
                         
-                        resolve(response, data)
+                        resolve(response, guess_data)
                         console.log(xhr.responseText);
                     } else {
                         const error = xhr.responseText;
@@ -91,8 +91,8 @@
                     }
                 };
                 
-                xhr.send(data)
-                console.log(data);
+                xhr.send(guess_data)
+                console.log(guess_data);
             })
 
         }
@@ -119,14 +119,14 @@
                 let guess = this.getAttribute('data');
                 let word = document.getElementById("word");
                 let letter_list = word.getAttribute('data');
-                let data = [guess, letter_list];
+                let guess_data = [guess, letter_list];
 
-                postRequest(`/${username}/${data}`, data)
-                    .then((response, data) => {
+                postRequest(`/${username}/${guess_data}`, guess_data)
+                    .then((response, guess_data) => {
                         
                         //guessInput.value = "";
                         guessRequestDiv.innerHTML = response;
-                        console.log(`successful post of ${response} ${data}`)
+                        console.log(`successful post of ${response} ${guess_data}`)
 
                     })
                     .catch((error) => {

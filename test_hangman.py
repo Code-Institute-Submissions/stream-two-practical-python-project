@@ -4,10 +4,6 @@ import random
 import string
 import hangman
 
-####### GLOBAL ############
-correct_guesses = []
-###########################
-
 class TestHangman(unittest.TestCase):
 
     def test_get_word_from_dict(self):
@@ -65,7 +61,7 @@ class TestHangman(unittest.TestCase):
 
         for guess in guesses:
             guess_is_in = hangman.is_guess_in_word(guess, word)
-            self.assertEqual(guess_is_in, guess)
+            self.assertEqual(guess_is_in, True)
 
         for guess in incorrect_letters:
             guess_not_in = hangman.is_guess_in_word(guess, word)
@@ -93,14 +89,29 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(joined_list, "W O R D S")
         self.assertIsInstance(joined_list, str)
 
-    """
-    ######## CAN'T GET TEST TO PASS BECAUSE GLOBAL VARIABLE IS IT BY A ROUTE FUNCTION #####
+    
     def test_append_guesses_list(self):
-        
+
+        hangman.correct_guesses = ["_","_","_","_"] 
         correct_guess_list = [(0, "W"),(1,"O")]
         appended_list = hangman.append_correct_guesses_list(correct_guess_list)
 
         self.assertIsInstance(appended_list, list)
-    """
+        self.assertEqual(appended_list, ["W","O","_","_"])
+    
+
+    def test_if_check_guess_true(self):
+        
+        hangman.correct_guesses = ["_","_","_","_"] 
+        guess = "W"
+        word = list("WORD")
+
+        if_check_guess_true = hangman.if_check_guess_true(guess, word)
+
+        print(if_check_guess_true)
+
+        self.assertIsInstance(if_check_guess_true, str)
+        self.assertEqual(if_check_guess_true, "W _ _ _")
+
        
 

@@ -120,7 +120,10 @@ def index():
 @app.route("/<username>") 
 def user(username):
     alphabet = create_alphabet_list()
-    return render_template("game.html", username=username, alphabet=alphabet)
+    global score_counter
+    score = score_counter
+  
+    return render_template("game.html", username=username, alphabet=alphabet, score=score)
 
 @app.route("/<username>/scores")
 def scores(username):
@@ -139,13 +142,15 @@ def message(username):
 @app.route("/<username>/<guess_data>", methods=["GET","POST"])
 def guess(username, guess_data):
     if request.method=="POST":
-        
         data = guess_data.split(",")
         guess = data[0]
         word = list(data[1])
-
         display_correct_guess = ""
-      
+
+        global score_counter
+        score_counter = score_counter
+        score = score_counter
+
         check_guess = is_guess_in_word(guess, word)
 
         if check_guess == True:
@@ -153,8 +158,15 @@ def guess(username, guess_data):
         else:
             global correct_guesses
             display_correct_guess = join_correct_guesses_list(correct_guesses)
+
+        if correct_guesses == word:
+           # global score_counter
+            score_counter += 1
+            score = score_counter
+            print(score_counter)
+            #return score_counter
            
-    return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess)
+    return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess,score = score)
     
 
 

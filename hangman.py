@@ -32,6 +32,7 @@ def read_doc_lines(file):
 
     return words
 
+
 ################# GAME LOGIC FUNCTIONS ##############################
 
 def get_word():
@@ -39,7 +40,7 @@ def get_word():
     with open("data/words.txt","r") as words:
         word_list = words.read().split()
         word = random.choice(word_list).upper()
-        print(word)
+       # print(word)
     return word
 
 def correct_length_letter_list():
@@ -128,15 +129,15 @@ def if_check_guess_true(guess, word):
 def index():
     username_taken = ""
     if request.method=="POST":
+        username=request.form["username"].lower()
         usernames = read_doc("data/usernames.txt")
-        print(usernames)
-
-        if request.form["username"] in usernames:
+        
+        if username in usernames:
             print("username taken")
             username_taken = "Username taken, please think of an original username."
         else: 
-            write_to_doc("data/usernames.txt", request.form["username"] + "\n")
-            return redirect(request.form["username"])
+            write_to_doc("data/usernames.txt", username + "\n")
+            return redirect(username)
     return render_template("index.html", username_taken=username_taken)
 
 @app.route("/<username>") 
@@ -158,19 +159,35 @@ def message(username):
     # search only odd line in file
     # if current username is in file, replace word below with current word
     # else append the file with username and word
-    usernames_in_file=""
-    current_score_file = read_doc_lines("data/current_score.txt")
+    file = "data/current_word.txt"
+    #usernames_in_file=""
+    current_word_file = read_doc(file)
 
-    for counter, line in enumerate(current_score_file, start = 1):
-        if counter % 2 != 0:
-            usernames_in_file = line
-            return usernames_in_file
-        
-    if username in usernames_in_file:
-        
-            print(usernames_in_file)
+    #for counter, line in enumerate(current_word_file, start = 1):
+        #if counter % 2 != 0:
+            #usernames_in_file = line
+            #print(line)
+            #return usernames_in_file
+    
+    if username in current_word_file:
+        with open(file, "r") as f:
+            for line in f:
+                if username in line:
+                    break
+            for line in f:
+                old_word = line
+                new_word = letter_list
+                print(old_word)
+                print(new_word)
+              
+        with open(file, 'r+') as f:
+            content = f.read()
+            f.seek(0)
+            f.truncate()
+            f.write(content.replace(old_word, new_word))
     else:
-        write_to_doc("data/current_score.txt", username + "\n" + letter_list + "\n")
+        write_to_doc("data/current_word.txt", "\n" + username + "\n" + letter_list + "\n")
+    
 
 
     #dashes_list = make_list_of_length_word(letter_list, "")

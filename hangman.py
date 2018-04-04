@@ -25,6 +25,13 @@ def read_doc(file):
 
     return words
 
+def read_doc_lines(file):
+    
+    with open(file, "r") as file:
+        words = file.readlines()
+
+    return words
+
 ################# GAME LOGIC FUNCTIONS ##############################
 
 def get_word():
@@ -122,7 +129,6 @@ def index():
     username_taken = ""
     if request.method=="POST":
         usernames = read_doc("data/usernames.txt")
-        
         print(usernames)
 
         if request.form["username"] in usernames:
@@ -148,12 +154,30 @@ def scores(username):
 
 @app.route("/<username>/word")
 def message(username):
-    letter_list = correct_length_letter_list()
-    dashes_list = make_list_of_length_word(letter_list, "")
+    letter_list = "".join(correct_length_letter_list())
+    # search only odd line in file
+    # if current username is in file, replace word below with current word
+    # else append the file with username and word
+    usernames_in_file=""
+    current_score_file = read_doc_lines("data/current_score.txt")
+
+    for counter, line in enumerate(current_score_file, start = 1):
+        if counter % 2 != 0:
+            usernames_in_file = line
+            return usernames_in_file
+        
+    if username in usernames_in_file:
+        
+            print(usernames_in_file)
+    else:
+        write_to_doc("data/current_score.txt", username + "\n" + letter_list + "\n")
+
+
+    #dashes_list = make_list_of_length_word(letter_list, "")
     global correct_guesses
     correct_guesses = make_list_of_length_word(letter_list, " _ ")
 
-    return render_template("word.html", username=username, letter_list=letter_list, dashes_list=dashes_list, correct_guesses=correct_guesses)
+    return render_template("word.html", username=username, letter_list=letter_list, correct_guesses=correct_guesses)
 
 @app.route("/<username>/<guess_data>", methods=["GET","POST"])
 def guess(username, guess_data):

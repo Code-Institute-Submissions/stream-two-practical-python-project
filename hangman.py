@@ -17,6 +17,13 @@ def write_to_doc(file, data):
     
     with open(file, "a") as file:
         file.writelines(data)
+        
+def read_doc(file):
+    
+    with open(file, "r") as file:
+        words = file.read()
+
+    return words
 
 ################# GAME LOGIC FUNCTIONS ##############################
 
@@ -112,10 +119,19 @@ def if_check_guess_true(guess, word):
 
 @app.route("/", methods=["GET","POST"])
 def index():
+    username_taken = ""
     if request.method=="POST":
-        write_to_doc("data/usernames.txt", request.form["username"] + "\n")
-        return redirect(request.form["username"])
-    return render_template("index.html")
+        usernames = read_doc("data/usernames.txt")
+        
+        print(usernames)
+
+        if request.form["username"] in usernames:
+            print("username taken")
+            username_taken = "Username taken, please think of an original username."
+        else: 
+            write_to_doc("data/usernames.txt", request.form["username"] + "\n")
+            return redirect(request.form["username"])
+    return render_template("index.html", username_taken=username_taken)
 
 @app.route("/<username>") 
 def user(username):

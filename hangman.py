@@ -26,18 +26,12 @@ def read_doc(file):
         words = file.read()
     return words
 
-#def read_doc_lines(file):
-    
-    #with open(file, "r") as file:
-      #  words = file.readlines()
-    #return words
-
 def write_username_and_current_word_to_file(username, letter_list, file):
     
     current_word_file = file
     read_current_word_file = read_doc(current_word_file)
-     # if current username is in file, replace word below with current word #
-     # else append the file with username and word 
+    write_data = "\n" + username + "\n" + username + "_" + "guesses;" + "\n" + letter_list + "\n"
+
     if username in read_current_word_file:
         with open(current_word_file, "r") as f:
             for line in f:
@@ -48,15 +42,42 @@ def write_username_and_current_word_to_file(username, letter_list, file):
             for line in f:
                 old_word = line
                 new_word = letter_list
+                break
 
         with open(current_word_file, 'r+') as f:
             content = f.read()
             f.seek(0)
             f.truncate()
-            f.write(content.replace(old_word, new_word))
+            f.write(content.replace(old_word, new_word  + "\n"))
     else:
-        write_to_doc(current_word_file, "\n" + username + "\n" + "guesses;" + "\n" + letter_list + "\n")
+        write_to_doc(current_word_file, write_data )
 
+def clear_old_guesses_from_file(username, file):
+    
+    current_word_file = file
+    read_current_word_file = read_doc(current_word_file)
+    
+    if username in read_current_word_file:
+        with open(current_word_file, "r") as f:
+            for line in f:
+                if username in line:
+                    break
+            for line in f:
+                old_line = line
+                split_line = line.split(",")
+                new_line = split_line[0]
+                print(old_line)
+                print(split_line)
+                print(new_line)
+                break
+
+        with open(current_word_file, 'r+') as f:
+            content = f.read()
+            f.seek(0)
+            f.truncate()
+            f.write(content.replace(old_line, new_line))
+    
+    
 def get_users_current_word(username, current_word_file):
      
     with open(current_word_file, "r") as f:
@@ -70,9 +91,8 @@ def get_users_current_word(username, current_word_file):
                 return word
 
 def write_guesses_to_current_word_file(username, word, check_guess, current_word_file, guess):
-    
-    old_line = ""
-    new_line = ""
+    #correct_guess = ""
+
     if check_guess == True:
         correct_guess =  ', '.join(map(str, get_list_index_of_correct_guess(guess, word)))
 
@@ -83,17 +103,18 @@ def write_guesses_to_current_word_file(username, word, check_guess, current_word
                     break
             for line in f:
                 old_line = line
-                split_line = line.split()
+                split_line = line.split(";")
                 print(split_line)
-                new_line = split_line[0] + correct_guess + ";" + "\n"
+                new_line = split_line[0] + "," + correct_guess + ";" + "\n"
                 print(new_line)
                 break
+              
 
         with open(current_word_file, 'r+') as f:
             content = f.read()
             f.seek(0)
             f.truncate()
-            f.writelines(content.replace(old_line, new_line))
+            f.write(content.replace(old_line, new_line))
     else:
         print("Guess not correct")
 
@@ -234,7 +255,9 @@ def scores(username):
 def message(username):
     current_word_file = "data/current_word.txt"
     letter_list = "".join(correct_length_letter_list())
+    #clear_old_guesses_from_file(username, current_word_file)
     write_username_and_current_word_to_file(username, letter_list, current_word_file)
+    
 
     return render_template("word.html", username=username, letter_list=letter_list, correct_guesses=correct_guesses)
 

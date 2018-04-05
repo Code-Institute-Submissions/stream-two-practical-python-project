@@ -16,19 +16,15 @@ score_counter = 0
 ################## DOCUMENT FUNCTIONS ###############################
 
 def write_to_doc(file, data):
-    
     with open(file, "a") as file:
         file.writelines(data)
         
 def read_doc(file):
-    
     with open(file, "r") as file:
         words = file.read()
     return words
 
 def write_username_and_current_word_to_file(username, letter_list, file):
-    
-    #current_word_file = file
     read_current_word_file = read_doc(file)
     write_data = "\n" + username + "\n" + username + "_" + "guesses;" + "\n" + letter_list + "\n"
 
@@ -52,8 +48,49 @@ def write_username_and_current_word_to_file(username, letter_list, file):
     else:
         write_to_doc(file, write_data )
 
-def clear_old_guesses_from_file(username, file):
+def get_users_current_word(username, file):
+    with open(file, "r") as f:
+            for line in f:
+                if username in line:
+                    break
+            for line in f:
+                break
+            for line in f:
+                word = line
+                return word
+
+
+def write_guesses_to_current_word_file(username, word, current_word_file, correct_guess):
+    with open(current_word_file, "r") as f:
+        for line in f:
+            if username in line:
+                break
+        for line in f:
+            if correct_guess not in line:
+                old_line = line
+                split_line = line.split(";")
+                new_line = split_line[0] + "," + correct_guess + ";" + "\n"
+                
+                with open(current_word_file, 'r+') as f:
+                    content = f.read()
+                    f.seek(0)
+                    f.truncate()
+                    f.write(content.replace(old_line, new_line))
+                break
+
+            else:
+                print("Already guessed {0}".format(correct_guess))    
+                break
     
+def check_guess_is_true(check_guess, guess, word):
+    if check_guess == True:
+        correct_guess =  ', '.join(map(str, get_list_index_of_correct_guess(guess, word)))
+    else:
+        print("Guess not correct")
+
+    return correct_guess
+    
+def clear_old_guesses_from_file(username, file):
     read_current_word_file = read_doc(file)
     
     if username in read_current_word_file:
@@ -71,47 +108,6 @@ def clear_old_guesses_from_file(username, file):
             f.seek(0)
             f.truncate()
             f.write(content.replace(old_line, new_line))
-    
-    
-def get_users_current_word(username, file):
-     
-    with open(file, "r") as f:
-            for line in f:
-                if username in line:
-                    break
-            for line in f:
-                break
-            for line in f:
-                word = line
-                return word
-
-def write_guesses_to_current_word_file(username, word, check_guess, current_word_file, guess):
-  
-    if check_guess == True:
-        correct_guess =  ', '.join(map(str, get_list_index_of_correct_guess(guess, word)))
-
-        with open(current_word_file, "r") as f:
-            for line in f:
-                if username in line:
-                    print(username)
-                    break
-            for line in f:
-                old_line = line
-                split_line = line.split(";")
-                print(split_line)
-                new_line = split_line[0] + "," + correct_guess + ";" + "\n"
-                print(new_line)
-                break
-              
-        with open(current_word_file, 'r+') as f:
-            content = f.read()
-            f.seek(0)
-            f.truncate()
-            f.write(content.replace(old_line, new_line))
-    else:
-        print("Guess not correct")
-
-    return correct_guess
     
     
 
@@ -139,33 +135,27 @@ def correct_length_letter_list():
     return letter_list
     
 def make_list_of_length_word(letter_list,item):
-    
     dashes_list = []
     letters = letter_list
 
     for i in letters:
         dashes_list.append(item)
 
-    #print(dashes_list)
-    #print(letters)
     return dashes_list
 
 
 def create_alphabet_list():
     alphabet = list(string.ascii_uppercase)
    
-    #print(alphabet)
     return alphabet
 
 def is_guess_in_word(guess, word):
-
     if guess in word:
         return True
     else:
         return "Incorrect Guess"
     
 def get_list_index_of_correct_guess(guess, word):
-    
     number_word_list = list(enumerate(word, 0))
 
     letter_match = []
@@ -176,7 +166,6 @@ def get_list_index_of_correct_guess(guess, word):
 
 
 def join_correct_guesses_list(updated_list):
-     
     joined_correct_guesses_list = " ".join(updated_list)
 
     return joined_correct_guesses_list
@@ -215,8 +204,7 @@ def join_correct_guesses_list(updated_list):
 #####################################################################
 
 @app.route("/", methods=["GET","POST"])
-def index():
-    
+def index(): 
     username_taken = ""
     if request.method=="POST":
         username_file = "data/usernames.txt"
@@ -264,7 +252,8 @@ def guess(username, guess_data):
         display_correct_guess = ""
 
         check_guess = is_guess_in_word(guess, word)
-        write_guesses_to_current_word_file(username, word, check_guess, current_word_file, guess)
+        correct_guess = check_guess_is_true(check_guess, guess, word)
+        write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
 
         ###### NEED TO PASS WORD IN FROM READ CURRENT WORD FILE #######
        

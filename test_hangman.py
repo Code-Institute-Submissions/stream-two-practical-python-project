@@ -8,7 +8,6 @@ import hangman
 class TestHangman(unittest.TestCase):
 
     def test_write_to_file(self):
-        
         file = tempfile.mkstemp()[1]
         data = "HELLO WORLD"
 
@@ -21,7 +20,6 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(content, data)
 
     def test_read_from_file(self):
-        
         file = tempfile.mkstemp()[1]
         data = "HELLO WORLD"
 
@@ -34,7 +32,6 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(data, read_file)
 
     def test_write_username_and_current_word_to_file(self):
-        
         username = "test"
         letter_list = "HELLO"
 
@@ -51,12 +48,10 @@ class TestHangman(unittest.TestCase):
 
 
     def test_get_users_current_word_from_file(self):
-
         username = "test"
         letter_list = "WORD"
         file = tempfile.mkstemp()[1]
 
-        
         hangman.write_username_and_current_word_to_file(username, letter_list, file)
 
         try:
@@ -67,33 +62,39 @@ class TestHangman(unittest.TestCase):
         self.assertIn(letter_list, read_file)
 
     def test_write_guesses_to_file(self):
-        
         username = "TEST"
         word = "WORD"
-        check_guess = True
         current_word_file = tempfile.mkstemp()[1]
-        guess = "W"
+        guess = "(0, W)"
 
         hangman.write_username_and_current_word_to_file(username, word, current_word_file)
-        hangman.write_guesses_to_current_word_file(username, word, check_guess, current_word_file, guess)
+        hangman.write_guesses_to_current_word_file(username, word, current_word_file, guess)
 
         try:
             read_file = open(current_word_file).read()
-            print(read_file)
+            #print(read_file)
         finally:
             os.remove(current_word_file)
 
         self.assertIn(guess, read_file)
 
-         
-    def test_get_word_from_dict(self):
+    def test_check_guess_is_true(self):
+        check_guess = True
+        guess = "W"
+        word = "WORD"
 
+        correct_guess = hangman.check_guess_is_true(check_guess, guess, word)
+
+        self.assertEqual(correct_guess, "(0, 'W')")
+        self.assertIsInstance(correct_guess, str)
+
+
+    def test_get_word_from_dict(self):
         word = hangman.get_word()
 
         self.assertIsInstance(word, str)
 
     def test_letter_list_is_more_than_three_less_than_eleven(self):
-        
         letters = hangman.correct_length_letter_list()
         letters_length = int(len(letters))
         answer = ""
@@ -103,12 +104,10 @@ class TestHangman(unittest.TestCase):
             answer = "incorrect number of letters" 
         elif letters_length > 10:
             answer = "incorrect number of letters"
-        #print(answer)
         
         self.assertEqual(answer, "correct number of letters")
 
     def test_print_dashes_for_number_of_items_in_letter_list(self):
-
         string = "_" 
         letter_list = hangman.correct_length_letter_list()
         dashes_list = hangman.make_list_of_length_word(letter_list, string)
@@ -120,7 +119,6 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(dashes_length, letter_list_length)
         
     def test_create_alphabet_list(self):
-        
         alphabet = hangman.create_alphabet_list()
 
         i = "".join(alphabet)
@@ -131,7 +129,6 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(len(alphabet), 26)
 
     def test_is_guess_in_word(self):
-        
         param = list("WORD")
 
         guesses = param
@@ -148,7 +145,6 @@ class TestHangman(unittest.TestCase):
             self.assertEqual(guess_not_in, "Incorrect Guess")
     
     def test_get_list_index_of_correct_guess(self):
-
         param = list("WORD")
 
         guesses = param
@@ -198,6 +194,24 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(if_check_guess_true, "W _ _ _")
     """
    
+class ExpectedFailuretTestCase(unittest.TestCase):
+    @unittest.expectedFailure
+    def test_clear_old_guesses_from_file(self):
+        username = "me"
+        word = "WORD"
+        current_word_file = tempfile.mkstemp()[1]
+        guess = "(0, W)"
+
+        hangman.write_username_and_current_word_to_file(username, word, current_word_file)
+        hangman.write_guesses_to_current_word_file(username, word, current_word_file, guess)
+        hangman.clear_old_guesses_from_file(username, current_word_file)
+
+        try:
+            read_file = open(current_word_file).read()
+        finally:
+            os.remove(current_word_file)
+
+        self.assertIn(guess, read_file )
         
 
        

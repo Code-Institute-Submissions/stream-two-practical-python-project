@@ -1,9 +1,8 @@
 
+polloo
+polloo_guesses,(1, 'A'),(3, 'N'),(5, 'H');
+LAUNCH
 
-hehe
-hehe_guesses,(1, 'E'),(3, 'G');
-NEIGHBORLY
-
-testers
-testers_guesses;
-CENT
+hiiiii
+hiiiii_guesses,(2, 'A'),(3, 'P');
+CLAP

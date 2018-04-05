@@ -56,6 +56,7 @@ class TestHangman(unittest.TestCase):
         letter_list = "WORD"
         file = tempfile.mkstemp()[1]
 
+        
         hangman.write_username_and_current_word_to_file(username, letter_list, file)
 
         try:
@@ -65,6 +66,24 @@ class TestHangman(unittest.TestCase):
 
         self.assertIn(letter_list, read_file)
 
+    def test_write_guesses_to_file(self):
+        
+        username = "TEST"
+        word = "WORD"
+        check_guess = True
+        current_word_file = tempfile.mkstemp()[1]
+        guess = "W"
+
+        hangman.write_username_and_current_word_to_file(username, word, current_word_file)
+        hangman.write_guesses_to_current_word_file(username, word, check_guess, current_word_file, guess)
+
+        try:
+            read_file = open(current_word_file).read()
+            print(read_file)
+        finally:
+            os.remove(current_word_file)
+
+        self.assertIn(guess, read_file)
 
          
     def test_get_word_from_dict(self):

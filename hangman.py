@@ -68,6 +68,37 @@ def get_users_current_word(username, current_word_file):
             for line in f:
                 word = line
                 return word
+
+def write_guesses_to_current_word_file(username, word, check_guess, current_word_file, guess):
+    
+    old_line = ""
+    new_line = ""
+    if check_guess == True:
+        correct_guess =  ', '.join(map(str, get_list_index_of_correct_guess(guess, word)))
+
+        with open(current_word_file, "r") as f:
+            for line in f:
+                if username in line:
+                    print(username)
+                    break
+            for line in f:
+                old_line = line
+                split_line = line.split()
+                print(split_line)
+                new_line = split_line[0] + correct_guess + ";" + "\n"
+                print(new_line)
+                break
+
+        with open(current_word_file, 'r+') as f:
+            content = f.read()
+            f.seek(0)
+            f.truncate()
+            f.writelines(content.replace(old_line, new_line))
+    else:
+        print("Guess not correct")
+
+    return correct_guess
+    
     
 
 
@@ -139,17 +170,6 @@ def join_correct_guesses_list(updated_list):
 
 #def append_correct_guesses_list(correct_guess_list):
     
-    #if check_guess == True:
-           # with open(current_word_file, "a+") as f:
-               # for line in f:
-                  #  if username in line:
-                        #print(username)
-                       # break
-               # for line in f:
-                   # f.append(guess + ";")
-   # global correct_guesses  
-    #correct_guesses
-
     #for item in correct_guess_list:
        # correct_guess_index = item[0]
        # correct_guess = item[1]
@@ -223,41 +243,12 @@ def guess(username, guess_data):
     #word = ""
     if request.method=="POST":
         current_word_file = "data/current_word.txt"
-        read_current_word_file = read_doc(current_word_file)
         guess = guess_data
         word = get_users_current_word(username, current_word_file)
         display_correct_guess = ""
 
         check_guess = is_guess_in_word(guess, word)
-        #print(check_guess)
-
-        if check_guess == True and username in read_current_word_file:
-            with open(current_word_file, "r") as f:
-                for line in f:
-                    if username in line:
-                        print(username)
-                        break
-                for line in f:
-                    old_line = line
-                    split_line = line.split()
-                    print(split_line)
-                    new_line = split_line[0] + guess + ";" + "\n"
-                    print(new_line)
-                    break
-
-            with open(current_word_file, 'r+') as f:
-                content = f.read()
-                f.seek(0)
-                f.truncate()
-                f.writelines(content.replace(old_line, new_line))
-        else:
-            print('else')
-
-        
-
-        #global score_counter
-        #score_counter = score_counter
-        #score = score_counter
+        write_guesses_to_current_word_file(username, word, check_guess, current_word_file, guess)
 
         ###### NEED TO PASS WORD IN FROM READ CURRENT WORD FILE #######
        

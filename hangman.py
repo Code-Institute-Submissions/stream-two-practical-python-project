@@ -1,6 +1,7 @@
 import os
 import random
 import string
+import tempfile 
 from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
@@ -63,8 +64,10 @@ def get_users_current_word(username, current_word_file):
                 if username in line:
                     break
             for line in f:
+                break
+            for line in f:
                 word = line
-    return word
+                return word
     
 
 
@@ -134,30 +137,39 @@ def join_correct_guesses_list(updated_list):
     return joined_correct_guesses_list
 
 
-def append_correct_guesses_list(correct_guess_list):
-    global correct_guesses  
-    correct_guesses
+#def append_correct_guesses_list(correct_guess_list):
+    
+    #if check_guess == True:
+           # with open(current_word_file, "a+") as f:
+               # for line in f:
+                  #  if username in line:
+                        #print(username)
+                       # break
+               # for line in f:
+                   # f.append(guess + ";")
+   # global correct_guesses  
+    #correct_guesses
 
-    for item in correct_guess_list:
-        correct_guess_index = item[0]
-        correct_guess = item[1]
-        correct_guesses[correct_guess_index] = correct_guess
+    #for item in correct_guess_list:
+       # correct_guess_index = item[0]
+       # correct_guess = item[1]
+       # correct_guesses[correct_guess_index] = correct_guess
 
-    return correct_guesses
+    #return correct_guesses
 
 ##### THIS FUNCTION NEEDS AMMENDING TO READ FROM FILE ########
-def if_check_guess_true(guess, word):
+#def if_check_guess_true(guess, word):
     
-    correct_guess_index = get_list_index_of_correct_guess(guess, word)
+    #correct_guess_index = get_list_index_of_correct_guess(guess, word)
 
     ############ APPEND CORRECT GUESSES LIST - MUST BE IN A FILE NOT GLOBAL #######
-    update_correct_guesses_list = append_correct_guesses_list(correct_guess_index)
+    #update_correct_guesses_list = append_correct_guesses_list(correct_guess_index)
     ########### JOIN READ LIST FROM FILE #####################################
-    display_correct_guess = join_correct_guesses_list(update_correct_guesses_list)
+   # display_correct_guess = join_correct_guesses_list(update_correct_guesses_list)
 
-    print(guess)
-    print(display_correct_guess)
-    return display_correct_guess
+   # print(guess)
+   # print(display_correct_guess)
+   # return display_correct_guess
 
 ############################################
 
@@ -208,16 +220,40 @@ def message(username):
 
 @app.route("/<username>/<guess_data>", methods=["GET","POST"])
 def guess(username, guess_data):
+    #word = ""
     if request.method=="POST":
         current_word_file = "data/current_word.txt"
+        read_current_word_file = read_doc(current_word_file)
         guess = guess_data
-        print(guess_data)
         word = get_users_current_word(username, current_word_file)
-        print(word)
         display_correct_guess = ""
 
         check_guess = is_guess_in_word(guess, word)
-        print(check_guess)
+        #print(check_guess)
+
+        if check_guess == True and username in read_current_word_file:
+            with open(current_word_file, "r") as f:
+                for line in f:
+                    if username in line:
+                        print(username)
+                        break
+                for line in f:
+                    old_line = line
+                    split_line = line.split()
+                    print(split_line)
+                    new_line = split_line[0] + guess + ";" + "\n"
+                    print(new_line)
+                    break
+
+            with open(current_word_file, 'r+') as f:
+                content = f.read()
+                f.seek(0)
+                f.truncate()
+                f.writelines(content.replace(old_line, new_line))
+        else:
+            print('else')
+
+        
 
         #global score_counter
         #score_counter = score_counter
@@ -226,11 +262,11 @@ def guess(username, guess_data):
         ###### NEED TO PASS WORD IN FROM READ CURRENT WORD FILE #######
        
 
-        if check_guess == True:
-            display_correct_guess = if_check_guess_true(guess, word) 
-        else:
-            global correct_guesses
-            display_correct_guess = join_correct_guesses_list(correct_guesses)
+       # if check_guess == True:
+           # display_correct_guess = if_check_guess_true(guess, word) 
+        #else:
+           # global correct_guesses
+           # display_correct_guess = join_correct_guesses_list(correct_guesses)
 
         #if correct_guesses == word:
            # global score_counter

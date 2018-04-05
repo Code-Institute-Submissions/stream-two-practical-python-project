@@ -1,5 +1,5 @@
 
-whoever
-GOOFY
-whatever
-PREVIOUS
+
+test
+guesses;
+UNEQUALED

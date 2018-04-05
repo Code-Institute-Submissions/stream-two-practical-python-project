@@ -11,6 +11,7 @@ correct_guesses = []
 guesses_counter = 8
 score_counter = 0
 
+
 ################## DOCUMENT FUNCTIONS ###############################
 
 def write_to_doc(file, data):
@@ -22,15 +23,49 @@ def read_doc(file):
     
     with open(file, "r") as file:
         words = file.read()
-
     return words
 
-def read_doc_lines(file):
+#def read_doc_lines(file):
     
-    with open(file, "r") as file:
-        words = file.readlines()
+    #with open(file, "r") as file:
+      #  words = file.readlines()
+    #return words
 
-    return words
+def write_username_and_current_word_to_file(username, letter_list, file):
+    
+    current_word_file = file
+    read_current_word_file = read_doc(current_word_file)
+     # if current username is in file, replace word below with current word #
+     # else append the file with username and word 
+    if username in read_current_word_file:
+        with open(current_word_file, "r") as f:
+            for line in f:
+                if username in line:
+                    break
+            for line in f:
+                break
+            for line in f:
+                old_word = line
+                new_word = letter_list
+
+        with open(current_word_file, 'r+') as f:
+            content = f.read()
+            f.seek(0)
+            f.truncate()
+            f.write(content.replace(old_word, new_word))
+    else:
+        write_to_doc(current_word_file, "\n" + username + "\n" + "guesses;" + "\n" + letter_list + "\n")
+
+def get_users_current_word(username, current_word_file):
+     
+    with open(current_word_file, "r") as f:
+            for line in f:
+                if username in line:
+                    break
+            for line in f:
+                word = line
+    return word
+    
 
 
 ################# GAME LOGIC FUNCTIONS ##############################
@@ -81,7 +116,7 @@ def is_guess_in_word(guess, word):
     else:
         return "Incorrect Guess"
     
-def get_list_number_of_correct_guess(guess, word):
+def get_list_index_of_correct_guess(guess, word):
     
     number_word_list = list(enumerate(word, 0))
 
@@ -89,8 +124,6 @@ def get_list_number_of_correct_guess(guess, word):
     for item in number_word_list:
         if guess == item[1]:
             letter_match.append(item)
-            
-    #print(letter_match)
     return letter_match
 
 
@@ -99,6 +132,7 @@ def join_correct_guesses_list(updated_list):
     joined_correct_guesses_list = " ".join(updated_list)
 
     return joined_correct_guesses_list
+
 
 def append_correct_guesses_list(correct_guess_list):
     global correct_guesses  
@@ -111,15 +145,24 @@ def append_correct_guesses_list(correct_guess_list):
 
     return correct_guesses
 
+##### THIS FUNCTION NEEDS AMMENDING TO READ FROM FILE ########
 def if_check_guess_true(guess, word):
     
-    correct_guess_list = get_list_number_of_correct_guess(guess, word)
-    update_correct_guesses_list = append_correct_guesses_list(correct_guess_list)
+    correct_guess_index = get_list_index_of_correct_guess(guess, word)
+
+    ############ APPEND CORRECT GUESSES LIST - MUST BE IN A FILE NOT GLOBAL #######
+    update_correct_guesses_list = append_correct_guesses_list(correct_guess_index)
+    ########### JOIN READ LIST FROM FILE #####################################
     display_correct_guess = join_correct_guesses_list(update_correct_guesses_list)
 
     print(guess)
     print(display_correct_guess)
     return display_correct_guess
+
+############################################
+
+
+
     
 
 ###################### ROUTES #######################################
@@ -127,16 +170,18 @@ def if_check_guess_true(guess, word):
 
 @app.route("/", methods=["GET","POST"])
 def index():
+    
     username_taken = ""
     if request.method=="POST":
-        username=request.form["username"].lower()
-        usernames = read_doc("data/usernames.txt")
+        username_file = "data/usernames.txt"
+        username = request.form["username"].lower()
+        usernames = read_doc(username_file)
         
         if username in usernames:
             print("username taken")
             username_taken = "Username taken, please think of an original username."
         else: 
-            write_to_doc("data/usernames.txt", username + "\n")
+            write_to_doc(username_file, username + "\n")
             return redirect(username)
     return render_template("index.html", username_taken=username_taken)
 
@@ -155,60 +200,31 @@ def scores(username):
 
 @app.route("/<username>/word")
 def message(username):
+    current_word_file = "data/current_word.txt"
     letter_list = "".join(correct_length_letter_list())
-    # search only odd line in file
-    # if current username is in file, replace word below with current word
-    # else append the file with username and word
-    file = "data/current_word.txt"
-    #usernames_in_file=""
-    current_word_file = read_doc(file)
-
-    #for counter, line in enumerate(current_word_file, start = 1):
-        #if counter % 2 != 0:
-            #usernames_in_file = line
-            #print(line)
-            #return usernames_in_file
-    
-    if username in current_word_file:
-        with open(file, "r") as f:
-            for line in f:
-                if username in line:
-                    break
-            for line in f:
-                old_word = line
-                new_word = letter_list
-                print(old_word)
-                print(new_word)
-              
-        with open(file, 'r+') as f:
-            content = f.read()
-            f.seek(0)
-            f.truncate()
-            f.write(content.replace(old_word, new_word))
-    else:
-        write_to_doc("data/current_word.txt", "\n" + username + "\n" + letter_list + "\n")
-    
-
-
-    #dashes_list = make_list_of_length_word(letter_list, "")
-    global correct_guesses
-    correct_guesses = make_list_of_length_word(letter_list, " _ ")
+    write_username_and_current_word_to_file(username, letter_list, current_word_file)
 
     return render_template("word.html", username=username, letter_list=letter_list, correct_guesses=correct_guesses)
 
 @app.route("/<username>/<guess_data>", methods=["GET","POST"])
 def guess(username, guess_data):
     if request.method=="POST":
-        data = guess_data.split(",")
-        guess = data[0]
-        word = list(data[1])
+        current_word_file = "data/current_word.txt"
+        guess = guess_data
+        print(guess_data)
+        word = get_users_current_word(username, current_word_file)
+        print(word)
         display_correct_guess = ""
 
-        global score_counter
-        score_counter = score_counter
-        score = score_counter
-
         check_guess = is_guess_in_word(guess, word)
+        print(check_guess)
+
+        #global score_counter
+        #score_counter = score_counter
+        #score = score_counter
+
+        ###### NEED TO PASS WORD IN FROM READ CURRENT WORD FILE #######
+       
 
         if check_guess == True:
             display_correct_guess = if_check_guess_true(guess, word) 
@@ -216,14 +232,14 @@ def guess(username, guess_data):
             global correct_guesses
             display_correct_guess = join_correct_guesses_list(correct_guesses)
 
-        if correct_guesses == word:
+        #if correct_guesses == word:
            # global score_counter
-            score_counter += 1
-            score = score_counter
-            print(score_counter)
+            #score_counter += 1
+            #score = score_counter
+            #print(score_counter)
             #return score_counter
            
-    return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess,score = score)
+    return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess)
     
 
 

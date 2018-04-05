@@ -4,7 +4,7 @@
     {{ letter }}
     {% endfor %}
 </p>-->
-<p>Your word is {{dashes_list | count }} letters long, guess a letter to begin!    
+<p>Your word is {{letter_list | count }} letters long, guess a letter to begin!    
     <span id="word" data="{% for letter in letter_list %}{{ letter }}{% endfor %}">
     </span>
 </p> 

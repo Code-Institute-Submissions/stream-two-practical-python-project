@@ -78,12 +78,12 @@ class TestHangman(unittest.TestCase):
 
         self.assertIn(guess, read_file)
 
-    def test_check_guess_is_true(self):
+    def test_get_string_of_guess(self):
         check_guess = True
         guess = "W"
         word = "WORD"
 
-        correct_guess = hangman.check_guess_is_true(check_guess, guess, word)
+        correct_guess = hangman.get_string_of_guess(check_guess, guess, word)
 
         self.assertEqual(correct_guess, "(0, 'W')")
         self.assertIsInstance(correct_guess, str)
@@ -172,6 +172,10 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(file_guesses, guesses)
         self.assertIn(guesses, file_guesses)
         self.assertEqual(type(file_guesses), str)
+
+    def get_number_of_correct_guesses(self):
+        
+
 
         
 

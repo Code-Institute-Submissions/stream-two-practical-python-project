@@ -4,12 +4,12 @@ polloo_guesses,(1, 'E'),(3, 'I'),;
 MEDICAL
 
 hiiiii
-hiiiii_guesses,(2, 'A'),(3, 'P');
-CLAP
+hiiiii_guesses:;
+WHOLE
 
 upppuu
-upppuu_guesses:(2, 'A'):(3, 'N'), (6, 'N'):(4, 'D'):;
-STANDING
+upppuu_guesses:(0, 'G'):(1, 'I'):;
+GIRAFFE
 
 da
 da_guesses;

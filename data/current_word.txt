@@ -8,8 +8,8 @@ hiiiii_guesses,(2, 'A'),(3, 'P');
 CLAP
 
 upppuu
-upppuu_guesses:(3, 'T'):(1, 'E'):(4, 'A'):;
-CERTAIN
+upppuu_guesses:(2, 'A'):(3, 'N'), (6, 'N'):(4, 'D'):;
+STANDING
 
 da
 da_guesses;

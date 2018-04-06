@@ -58,19 +58,6 @@ def get_users_current_word(username, file):
                 word = line
                 return word
 
-######### write test for this ###############
-def get_users_current_guesses(username, file):
-    with open(file, "r") as f:
-        for line in f:
-            if username in line:
-                break
-        for line in f:
-            guess = line
-            print(guess)
-            break
-    return guess
-
-
 def write_guesses_to_current_word_file(username, word, current_word_file, correct_guess):
     with open(current_word_file, "r") as f:
         for line in f:
@@ -120,6 +107,19 @@ def clear_old_guesses_from_file(username, file):
             f.seek(0)
             f.truncate()
             f.write(content.replace(old_line, new_line))
+
+######### write test for this ###############
+def get_users_correct_guesses(username, file):
+    with open(file, "r") as f:
+        for line in f:
+            if username in line:
+                break
+        for line in f:
+            guesses = line
+            print(guesses)
+            break
+    return guesses
+
     
 ################# GAME LOGIC FUNCTIONS ##############################
 
@@ -261,7 +261,7 @@ def guess(username, guess_data):
         check_guess = is_guess_in_word(guess, word)
         correct_guess = check_guess_is_true(check_guess, guess, word)
         write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
-        correct_guesses = get_users_current_guesses(username, current_word_file)
+        correct_guesses = get_users_correct_guesses(username, current_word_file)
 
         correct_guesses_list = list(map(str, correct_guesses.split(":")))
        

@@ -12,7 +12,6 @@ correct_guesses = []
 guesses_counter = 8
 score_counter = 0
 
-
 ################## DOCUMENT FUNCTIONS ###############################
 
 def write_to_doc(file, data):
@@ -26,7 +25,7 @@ def read_doc(file):
 
 def write_username_and_current_word_to_file(username, letter_list, file):
     read_current_word_file = read_doc(file)
-    write_data = "\n" + username + "\n" + username + "_" + "guesses;" + "\n" + letter_list + "\n"
+    write_data = "\n" + username + "\n" + username + "_" + "guesses:;" + "\n" + letter_list + "\n"
 
     if username in read_current_word_file:
         with open(file, "r") as f:
@@ -59,6 +58,18 @@ def get_users_current_word(username, file):
                 word = line
                 return word
 
+######### write test for this ###############
+def get_users_current_guesses(username, file):
+    with open(file, "r") as f:
+        for line in f:
+            if username in line:
+                break
+        for line in f:
+            guess = line
+            print(guess)
+            break
+    return guess
+
 
 def write_guesses_to_current_word_file(username, word, current_word_file, correct_guess):
     with open(current_word_file, "r") as f:
@@ -69,7 +80,7 @@ def write_guesses_to_current_word_file(username, word, current_word_file, correc
             if correct_guess not in line:
                 old_line = line
                 split_line = line.split(";")
-                new_line = split_line[0] + "," + correct_guess + ";" + "\n"
+                new_line = split_line[0] + correct_guess + ":;" + "\n"
                 
                 with open(current_word_file, 'r+') as f:
                     content = f.read()
@@ -83,6 +94,7 @@ def write_guesses_to_current_word_file(username, word, current_word_file, correc
                 break
     
 def check_guess_is_true(check_guess, guess, word):
+    correct_guess = ""
     if check_guess == True:
         correct_guess =  ', '.join(map(str, get_list_index_of_correct_guess(guess, word)))
     else:
@@ -100,7 +112,7 @@ def clear_old_guesses_from_file(username, file):
                     break
             for line in f:
                 old_line = line
-                new_line = username + "_" + "guesses;" + "\n"
+                new_line = username + "_" + "guesses:;" + "\n"
                 break
 
         with open(file, 'r+') as f:
@@ -109,9 +121,6 @@ def clear_old_guesses_from_file(username, file):
             f.truncate()
             f.write(content.replace(old_line, new_line))
     
-    
-
-
 ################# GAME LOGIC FUNCTIONS ##############################
 
 def get_word():
@@ -229,7 +238,6 @@ def user(username):
 
 @app.route("/<username>/scores")
 def scores(username):
-    #print(username)
     return render_template("scores.html", username=username)
 
 @app.route("/<username>/word")
@@ -238,7 +246,6 @@ def message(username):
     letter_list = "".join(correct_length_letter_list())
     clear_old_guesses_from_file(username, current_word_file)
     write_username_and_current_word_to_file(username, letter_list, current_word_file)
-    
 
     return render_template("word.html", username=username, letter_list=letter_list, correct_guesses=correct_guesses)
 
@@ -254,6 +261,16 @@ def guess(username, guess_data):
         check_guess = is_guess_in_word(guess, word)
         correct_guess = check_guess_is_true(check_guess, guess, word)
         write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
+        correct_guesses = get_users_current_guesses(username, current_word_file)
+
+        correct_guesses_list = list(map(str, correct_guesses.split(":")))
+       
+        length_correct_guesses = len(correct_guesses_list)
+        correct_guesses_list.pop(length_correct_guesses -1)
+        correct_guesses_list.pop(0)
+        print(len(correct_guesses_list))
+        print(correct_guesses_list)
+
 
         ###### NEED TO PASS WORD IN FROM READ CURRENT WORD FILE #######
        

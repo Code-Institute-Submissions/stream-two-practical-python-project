@@ -1,8 +1,16 @@
 
 polloo
-polloo_guesses,(1, 'A'),(3, 'N'),(5, 'H');
-LAUNCH
+polloo_guesses,(1, 'E'),(3, 'I'),;
+MEDICAL
 
 hiiiii
 hiiiii_guesses,(2, 'A'),(3, 'P');
 CLAP
+
+upppuu
+upppuu_guesses:(3, 'T'):(1, 'E'):(4, 'A'):;
+CERTAIN
+
+da
+da_guesses;
+THIRSTY

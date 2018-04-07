@@ -20,7 +20,7 @@ def read_doc(file):
 def write_username_and_current_word_to_file(username, letter_list, file):
     read_current_word_file = read_doc(file)
     #write_data = "\n" + username + "\n" + username + "_" + "guesses:;" + "\n" + letter_list + "\n"
-    write_data = "\n{0}\n{1}_guesses:;\n{2}\n10\n".format(username, username, letter_list)
+    write_data = "\n{0}\n{1}_guesses:;\n{2}\n{3}_fail_count:10\n".format(username, username, letter_list, username)
     if username in read_current_word_file:
         print(username)
         with open(file, "r") as f:
@@ -33,43 +33,26 @@ def write_username_and_current_word_to_file(username, letter_list, file):
                 old_word = line
                 new_word = letter_list
                 break
-        
+            for line in f:
+                print(line)
+                old_counter = line
+                new_counter = "{0}_fail_count:10\n".format(username)
+                break
             
         with open(file, 'r+') as f:
             content = f.read()
             f.seek(0)
             f.truncate()
             f.write(content.replace(old_word, new_word  + "\n"))
-            
-    else:
-        write_to_doc(file, write_data)
-
-def test(username, file):
-    read_current_word_file = read_doc(file)
-    #write_data = "\n{0}\n{1}_guesses:;\n{2}\n10\n".format(username, username, letter_list)
-    if username in read_current_word_file:
-        print(username)
-        with open(file, "r") as f:
-            for line in f:
-                if username in line:
-                    break
-            for line in f:
-                break
-            for line in f:
-                break
-            for line in f:
-                print(line)
-                old_counter = line
-                new_counter = "10\n"
-                break
+            f.close
 
         with open(file, 'r+') as f:
             content = f.read()
             f.seek(0)
             f.truncate()
             f.write(content.replace(old_counter, new_counter))
-    #else:
-        #write_to_doc(file, write_data)
+    else:
+        write_to_doc(file, write_data)
 
 
 def get_users_current_word(username, file):
@@ -349,7 +332,6 @@ def message(username):
     letter_list = "".join(correct_length_letter_list())
     clear_old_guesses_from_file(username, current_word_file)
     write_username_and_current_word_to_file(username, letter_list, current_word_file)
-    test(username, current_word_file)
 
     return render_template("word.html", username=username, letter_list=letter_list)
 

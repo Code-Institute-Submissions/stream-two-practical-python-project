@@ -107,16 +107,16 @@ class TestHangman(unittest.TestCase):
         
         self.assertEqual(answer, "correct number of letters")
 
-    def test_print_dashes_for_number_of_items_in_letter_list(self):
-        string = "_" 
-        letter_list = hangman.correct_length_letter_list()
-        dashes_list = hangman.make_list_of_length_word(letter_list, string)
-        dashes_length = len(dashes_list)
-        letter_list_length = len(letter_list)
+   # def test_print_dashes_for_number_of_items_in_letter_list(self):
+       # string = "_" 
+       # letter_list = hangman.correct_length_letter_list()
+       # dashes_list = hangman.make_list_of_length_word(letter_list, string)
+       # dashes_length = len(dashes_list)
+       # letter_list_length = len(letter_list)
       
-        """ IS A TUPLE RETURNED, IS THE DASHES LENGHT = TO LETTER LIST LENGTH """
-        self.assertIsInstance(dashes_list, list)
-        self.assertEqual(dashes_length, letter_list_length)
+       # """ IS A TUPLE RETURNED, IS THE DASHES LENGHT = TO LETTER LIST LENGTH """
+       # self.assertIsInstance(dashes_list, list)
+       # self.assertEqual(dashes_length, letter_list_length)
         
     def test_create_alphabet_list(self):
         alphabet = hangman.create_alphabet_list()
@@ -154,7 +154,7 @@ class TestHangman(unittest.TestCase):
             counter += 1
             self.assertEqual(get_list_number, [(counter, guess)])
 
-    def test_get_correct_guesses_from_file(self):
+    def test_get_users_correct_guesses(self):
         username = "me"
         word = "WORD"
         guess = "(0, W)"
@@ -173,11 +173,63 @@ class TestHangman(unittest.TestCase):
         self.assertIn(guesses, file_guesses)
         self.assertEqual(type(file_guesses), str)
 
-    def get_number_of_correct_guesses(self):
+    def test_write_scores_to_file(self):
+        username = "test"
+        file = tempfile.mkstemp()[1]
+        word = "WORD\n"
         
+        hangman.write_current_scores_to_file(username, file, word)
+        try:
+            read_file = open(file).read()
+        finally:
+            os.remove(file)
+        self.assertIn("4", read_file)
 
+    def test_get_current_user_score(self):
+        file = tempfile.mkstemp()[1]
+        username = "test"
+        word = "WORD\n"
+        hangman.write_current_scores_to_file(username, file, word)
 
+        try:
+            read_file = hangman.get_current_user_score(username, file)
+        finally:
+            os.remove(file)
+
+            self.assertIn("4", read_file)
+
+    def test_get_correct_guesses_list(self):
+        correct_guesses = "me_guesses:(0, W):(1, O):;\n"
+
+        number_of_guesses = hangman.get_correct_guesses_list(correct_guesses)
         
+        self.assertEqual(len(number_of_guesses), 2)
+        self.assertIsInstance(len(number_of_guesses), int)
+
+    def test_is_number_of_guesses_equal_to_current_word(self):
+        word = "WORD"
+        print(word)
+        correct_guesses = "me_guesses:(0, W):(1, O)::(2, R)::(3, D):;\n"
+
+        number_of_guesses = hangman.get_correct_guesses_list(correct_guesses)
+        number_of_guesses_length = len(number_of_guesses)
+        guesses_equal_to_word = hangman.are_number_of_guesses_equal_to_word(number_of_guesses_length, word)
+
+        self.assertTrue(word, guesses_equal_to_word)
+
+    def test_if_guess_correct_message_to_user(self):
+        are_total_guesses_the_word = True
+        word = "WORD\n"
+        win_message = "You are correct! You get {0} points.".format((len(word) -1))
+
+        correct_guess = hangman.if_guessed_correct_message_to_user(are_total_guesses_the_word, word)
+
+        self.assertEqual(correct_guess, win_message)
+        self.assertIsInstance(correct_guess, str)
+
+    def test_display_correct_guesses(word, correct_guesses):
+        word = "WORD\n"
+        correct_guesses = 
 
 
     """

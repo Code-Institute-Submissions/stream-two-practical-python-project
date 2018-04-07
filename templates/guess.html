@@ -1,5 +1,17 @@
 {% block content %}
-<p>{{ display_correct_guess }}</p>
+<p>{% for i in display_correct_guess %}{{ i }} {% endfor %}</p>
+
 <p>{{ incorrect_guess }}</p>
-<p>Current Score: {{ score }}</p>
+
+{% if current_score == None %}
+<p> Current Score: 0 </p>
+{% else %}
+<p>Current Score: {{ current_score }}</p>
+{% endif %}
+
+{% if win_message == None %}
+<p></p>
+{% else %}
+<p>{{ win_message }}</p>
+{% endif %}
 {% endblock %}

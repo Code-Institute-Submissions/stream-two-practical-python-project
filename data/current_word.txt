@@ -1,16 +1,10 @@
 
-hiiiii
-hiiiii_guesses:(0, 'D'):(1, 'R'):(2, 'A'):(7, 'A'):(3, 'C'):(4, 'O'):(5, 'N'):(8, 'N'):(6, 'I'):;
-MINE
+whoevers
+whoevers_guesses:;
+DAUGHTER
+10
 
-whhhhasup
-whhhhasup_guesses:(0, 'D'):(1, 'R'):(2, 'O'):(3, 'P'):;
-MINE
-
-upppuu
-upppuu_guesses:(0, 'P'):(1, 'A'):(2, 'I'):(3, 'N'):(4, 'F'):(5, 'U'):(6, 'L'):;
-PAINFUL
-
-testers
-testers_guesses:;
-MINE
+whatever
+whatever_guesses:;
+BULB
+10

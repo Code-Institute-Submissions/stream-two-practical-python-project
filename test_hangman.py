@@ -141,7 +141,7 @@ class TestHangman(unittest.TestCase):
 
         for guess in incorrect_letters:
             guess_not_in = hangman.is_guess_in_word(guess, word)
-            self.assertEqual(guess_not_in, "Incorrect Guess")
+            self.assertEqual(guess_not_in, False)
     
     def test_get_list_index_of_correct_guess(self):
         param = list("WORD")
@@ -227,10 +227,29 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(correct_guess, win_message)
         self.assertIsInstance(correct_guess, str)
 
-    def test_display_correct_guesses(word, correct_guesses):
+    def test_display_correct_guesses(self):
         word = "WORD\n"
-        correct_guesses = 
+        correct_guesses = "test_guesses:(0, 'W'):(1, 'O'):;"
+        expected_display = ["W","O","_","_"]
 
+        actual_display_guesses = hangman.display_correct_guesses(word, correct_guesses)
+
+        self.assertEqual(actual_display_guesses, expected_display )
+
+    def test_write_incorrect_guess_counter_to_file(self):
+        check_guess = False
+        username = "test"
+        file = tempfile.mkstemp()[1]
+        counter = 9
+
+        write_to_file = hangman.write_incorrect_guess_counter_to_file(check_guess, username, file)
+
+        try:
+            total_guesses = open(file).read()
+        finally:
+            os.remove(file)
+
+        self.assertEqual(total_guesses, counter)
 
     """
     def test_correct_guesses_list_join(self):

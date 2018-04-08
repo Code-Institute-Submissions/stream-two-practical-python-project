@@ -2,6 +2,7 @@ import os
 import random
 import string
 import tempfile 
+import time
 from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
@@ -162,7 +163,7 @@ def get_current_user_score(username, file):
 
 def incorrect_guesses_counter_iterator(current_word_file, username):
     read_current_word_file = read_doc(current_word_file)
-    
+    #counter = 10
     if username in read_current_word_file:
         with open(current_word_file, "r") as f:
             for line in f:
@@ -175,7 +176,9 @@ def incorrect_guesses_counter_iterator(current_word_file, username):
             for line in f:
                 old_count = line
                 old_count_list = list(map(str,old_count.split(":")))
-                counter = int(old_count_list[1]) - 1
+                counter = int(old_count_list[1])
+                if counter >= 0:
+                    counter -= 1
                 set_new_count = old_count_list
                 set_new_count[1] = str(counter)
                 new_count = ":".join(set_new_count)
@@ -201,7 +204,7 @@ def get_incorrect_guesses_counter(current_word_file, username):
                 break
             for line in f:
                 incorrect_list = list(map(str, line.split(":")))
-                incorrect_count = incorrect_list[1]
+                incorrect_count = int(incorrect_list[1])
                 print(incorrect_count)
             return incorrect_count
 
@@ -298,6 +301,11 @@ def if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
 
         return win_message
 
+def if_guessed_incorrect_message_to_user(word):
+    lose_message = "YOU LOSE! The word was {0}. For a new word, hit generate!".format(word)
+
+    return lose_message
+
 def display_correct_guesses(word, correct_guesses):
     word_list = list(word)
     word_length = len(word_list)
@@ -366,22 +374,34 @@ def guess(username, guess_data):
         display_correct_guess = ""
         win_message = ""
         current_score = ""
+        lose_message = ""
 
         check_guess = is_guess_in_word(guess, word)
         if check_guess == False:
             incorrect_guesses_counter_iterator(current_word_file, username) 
+            incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+
+            if incorrect_guesses_count == 0:
+                lose_message = if_guessed_incorrect_message_to_user(word)
+                #if lose_message != None: 
+                    #time.sleep(5)
+                    #letter_string = "".join(correct_length_letter_list())
+                    #clear_old_guesses_from_file(username, current_word_file)
+                    #write_username_and_current_word_to_file(username, letter_string, current_word_file)
+                      
         else:
             correct_guess = get_string_of_guess(check_guess, guess, word)
             write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
             correct_guesses = get_users_correct_guesses(username, current_word_file)
             number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))
             are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
+            display_correct_guess = display_correct_guesses(word, correct_guesses)
             win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
 
             if are_total_correct_guesses_the_word == True:
                 write_current_scores_to_file(username, scores_file, word)
                 current_score = get_current_user_score(username, scores_file)
-                display_correct_guess = display_correct_guesses(word, correct_guesses)
+               
 
 
         ######### CREATE GUESSES COUNTER, MINUS GUESS FOR INCORRECT GUESS, DISPLAY CSS IMAGE BASED ON COUNTER NUMBER, USE PYTHON 
@@ -389,7 +409,7 @@ def guess(username, guess_data):
         ######### CREATE SCORE BOARD, SEARCH FOR TOP 10 SCORES, PULL USERNAME AND SCORE PAIRS INTO TABLE #############
 
            
-    return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess, win_message=win_message, current_score=current_score)
+    return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess, win_message=win_message, current_score=current_score, lose_message=lose_message)
     
 
 

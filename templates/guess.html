@@ -14,4 +14,10 @@
 {% else %}
 <p>{{ win_message }}</p>
 {% endif %}
+
+{% if lose_message == None %}
+<p></p>
+{% else %}
+<p>{{ lose_message }}</p>
+{% endif %}
 {% endblock %}

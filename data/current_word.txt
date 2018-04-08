@@ -1,5 +1,10 @@
 
 whatever
-whatever_guesses:(1, 'C'):(2, 'K'):;
-ICKY
+whatever_guesses:;
+BASHFUL
 whatever_fail_count:10:
+
+whoevers
+whoevers_guesses:(4, 'B'):;
+EQUABLE
+whoevers_fail_count:10:

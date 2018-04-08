@@ -237,7 +237,6 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(actual_display_guesses, expected_display )
     
     def test_write_incorrect_guess_counter_to_file(self):
-        #check_guess = False
         username = "test"
         file = tempfile.mkstemp()[1]
         counter = "9"
@@ -252,6 +251,20 @@ class TestHangman(unittest.TestCase):
             os.remove(file)
 
         self.assertIn(counter,total_guesses)
+
+    def test_get_incorrect_guesses_counter(self):
+        username = "test"
+        file = tempfile.mkstemp()[1]
+        letter_string = "WORD"
+
+        hangman.write_username_and_current_word_to_file(username, letter_string,file)
+    
+        try:
+            total_guesses = hangman.get_incorrect_guesses_counter(file, username)
+        finally:
+            os.remove(file)
+
+        self.assertEqual(total_guesses, 10)
     
     """
     def test_correct_guesses_list_join(self):

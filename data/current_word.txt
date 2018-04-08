@@ -1,5 +1,10 @@
 
 whoevers
-whoevers_guesses:(0, 'T'):(1, 'H'):(2, 'U'):(3, 'N'):(4, 'D'):(5, 'E'):(6, 'R'):;
-THUNDER
+whoevers_guesses:(2, 'A'):;
+TRAIN
 whoevers_fail_count:9:
+
+whatever
+whatever_guesses:;
+GLORIOUS
+whatever_fail_count:0:

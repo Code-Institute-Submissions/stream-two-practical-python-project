@@ -1,10 +1,25 @@
 
 whoevers
-whoevers_guesses:(2, 'A'):;
-TRAIN
-whoevers_fail_count:9:
+whoevers_guesses:;
+TURKEY
+whoevers_fail_count:0:
 
 whatever
 whatever_guesses:;
-GLORIOUS
-whatever_fail_count:0:
+FESTIVE
+whatever_fail_count:10:
+
+oiuoih
+oiuoih_guesses:(0, 'B'):(1, 'U'):(2, 'S'):(3, 'T'):(4, 'L'):(5, 'I'):(6, 'N'):(7, 'G'):;
+BUSTLING
+oiuoih_fail_count:10:
+
+madone
+madone_guesses:(0, 'S'):(9, 'S'):(1, 'T'):(2, 'U'):(8, 'U'):(3, 'P'):(4, 'E'):(5, 'N'):(6, 'D'):(7, 'O'):;
+STUPENDOUS
+madone_fail_count:10:
+
+lookielookie
+lookielookie_guesses:(0, 'E'):(1, 'L'):(2, 'F'):(3, 'I'):(4, 'N'):;
+ELFIN
+lookielookie_fail_count:10:

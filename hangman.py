@@ -404,6 +404,7 @@ def guess(username, guess_data):
     
         if check_guess == True:
             incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+            image_id = set_image_id(incorrect_guesses_count)
             if incorrect_guesses_count > 0:
                 correct_guess = get_string_of_guess(check_guess, guess, word)
                 write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
@@ -418,7 +419,8 @@ def guess(username, guess_data):
                     current_score = get_current_user_score(username, scores_file)
 
             elif incorrect_guesses_count == 0:
-                lose_message = if_guessed_incorrect_message_to_user(word) 
+                lose_message = if_guessed_incorrect_message_to_user(word)
+                image_id = set_image_id(incorrect_guesses_count) 
                  
         elif check_guess == False:
             number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))

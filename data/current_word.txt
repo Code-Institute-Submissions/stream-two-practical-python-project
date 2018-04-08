@@ -23,3 +23,13 @@ lookielookie
 lookielookie_guesses:(0, 'E'):(1, 'L'):(2, 'F'):(3, 'I'):(4, 'N'):;
 ELFIN
 lookielookie_fail_count:10:
+
+the incredible fulph
+the incredible fulph_guesses:;
+ACTION
+the incredible fulph_fail_count:9:
+
+eff u
+eff u_guesses:(0, 'C'):(1, 'A'):(2, 'S'):(3, 'T'):;
+CAST
+eff u_fail_count:9:

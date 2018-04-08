@@ -1,10 +1,10 @@
 
-whatever
-whatever_guesses:;
-BASHFUL
-whatever_fail_count:10:
-
 whoevers
-whoevers_guesses:(4, 'B'):;
-EQUABLE
+whoevers_guesses:(0, 'J'):(1, 'O'):(2, 'I'):(3, 'N'):;
+JOIN
 whoevers_fail_count:10:
+
+whatever
+whatever_guesses:(0, 'P'):(1, 'L'):(2, 'A'):(3, 'S'):(4, 'T'):(5, 'I'):(6, 'C'):;
+PLASTIC
+whatever_fail_count:10:

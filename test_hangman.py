@@ -227,6 +227,15 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(correct_guess, win_message)
         self.assertIsInstance(correct_guess, str)
 
+    def test_if_guess_incorrect_message_to_user(self):
+        word = "WORD\n"
+        lose_message = "YOU LOSE! The word was {0}. For a new word, hit generate!".format(word)
+
+        incorrect_guess = hangman.if_guessed_incorrect_message_to_user(word)
+
+        self.assertEqual(incorrect_guess, lose_message)
+        self.assertIsInstance(incorrect_guess, str)
+
     def test_display_correct_guesses(self):
         word = "WORD\n"
         correct_guesses = "test_guesses:(0, 'W'):(1, 'O'):;"

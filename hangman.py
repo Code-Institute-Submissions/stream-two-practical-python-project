@@ -135,9 +135,10 @@ def write_current_scores_to_file(username, file, word):
                     break
             for line in f:
                 old_score = line
-                old_score_to_int = int(old_score)
+                old_score_list = list(map(str, old_score.split(":")))
+                old_score_to_int = int(old_score_list[1])
                 new_score_sum = old_score_to_int + word_score
-                new_score = "{0}\n".format(new_score_sum)
+                new_score = "{0}:{1}\n".format(username, new_score_sum)
                 break
         
         with open(file, "r+") as f:
@@ -146,7 +147,7 @@ def write_current_scores_to_file(username, file, word):
             f.truncate()
             f.write(content.replace(old_score, new_score))
     else:
-        write_to_doc(file, "{0}\n{1}\n".format(username, word_score))
+        write_to_doc(file, "\n{0}\n{1}:{2}\n".format(username, username, word_score))
 
 def get_current_user_score(username, file):
     scores_file = read_doc(file)

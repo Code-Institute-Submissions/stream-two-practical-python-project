@@ -118,14 +118,11 @@
 
                 e.preventDefault();
                 let guess = this.getAttribute('data');
-                //let word = document.getElementById("word");
-                //let letter_list = word.getAttribute('data');
                 let guess_data = guess;
 
                 postRequest(`/${username}/${guess_data}`, guess_data)
                     .then((response, guess_data) => {
                         
-                        //guessInput.value = "";
                         guessRequestDiv.innerHTML = response;
                         console.log(`successful post of ${response} ${guess_data}`)
 

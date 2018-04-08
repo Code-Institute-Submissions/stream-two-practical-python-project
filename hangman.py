@@ -138,7 +138,7 @@ def write_current_scores_to_file(username, file, word):
                 old_score_list = list(map(str, old_score.split(":")))
                 old_score_to_int = int(old_score_list[1])
                 new_score_sum = old_score_to_int + word_score
-                new_score = "{0}:{1}\n".format(username, new_score_sum)
+                new_score = "{0}:{1}:\n".format(username, new_score_sum)
                 break
         
         with open(file, "r+") as f:
@@ -147,7 +147,7 @@ def write_current_scores_to_file(username, file, word):
             f.truncate()
             f.write(content.replace(old_score, new_score))
     else:
-        write_to_doc(file, "\n{0}\n{1}:{2}\n".format(username, username, word_score))
+        write_to_doc(file, "\n{0}\n{1}:{2}:\n".format(username, username, word_score))
 
 def get_current_user_score(username, file):
     scores_file = read_doc(file)
@@ -158,8 +158,10 @@ def get_current_user_score(username, file):
                 if username in line:
                     break
             for line in f:
-                current_score = line
-
+                old_score = line
+                old_score_list = list(map(str,old_score.split(":")))
+                current_score = old_score_list[1]
+               
             return current_score
 
 def incorrect_guesses_counter_iterator(current_word_file, username):
@@ -206,7 +208,7 @@ def get_incorrect_guesses_counter(current_word_file, username):
             for line in f:
                 incorrect_list = list(map(str, line.split(":")))
                 incorrect_count = int(incorrect_list[1])
-                print(incorrect_count)
+               
             return incorrect_count
 
 
@@ -219,7 +221,7 @@ def get_word():
     with open("data/words.txt","r") as words:
         word_list = words.read().split()
         word = random.choice(word_list).upper()
-        print(word)
+        #print(word)
     return word
 
 def correct_length_letter_list():
@@ -377,32 +379,67 @@ def guess(username, guess_data):
         current_score = ""
         lose_message = ""
 
+       
+        
         check_guess = is_guess_in_word(guess, word)
-        if check_guess == False:
-            incorrect_guesses_counter_iterator(current_word_file, username) 
+        correct_guesses = get_users_correct_guesses(username, current_word_file)
+        display_correct_guess = display_correct_guesses(word, correct_guesses)
+        current_score = get_current_user_score(username, scores_file)
+        
+
+        
+        if check_guess == True:
+            print("here")
             incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+            if incorrect_guesses_count > 0:
+                correct_guess = get_string_of_guess(check_guess, guess, word)
+                write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
+                correct_guesses = get_users_correct_guesses(username, current_word_file)
+                number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))
+                are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
+                display_correct_guess = display_correct_guesses(word, correct_guesses)
+                #current_score = get_current_user_score(username, scores_file)
+
+                if are_total_correct_guesses_the_word == True:
+                    write_current_scores_to_file(username, scores_file, word)
+                    win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
+                    current_score = get_current_user_score(username, scores_file)
+
+            #elif incorrect_guesses_count == 0:
+                #lose_message = if_guessed_incorrect_message_to_user(word)
+                 
+        elif check_guess == False:
+            #current_score = get_current_user_score(username, scores_file)
+            number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))
+            are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
+            win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
+            incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+           #print("here")
+            if incorrect_guesses_count > 0 and  are_total_correct_guesses_the_word == False:
+                
+                incorrect_guesses_counter_iterator(current_word_file, username) 
+                correct_guesses = get_users_correct_guesses(username, current_word_file)
+                display_correct_guess = display_correct_guesses(word, correct_guesses)
+                incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+                #current_score = get_current_user_score(username, scores_file)
 
             if incorrect_guesses_count == 0:
+                correct_guesses = get_users_correct_guesses(username, current_word_file)
+                display_correct_guess = display_correct_guesses(word, correct_guesses)
                 lose_message = if_guessed_incorrect_message_to_user(word)
+
+            
+                
+                
+                
+            
+            
+                #clear_old_guesses_from_file(username, current_word_file)
                 #if lose_message != None: 
                     #time.sleep(5)
                     #letter_string = "".join(correct_length_letter_list())
                     #clear_old_guesses_from_file(username, current_word_file)
-                    #write_username_and_current_word_to_file(username, letter_string, current_word_file)
-                      
-        else:
-            correct_guess = get_string_of_guess(check_guess, guess, word)
-            write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
-            correct_guesses = get_users_correct_guesses(username, current_word_file)
-            number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))
-            are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
-            display_correct_guess = display_correct_guesses(word, correct_guesses)
-            win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
-
-            if are_total_correct_guesses_the_word == True:
-                write_current_scores_to_file(username, scores_file, word)
-                current_score = get_current_user_score(username, scores_file)
-               
+                    #write_username_and_current_word_to_file(username, letter_string, current_word_file)  
 
 
         ######### CREATE GUESSES COUNTER, MINUS GUESS FOR INCORRECT GUESS, DISPLAY CSS IMAGE BASED ON COUNTER NUMBER, USE PYTHON 

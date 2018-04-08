@@ -274,7 +274,14 @@ class TestHangman(unittest.TestCase):
             os.remove(file)
 
         self.assertEqual(total_guesses, 10)
-    
+
+    #def test_set_image_id(self):
+     #incorrect_guess_count = 10
+        #expected_id = "image_{0}".format(incorrect_guess_count)
+       # image_id = hangman.set_image_id(incorrect_guess_count) 
+
+       # self.assertEqual(image_id, expected_id)
+
     """
     def test_correct_guesses_list_join(self):
         

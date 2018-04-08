@@ -17,10 +17,10 @@ def read_doc(file):
         words = file.read()
     return words
 
-def write_username_and_current_word_to_file(username, letter_list, file):
+def write_username_and_current_word_to_file(username, letter_string, file):
     read_current_word_file = read_doc(file)
-    #write_data = "\n" + username + "\n" + username + "_" + "guesses:;" + "\n" + letter_list + "\n"
-    write_data = "\n{0}\n{1}_guesses:;\n{2}\n{3}_fail_count:10\n".format(username, username, letter_list, username)
+    #write_data = "\n" + username + "\n" + username + "_" + "guesses:;" + "\n" + letter_string + "\n"
+    write_data = "\n{0}\n{1}_guesses:;\n{2}\n{3}_fail_count:10:\n".format(username, username, letter_string, username)
     if username in read_current_word_file:
         print(username)
         with open(file, "r") as f:
@@ -31,12 +31,12 @@ def write_username_and_current_word_to_file(username, letter_list, file):
                 break
             for line in f:
                 old_word = line
-                new_word = letter_list
+                new_word = letter_string
                 break
             for line in f:
                 print(line)
                 old_counter = line
-                new_counter = "{0}_fail_count:10\n".format(username)
+                new_counter = "{0}_fail_count:10:\n".format(username)
                 break
             
         with open(file, 'r+') as f:
@@ -173,17 +173,38 @@ def incorrect_guesses_counter_iterator(current_word_file, username):
             for line in f:
                 break
             for line in f:
-                incorrect_guesses = line
-                incorrect_guesses_int = int(incorrect_guesses)
-                incorrect_guesses_int -= 1
-                new_incorrect_guesses = str(incorrect_guesses_int)
+                old_count = line
+                old_count_list = list(map(str,old_count.split(":")))
+                counter = int(old_count_list[1]) - 1
+                set_new_count = old_count_list
+                set_new_count[1] = str(counter)
+                new_count = ":".join(set_new_count)
                 break
 
         with open(current_word_file, "r+") as f:
             content = f.read()
             f.seek(0)
             f.truncate()
-            f.write(content.replace(incorrect_guesses, new_incorrect_guesses + "\n"))
+            f.write(content.replace(old_count, new_count))
+
+def get_incorrect_guesses_counter(current_word_file, username):
+    read_current_word_file = read_doc(current_word_file)
+
+    if username in read_current_word_file:
+        with open(current_word_file, "r") as f:
+            for line in f:
+                if username in line:
+                    break
+            for line in f:
+                break
+            for line in f:
+                break
+            for line in f:
+                incorrect_list = list(map(str, line.split(":")))
+                incorrect_count = incorrect_list[1]
+                print(incorrect_count)
+            return incorrect_count
+
 
 
     
@@ -329,11 +350,11 @@ def scores(username):
 @app.route("/<username>/word")
 def message(username):
     current_word_file = "data/current_word.txt"
-    letter_list = "".join(correct_length_letter_list())
+    letter_string = "".join(correct_length_letter_list())
     clear_old_guesses_from_file(username, current_word_file)
-    write_username_and_current_word_to_file(username, letter_list, current_word_file)
+    write_username_and_current_word_to_file(username, letter_string, current_word_file)
 
-    return render_template("word.html", username=username, letter_list=letter_list)
+    return render_template("word.html", username=username, letter_string=letter_string)
 
 @app.route("/<username>/<guess_data>", methods=["GET","POST"])
 def guess(username, guess_data): 

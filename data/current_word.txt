@@ -1,10 +1,5 @@
 
 whatever
-whatever_guesses:;
-ATTEND
-whatever_fail_count:10
-
-whoevers
-whoevers_guesses:;
-FLAP
-whoevers_fail_count:10
+whatever_guesses:(1, 'C'):(2, 'K'):;
+ICKY
+whatever_fail_count:10:

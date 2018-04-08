@@ -1,13 +1,13 @@
 
 whoevers
-whoevers_guesses:;
-TURKEY
-whoevers_fail_count:0:
+whoevers_guesses:(0, 'D'):(8, 'D'):(1, 'E'):(4, 'E'):(7, 'E'):(2, 'P'):(3, 'R'):(5, 'S'):(6, 'S'):;
+DEPRESSED
+whoevers_fail_count:9:
 
 whatever
-whatever_guesses:;
-FESTIVE
-whatever_fail_count:10:
+whatever_guesses:(0, 'A'):(1, 'I'):(2, 'R'):(5, 'R'):(3, 'P'):(4, 'O'):(6, 'T'):;
+AIRPORT
+whatever_fail_count:9:
 
 oiuoih
 oiuoih_guesses:(0, 'B'):(1, 'U'):(2, 'S'):(3, 'T'):(4, 'L'):(5, 'I'):(6, 'N'):(7, 'G'):;

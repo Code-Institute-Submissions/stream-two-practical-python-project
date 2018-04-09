@@ -3,6 +3,7 @@ import random
 import string
 import tempfile 
 import time
+import operator
 from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
@@ -136,9 +137,9 @@ def write_current_scores_to_file(username, file, word):
             for line in f:
                 old_score = line
                 old_score_list = list(map(str, old_score.split(":")))
-                old_score_to_int = int(old_score_list[1])
+                old_score_to_int = int(old_score_list[2])
                 new_score_sum = old_score_to_int + word_score
-                new_score = "{0}:{1}:\n".format(username, new_score_sum)
+                new_score = ":{0}:{1}:\n".format(username, new_score_sum)
                 break
         
         with open(file, "r+") as f:
@@ -147,7 +148,7 @@ def write_current_scores_to_file(username, file, word):
             f.truncate()
             f.write(content.replace(old_score, new_score))
     else:
-        write_to_doc(file, "\n{0}\n{1}:{2}:\n".format(username, username, word_score))
+        write_to_doc(file, "\n:{0}\n:{1}:{2}:\n".format(username, username, word_score))
 
 def get_current_user_score(username, file):
     scores_file = read_doc(file)
@@ -160,14 +161,13 @@ def get_current_user_score(username, file):
             for line in f:
                 old_score = line
                 old_score_list = list(map(str,old_score.split(":")))
-                current_score = old_score_list[1]
+                current_score = old_score_list[2]
                 break
                
             return current_score
 
 def incorrect_guesses_counter_iterator(current_word_file, username):
     read_current_word_file = read_doc(current_word_file)
-    #counter = 10
     if username in read_current_word_file:
         with open(current_word_file, "r") as f:
             for line in f:
@@ -213,8 +213,20 @@ def get_incorrect_guesses_counter(current_word_file, username):
                 break
             return incorrect_count
 
+def get_scores_for_leaderboard(scores_file):
+    with open(scores_file, "r") as f:
+        all_scores = []
+        scores_line = list(f)[2::3]
+        for i in scores_line:
+            scores_list = list(map(str, i.split(":")))
+            scores_list.pop(0)
+            scores_list.pop(2)
+            scores_list[1] = int(scores_list[1])
+            all_scores.append(scores_list)
+      
+        all_scores.sort(key=operator.itemgetter(1), reverse=True)
 
-
+        return all_scores[:5]
     
 ################# GAME LOGIC FUNCTIONS ##############################
 
@@ -333,8 +345,6 @@ def set_image_id(incorrect_guess_count):
 
     return image_id
     
-
-
 ###################### ROUTES #######################################
 #####################################################################
 
@@ -364,16 +374,10 @@ def user(username):
 @app.route("/<username>/scores")
 def scores(username):
     scores_file = "data/current_score.txt"
-    #read_scores = read_doc(scores_file)
-    
-    with open(scores_file, "r") as f:
-         
-        scores = list(f)[2::3]
-        
-        print(scores)
-   #print(score_only)
+    top_scores = get_scores_for_leaderboard(scores_file)
+    print(top_scores)
 
-    return render_template("scores.html", username=username)
+    return render_template("scores.html", username=username, top_scores=top_scores)
 
 @app.route("/<username>/word")
 def message(username):

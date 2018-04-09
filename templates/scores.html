@@ -9,6 +9,19 @@
 <body>
     <h1>LeaderBoard</h1>
     <p>You are logged in as {{ username }}</p>
-    <a href="{{ url_for('index') }}">Log Out</a>   
+    <a href="{{ url_for('index') }}">Log Out</a>
+    <h2>Top Scores</h2>
+    <table>
+        <tr>
+            <th>Username</th>
+            <th>Score</th>
+        </tr>
+        {% for i in top_scores %}
+        <tr>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+        </tr>
+        {% endfor %}   
+    </table>
 </body>
 </html> 

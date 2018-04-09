@@ -282,6 +282,13 @@ class TestHangman(unittest.TestCase):
 
         self.assertEqual(image_id, expected_id)
 
+    def test_get_scores_for_leaderboard(self):
+        scores_file = "data/current_score.txt"
+        sorted_scores = hangman.get_scores_for_leaderboard(scores_file)
+
+        self.assertTrue(sorted_scores, list)
+        self.assertEqual(len(sorted_scores), 5)
+
     """
     def test_correct_guesses_list_join(self):
         

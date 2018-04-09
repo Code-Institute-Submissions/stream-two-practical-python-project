@@ -28,3 +28,13 @@ siissi
 siissi_guesses:(0, 'L'):(6, 'L'):(1, 'I'):(2, 'K'):(3, 'E'):(7, 'E'):(4, 'A'):(5, 'B'):;
 LIKEABLE
 siissi_fail_count:10:
+
+whatever
+whatever_guesses:(0, 'C'):(1, 'A'):(2, 'K'):(3, 'E'):(4, 'S'):;
+CAKES
+whatever_fail_count:9:
+
+daf
+daf_guesses:;
+CERTAIN
+daf_fail_count:9:

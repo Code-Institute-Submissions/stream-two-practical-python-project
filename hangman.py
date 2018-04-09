@@ -19,12 +19,18 @@ def read_doc(file):
         words = file.read()
     return words
 
+def read_and_replace(file, old, new):    
+    with open(file, 'r+') as f:
+        content = f.read()
+        f.seek(0)
+        f.truncate()
+        f.write(content.replace(old, new))
+        f.close
+    
 def write_username_and_current_word_to_file(username, letter_string, file):
     read_current_word_file = read_doc(file)
-    #write_data = "\n" + username + "\n" + username + "_" + "guesses:;" + "\n" + letter_string + "\n"
     write_data = "\n{0}\n{1}_guesses:;\n{2}\n{3}_fail_count:10:\n".format(username, username, letter_string, username)
     if username in read_current_word_file:
-        print(username)
         with open(file, "r") as f:
             for line in f:
                 if username in line:
@@ -40,22 +46,10 @@ def write_username_and_current_word_to_file(username, letter_string, file):
                 old_counter = line
                 new_counter = "{0}_fail_count:9:\n".format(username)
                 break
-            
-        with open(file, 'r+') as f:
-            content = f.read()
-            f.seek(0)
-            f.truncate()
-            f.write(content.replace(old_word, new_word  + "\n"))
-            f.close
-
-        with open(file, 'r+') as f:
-            content = f.read()
-            f.seek(0)
-            f.truncate()
-            f.write(content.replace(old_counter, new_counter))
+        read_and_replace(file, old_word, new_word + "\n")
+        read_and_replace(file, old_counter, new_counter) 
     else:
         write_to_doc(file, write_data)
-
 
 def get_users_current_word(username, file):
     with open(file, "r") as f:
@@ -77,23 +71,15 @@ def write_guesses_to_current_word_file(username, word, current_word_file, correc
             if correct_guess not in line:
                 old_line = line
                 split_line = line.split(";")
-                #new_line = split_line[0] + correct_guess + ":;" + "\n"
                 new_line = "{0}{1}:;\n".format(split_line[0], correct_guess)
-                
-                with open(current_word_file, 'r+') as f:
-                    content = f.read()
-                    f.seek(0)
-                    f.truncate()
-                    f.write(content.replace(old_line, new_line))
+                read_and_replace(current_word_file, old_line, new_line)
                 break
-
             else:
                 print("Already guessed {0}".format(correct_guess))    
                 break
         
 def clear_old_guesses_from_file(username, file):
     read_current_word_file = read_doc(file)
-    
     if username in read_current_word_file:
         with open(file, "r") as f:
             for line in f:
@@ -101,17 +87,11 @@ def clear_old_guesses_from_file(username, file):
                     break
             for line in f:
                 old_line = line
-                #new_line = username + "_" + "guesses:;" + "\n"
                 new_line = "{0}_guesses:;\n".format(username)
                 break
 
-        with open(file, 'r+') as f:
-            content = f.read()
-            f.seek(0)
-            f.truncate()
-            f.write(content.replace(old_line, new_line))
-
-
+        read_and_replace(file, old_line, new_line)
+    
 def get_users_correct_guesses(username, file):
     with open(file, "r") as f:
         for line in f:
@@ -119,7 +99,6 @@ def get_users_correct_guesses(username, file):
                 break
         for line in f:
             guesses = line
-            #print(guesses)
             break
     return guesses
 
@@ -127,7 +106,6 @@ def write_current_scores_to_file(username, file, word):
     scores_file = read_doc(file)
     word_length = len(word)
     word_score = word_length - 1
-    print(word)
 
     if username in scores_file:
         with open(file, "r") as f:
@@ -141,18 +119,12 @@ def write_current_scores_to_file(username, file, word):
                 new_score_sum = old_score_to_int + word_score
                 new_score = ":{0}:{1}:\n".format(username, new_score_sum)
                 break
-        
-        with open(file, "r+") as f:
-            content = f.read()
-            f.seek(0)
-            f.truncate()
-            f.write(content.replace(old_score, new_score))
+        read_and_replace(file, old_score, new_score)
     else:
         write_to_doc(file, "\n:{0}\n:{1}:{2}:\n".format(username, username, word_score))
 
 def get_current_user_score(username, file):
     scores_file = read_doc(file)
-
     if username in scores_file:
         with open(file, "r") as f:
             for line in f:
@@ -162,8 +134,8 @@ def get_current_user_score(username, file):
                 old_score = line
                 old_score_list = list(map(str,old_score.split(":")))
                 current_score = old_score_list[2]
-                break
-               
+                break  
+
             return current_score
 
 def incorrect_guesses_counter_iterator(current_word_file, username):
@@ -188,15 +160,10 @@ def incorrect_guesses_counter_iterator(current_word_file, username):
                 new_count = ":".join(set_new_count)
                 break
 
-        with open(current_word_file, "r+") as f:
-            content = f.read()
-            f.seek(0)
-            f.truncate()
-            f.write(content.replace(old_count, new_count))
+        read_and_replace(current_word_file, old_count, new_count)
 
 def get_incorrect_guesses_counter(current_word_file, username):
     read_current_word_file = read_doc(current_word_file)
-
     if username in read_current_word_file:
         with open(current_word_file, "r") as f:
             for line in f:
@@ -211,6 +178,7 @@ def get_incorrect_guesses_counter(current_word_file, username):
                 incorrect_count = int(incorrect_list[1])
                 print(incorrect_count)
                 break
+
             return incorrect_count
 
 def get_scores_for_leaderboard(scores_file):
@@ -223,7 +191,6 @@ def get_scores_for_leaderboard(scores_file):
             scores_list.pop(2)
             scores_list[1] = int(scores_list[1])
             all_scores.append(scores_list)
-      
         all_scores.sort(key=operator.itemgetter(1), reverse=True)
 
         return all_scores[:5]
@@ -256,7 +223,6 @@ def make_list_of_length_word(word, item, correct_guesses):
 
     return dashes_list
 
-
 def create_alphabet_list():
     """ MAKE LIST OF ALPHABET FOR UI SELECTION BUTTONS """
     alphabet = list(string.ascii_uppercase)
@@ -278,16 +244,14 @@ def get_list_index_of_correct_guess(guess, word):
     for item in number_word_list:
         if guess == item[1]:
             letter_match.append(item)
-    #print(letter_match)
+   
     return letter_match
 
 def get_string_of_guess(check_guess, guess, word):
     """ CONVERT THE CORRECT GUESS LIST TO A STRING READY TO WRITE TO FILE """
     correct_guess = ""
-    #print(guess)
     if check_guess == True:
         correct_guess =  ':'.join(map(str, get_list_index_of_correct_guess(guess, word)))
-        #print(correct_guess)
     else:
         print("Guess not correct")
 
@@ -299,14 +263,12 @@ def get_correct_guesses_list(correct_guesses):
     length_correct_guesses = len(correct_guesses_list)
     correct_guesses_list.pop(length_correct_guesses -1)
     correct_guesses_list.pop(0)
-   # print(len(correct_guesses_list))
 
     return correct_guesses_list
 
 def are_number_of_guesses_equal_to_word(number_of_correct_guesses, word):
     """ ARE THE NUMBER OF CORRECT GUESSES EQUAL TO THE WORD LENGTH, - 1 REMOVES CARRIAGE """
     word = (len(word) - 1)
-    
     if number_of_correct_guesses == word:
         return True
     else:
@@ -357,9 +319,7 @@ def index():
         usernames = read_doc(username_file)
         
         if username in usernames:
-            print("username taken")
             username_taken = "Username taken, please think of an original username."
-            ########## write option continue old game #############
         else: 
             write_to_doc(username_file, username + "\n")
             return redirect(username)
@@ -431,8 +391,8 @@ def guess(username, guess_data):
             are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
             win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
             incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+
             if incorrect_guesses_count > 0 and  are_total_correct_guesses_the_word == False:
-                print("here")
                 incorrect_guesses_counter_iterator(current_word_file, username) 
                 incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
                 image_id = set_image_id(incorrect_guesses_count)

@@ -107,16 +107,6 @@ class TestHangman(unittest.TestCase):
         
         self.assertEqual(answer, "correct number of letters")
 
-   # def test_print_dashes_for_number_of_items_in_letter_string(self):
-       # string = "_" 
-       # letter_string = hangman.correct_length_letter_string()
-       # dashes_list = hangman.make_list_of_length_word(letter_string, string)
-       # dashes_length = len(dashes_list)
-       # letter_string_length = len(letter_string)
-      
-       # """ IS A TUPLE RETURNED, IS THE DASHES LENGHT = TO LETTER LIST LENGTH """
-       # self.assertIsInstance(dashes_list, list)
-       # self.assertEqual(dashes_length, letter_string_length)
         
     def test_create_alphabet_list(self):
         alphabet = hangman.create_alphabet_list()
@@ -289,40 +279,6 @@ class TestHangman(unittest.TestCase):
         self.assertTrue(sorted_scores, list)
         self.assertEqual(len(sorted_scores), 5)
 
-    """
-    def test_correct_guesses_list_join(self):
-        
-        updated_list = list("WORDS")
-        joined_list = hangman.join_correct_guesses_list(updated_list)
-
-        self.assertEqual(joined_list, "W O R D S")
-        self.assertIsInstance(joined_list, str)
-
-    
-    def test_append_guesses_list(self):
-
-        hangman.correct_guesses = ["_","_","_","_"] 
-        correct_guess_list = [(0, "W"),(1,"O")]
-        appended_list = hangman.append_correct_guesses_list(correct_guess_list)
-
-        self.assertIsInstance(appended_list, list)
-        self.assertEqual(appended_list, ["W","O","_","_"])
-    
-
-    def test_if_check_guess_true(self):
-        
-        hangman.correct_guesses = ["_","_","_","_"] 
-        guess = "W"
-        word = list("WORD")
-
-        if_check_guess_true = hangman.if_check_guess_true(guess, word)
-
-        print(if_check_guess_true)
-
-        self.assertIsInstance(if_check_guess_true, str)
-        self.assertEqual(if_check_guess_true, "W _ _ _")
-    """
-   
 class ExpectedFailuretTestCase(unittest.TestCase):
     @unittest.expectedFailure
     def test_clear_old_guesses_from_file(self):

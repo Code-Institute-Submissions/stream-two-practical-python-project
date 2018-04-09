@@ -5,6 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HANGMAN | {{ username }}</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script src="../static/js/main.js"></script>
+    <link rel="stylsheet" href="static/main.css" type="text/css">
 </head>
 <body>
     <h1>Hi {{ username }}</h1>
@@ -27,116 +31,8 @@
         <button class="guess-button" id="guess-button-{{ letter }}" value="guess-button" data="{{ letter }}">{{ letter }}</button>
         {% endfor %}
     </form>
-    
-    
+     
 </body>
-<script>
-    addEventListener("DOMContentLoaded", function() {
-        
-        const generate = document.getElementById("generate");
-        const guessButton = document.getElementsByClassName("guess-button");
-        const guessForm = document.getElementById("guess-form");
-        const username = document.getElementById("generate").value;
-        const wordRequestDiv = document.getElementById("word-request");
-        const guessRequestDiv = document.getElementById("guess-request");
-        
-       // let guessInput = document.getElementById("guess-letter-{{ letter }}");
-       // guessInput.value = "";
-        //let data = guessInput;
 
-        const getRequest = (url) => {
-
-            return new Promise((resolve, reject) => {
-
-                const xhr = new XMLHttpRequest();
-
-                xhr.open("GET",url, true)
-                xhr.responseType = "text";
-                xhr.onload = function() {
-            
-                    if (xhr.readyState == 4 && xhr.status == 200) { 
-                        //template(JSON.parse(this.responseText));
-                        const response = xhr.responseText;
-                        resolve(response)
-                        console.log(xhr.responseText);
-                    } else {
-                        const error = xhr.responseText;
-                        reject(error)
-                    }
-                };
-                
-                xhr.send()  
-            })
-        }
-        
-        const postRequest = (url, guess_data) => {
-
-            return new Promise((resolve, reject) => {
-
-                const xhr = new XMLHttpRequest();
-                
-                xhr.open("POST", url, true)
-                xhr.setRequestHeader("Content-type","application/x-www-form-urlencoded")
-                xhr.responseType = "text";
-                xhr.onload = function() {
-            
-                    if (xhr.readyState == 4 && xhr.status == 200) { 
-                        //template(JSON.parse(this.responseText));
-                        const response = xhr.responseText;
-                        
-                        resolve(response, guess_data)
-                        console.log(xhr.responseText);
-                    } else {
-                        const error = xhr.responseText;
-                        reject(error)
-                    }
-                };
-                
-                xhr.send(guess_data)
-                console.log(guess_data);
-            })
-
-        }
-
-        generate.addEventListener("click", function() {
-            
-            getRequest(`/${username}/word`)
-                .then((response) => {
-                    wordRequestDiv.innerHTML = response;
-                })
-                .catch((error) => {
-
-                    console.log(`Could not get file ${error}`)
-                })
-                        
-        });
-
-        
-        for (let i = 0; i < guessButton.length; i++){
-        
-            guessButton[i].addEventListener("click", function(e) {
-
-                e.preventDefault();
-                let guess = this.getAttribute('data');
-                let guess_data = guess;
-
-                postRequest(`/${username}/${guess_data}`, guess_data)
-                    .then((response, guess_data) => {
-                        
-                        guessRequestDiv.innerHTML = response;
-                        console.log(`successful post of ${response} ${guess_data}`)
-
-                    })
-                    .catch((error) => {
-
-                        console.log(`unsuccessful post ${error}`)
-
-                    })
-                
-            });
-        }
-    });
-
-</script>
 </html>
 

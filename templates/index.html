@@ -5,14 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HangMan</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
+    <script src="../static/js/main.js"></script>
+    <link rel="stylesheet" href="../static/scss/main.css" type="text/css">
 </head>
-<body>
-    <h1>HANGMAN</h1>
-    <form id = "username-form" method="POST">
-        <input type="text" placeholder="username" id="username" name="username"></input>
-        <button>GO TO GAME!</button>     
-    </form>
-    <p>{{ username_taken }}</p>
+<body class="background-image">
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col title">
+                <h1 class="title__text title__text--style">HANGMAN</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form class="input-form" id = "username-form" method="POST">
+                    <input class="input-form__input" type="text" placeholder="username" id="username" name="username"></input>
+                    <button class="input-form__button" >GO TO GAME!</button>     
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col ">
+                <p class="message">{{ username_taken }}</p>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>

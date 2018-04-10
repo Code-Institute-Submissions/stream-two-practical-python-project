@@ -1,7 +1,7 @@
 addEventListener("DOMContentLoaded", function() {
         
     const generate = document.getElementById("generate");
-    const guessButton = document.getElementsByClassName("guess-button");
+    const guessButton = document.getElementsByClassName("guess-form__button");
     const guessForm = document.getElementById("guess-form");
     const username = document.getElementById("generate").value;
     const wordRequestDiv = document.getElementById("word-request");

@@ -1,6 +1,10 @@
 {% block content %}
-<p>Your word is {{letter_string | count }} letters long, guess a letter to begin!    
-    <span id="word" data="{% for letter in letter_string %}{{ letter }}{% endfor %}">
-    </span>
-</p> 
+<div class="row">
+    <div class="col word-info">
+        <p class="word-info__text">The word has {{letter_string | count }} letters, click a letter to begin!    
+            <!--<span id="word" data="{% for letter in letter_string %}{{ letter }}{% endfor %}">
+            </span>-->
+        </p>
+    </div>
+</div>
 {% endblock %}

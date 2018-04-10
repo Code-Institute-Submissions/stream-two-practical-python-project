@@ -4,34 +4,57 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HANGMAN | {{ username }}</title>
+    <title>HangMan</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
     <script src="../static/js/main.js"></script>
     <link rel="stylesheet" href="../static/scss/main.css" type="text/css">
 </head>
 <body class="background-image">
-    <h1>Hi {{ username }}</h1>
-    <a href="/{{ username }}/scores">Scores</a>
-    <button id="generate" value="{{ username }}">Generate Word!</button>
-    
-
-    <div id="guess-request">
-        {% block guess %}
-        {% endblock %}
+    <div class="mask">
+        <div class="container-fluid">
+            <header class="row">
+                <div class="col title">
+                    <h1 class="title__text-game title__text-game--style">HANGMAN.</h1>
+                </div>
+            </header>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col user">
+                    <h2 class="user__message">Hi {{ username }}.</h2> 
+                </div>
+                <div class="col scores">
+                    <a class="scores__link"href="/{{ username }}/scores">Top Scores.</a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col generate">
+                    <button id="generate" class="generate__button--style" value="{{ username }}"> ( GET WORD )</button>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col guess">
+                    <form method="" id="guess-form">
+                        {% for letter in alphabet %}
+                        <button class="guess-form__button" id="guess-button-{{ letter }}" value="guess-button" data="{{ letter }}">{{ letter }}</button>
+                        {% endfor %}
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="container-fluid" id="word-request">
+            {% block word %}
+            {% endblock %}  
+        </div>
+        <div class="container-fluid" id="guess-request">
+            {% block guess %}
+            {% endblock %}
+        </div>
+        
     </div>
-    
-    <div id="word-request">
-        {% block word %}
-        {% endblock %}  
-    </div>
-    <form method="" id="guess-form">
-        <!--<input type="text" placeholder="Guess a letter" id="guess-letter" name="guess" value=""></input>-->
-        {% for letter in alphabet %}
-        <button class="guess-button" id="guess-button-{{ letter }}" value="guess-button" data="{{ letter }}">{{ letter }}</button>
-        {% endfor %}
-    </form>
-     
 </body>
 
 </html>

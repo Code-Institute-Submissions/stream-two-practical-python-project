@@ -21,7 +21,7 @@ mister_fail_count:10:
 
 bliss
 bliss_guesses:(0, 'E'):(9, 'E'):(1, 'A'):(7, 'A'):(2, 'R'):(3, 'T'):(4, 'H'):(5, 'Q'):(6, 'U'):(8, 'K'):;
-EARTHQUAKE
+PROPERTY
 bliss_fail_count:10:
 
 siissi
@@ -38,3 +38,13 @@ daf
 daf_guesses:;
 CERTAIN
 daf_fail_count:9:
+
+daf_test
+daf_test_guesses:(6, 'E'):;
+IMPORTED
+daf_test_fail_count:9:
+
+dasfs
+dasfs_guesses:;
+PROPERTY
+dasfs_fail_count:8:

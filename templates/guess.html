@@ -1,10 +1,17 @@
 {% block content %}
-<p>{% for i in display_correct_guess %}{{ i }} {% endfor %}</p>
-<img id="{{ image_id }}">
-<p>{{ incorrect_guess }}</p>
+
+<div class="row">
+    <div class="col guesses">
+        <p class="guesses__dash">{% for i in display_correct_guess %}{{ i }} {% endfor %}</p>
+    </div>
+</div>
+<!--<div class="hangman-image">
+    <div id="{{ image_id }}"></div>
+</div> -->
+<!--<p>{{ incorrect_guess }}</p>-->
 
 {% if current_score == None %}
-<p> Current Score: 0 </p>
+<p>Score: 0 </p>
 {% else %}
 <p>Current Score: {{ current_score }}</p>
 {% endif %}

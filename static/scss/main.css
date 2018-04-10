@@ -8,10 +8,14 @@ body, html {
   height: 100%;
   margin: 0; }
 
+a:hover {
+  color: #fff;
+  text-decoration: none; }
+
 .title__text-mobile {
   text-align: center;
   font-family: "KGSecondChancesSketch", sans-serif;
-  color: white;
+  color: #fff;
   font-size: 4.5rem;
   margin-bottom: 2.5rem;
   margin-top: 1.5rem; }
@@ -19,8 +23,8 @@ body, html {
 .title__text-desktop {
   text-align: center;
   font-family: "KGSecondChancesSketch", sans-serif;
-  color: white;
-  font-size: 4.5rem;
+  color: #fff;
+  font-size: 2.5rem;
   margin-bottom: 2.5rem;
   margin-top: 1.5rem; }
   @media (min-width: 767px) {
@@ -34,11 +38,15 @@ body, html {
 
 .background-image {
   height: 100%;
-  background: url("../img/OT8PER0.jpg");
+  background: url("../img/OT8PER0-optim.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed; }
+
+.mask {
+  height: 100%;
+  background-color: #0006; }
 
 .input-form {
   display: flex;
@@ -54,7 +62,7 @@ body, html {
 
 .input-form__input--style {
   font-family: "DJB Chalk It Up", sans-serif, sans-serif;
-  color: white;
+  color: #fff;
   background-color: #fff0;
   border-top: none;
   border-left: none;
@@ -65,12 +73,12 @@ body, html {
       font-size: 2.0rem; } }
 
 .input-form__button {
-  padding-left: 2rem; }
+  padding-left: 1rem; }
 
 .input-form__button--style {
   font-family: "DJB Chalk It Up", sans-serif;
   font-size: 1.5rem;
-  color: white;
+  color: #fff;
   border: none;
   background-color: #fff0; }
   @media (min-width: 991px) {
@@ -92,7 +100,167 @@ body, html {
 
 .title-divider {
   width: 50vw;
-  color: white;
-  margin-top: 0; }
+  background-color: #fffdfd33;
+  margin-top: 0;
+  height: 0.5; }
+
+.title__text-game {
+  text-align: center;
+  font-family: "KGSecondChancesSketch", sans-serif;
+  color: #fff;
+  font-size: 3.0rem;
+  margin-bottom: 0rem;
+  margin-top: 1.5rem; }
+
+.user, .scores {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+.user__message {
+  text-align: left;
+  font-family: "KGSecondChancesSketch", sans-serif;
+  color: #fff;
+  font-size: 1.0rem;
+  margin-bottom: 1.0rem;
+  margin-top: 1.0rem; }
+
+.scores__link {
+  text-align: left;
+  font-family: "KGSecondChancesSketch", sans-serif;
+  color: #fff;
+  font-size: 1.0rem;
+  margin-bottom: 1.0rem;
+  margin-top: 1.0rem; }
+
+.generate {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem; }
+
+.generate__button--style {
+  font-family: "DJB Chalk It Up", sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  border: none;
+  background-color: #fff0; }
+
+.guess {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1rem; }
+
+.guess-form__button {
+  font-family: "DJB Chalk It Up", sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  border: none;
+  background-color: #fff0; }
+
+/*.word-info {
+
+    display: flex;
+    justify-content: center;
+
+}*/
+.word-info__text {
+  font-family: "DJB Chalk It Up", sans-serif;
+  font-size: 1.0rem;
+  color: #fff;
+  text-align: center; }
+
+.hangman-image {
+  height: 30rem;
+  width: 100%; }
+
+.guesses {
+  justify-content: center; }
+
+.guesses__dash {
+  font-family: "DJB Chalk It Up", sans-serif;
+  font-size: 2.0rem;
+  color: #fff;
+  text-align: center; }
+
+#image_0 {
+  background: url("../img/image_1.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_1 {
+  background: url("../img/image_2.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_2 {
+  background: url("../img/image_3.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_3 {
+  background: url("../img/image_4.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_4 {
+  background: url("../img/image_5.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_5 {
+  background: url("../img/image_6.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_6 {
+  background: url("../img/image_7.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_7 {
+  background: url("../img/image_8.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_8 {
+  background: url("../img/image_9.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
+
+#image_9 {
+  background: url("../img/image_10.png");
+  background-repeat: repeat;
+  height: 30rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center; }
 
 /*# sourceMappingURL=main.css.map */

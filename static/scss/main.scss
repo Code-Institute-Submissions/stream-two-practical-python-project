@@ -1,7 +1,7 @@
 
 @import 'helpers/fonts';
 @import 'helpers/mixins';
-
+//------------- GLOBALS -------------------//
 body, html {
 
     height: 100%;
@@ -9,11 +9,17 @@ body, html {
        
 }
 
+a:hover {
+
+    color: #fff;
+    text-decoration: none;
+}
+//------------ LOGIN PAGE --------------------//
 .title__text-mobile {
 
     text-align: center;
     font-family: $title-font;
-    color: white;
+    color: #fff;
     font-size: 4.5rem;
     margin-bottom: 2.5rem;
     margin-top: 1.5rem;
@@ -24,8 +30,8 @@ body, html {
 
     text-align: center;
     font-family: $title-font;
-    color: white;
-    font-size: 4.5rem;
+    color: #fff;
+    font-size: 2.5rem;
     margin-bottom: 2.5rem;
     margin-top: 1.5rem;
    
@@ -43,13 +49,21 @@ body, html {
 }
 
 
+
 .background-image {
     height:100%;
-    background: url("../img/OT8PER0.jpg");
+    background: url("../img/OT8PER0-optim.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
+    
+}
+
+.mask {
+
+    height:100%;
+    background-color: #0006;
 
 }
 
@@ -75,7 +89,7 @@ body, html {
 .input-form__input--style {
 
     font-family: $text-font, sans-serif;
-    color: white;
+    color: #fff;
     background-color: #fff0;
     border-top: none;
     border-left: none;
@@ -90,7 +104,7 @@ body, html {
 
 .input-form__button {
 
-    padding-left: 2rem;
+    padding-left: 1rem;
 
 }
 
@@ -98,7 +112,7 @@ body, html {
 
     font-family: $text-font;
     font-size: 1.5rem;
-    color: white;
+    color: #fff;
     border: none;
     background-color: #fff0;
 
@@ -132,6 +146,176 @@ body, html {
 .title-divider {
 
     width: 50vw;
-    color: white;
+    background-color: #fffdfd33;
     margin-top: 0;
+    height: 0.5;
+}
+
+//------------- GAME PAGE -------------------//
+
+.title__text-game {
+
+    text-align: center;
+    font-family: $title-font;
+    color: #fff;
+    font-size: 3.0rem;
+    margin-bottom: 0rem;
+    margin-top: 1.5rem;
+}
+
+.user, .scores {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.user__message {
+
+    text-align: left;
+    font-family: $title-font;
+    color: #fff;
+    font-size: 1.0rem;
+    margin-bottom: 1.0rem;
+    margin-top: 1.0rem;
+
+}
+
+.scores__link { 
+
+    text-align: left;
+    font-family: $title-font;
+    color: #fff;
+    font-size: 1.0rem;
+    margin-bottom: 1.0rem;
+    margin-top: 1.0rem;
+
+}
+
+.generate {
+
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.generate__button--style {
+
+    font-family: $text-font;
+    font-size: 1.5rem;
+    color: #fff;
+    border: none;
+    background-color: #fff0;
+}
+
+.guess {
+
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 1rem;
+}
+.guess-form__button {
+
+    font-family: $text-font;
+    font-size: 1.5rem;
+    color: #fff;
+    border: none;
+    background-color: #fff0;
+}
+
+/*.word-info {
+
+    display: flex;
+    justify-content: center;
+
+}*/
+
+.word-info__text {
+
+    //padding-left: 0.5rem;
+    font-family: $text-font;
+    font-size: 1.0rem;
+    color: #fff;
+    text-align: center;
+
+}
+.hangman-image {
+
+    height:30rem;
+    width: 100%;
+}
+
+.guesses {
+
+    justify-content: center;
+}
+
+.guesses__dash {
+
+    font-family: $text-font;
+    font-size: 2.0rem;
+    color: #fff;
+    text-align: center;
+    
+}
+
+#image_0 {
+
+    background: url("../img/image_1.png");
+    @include hangman-image;
+
+}
+
+#image_1 {
+
+    background: url("../img/image_2.png");
+    @include hangman-image;
+}
+
+#image_2 {
+
+    background: url("../img/image_3.png");
+    @include hangman-image;
+}
+
+#image_3 {
+
+    background: url("../img/image_4.png");
+    @include hangman-image;
+}
+
+#image_4 {
+
+    background: url("../img/image_5.png");
+    @include hangman-image;
+}
+
+#image_5 {
+
+    background: url("../img/image_6.png");
+    @include hangman-image;
+}
+
+#image_6 {
+
+    background: url("../img/image_7.png");
+    @include hangman-image;
+}
+
+#image_7 {
+
+    background: url("../img/image_8.png");
+    @include hangman-image;
+}
+
+#image_8 {
+
+    background: url("../img/image_9.png");
+    @include hangman-image;
+}
+
+#image_9 {
+
+    background: url("../img/image_10.png");
+    @include hangman-image;
 }

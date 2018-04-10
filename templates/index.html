@@ -10,24 +10,30 @@
     <script src="../static/js/main.js"></script>
     <link rel="stylesheet" href="../static/scss/main.css" type="text/css">
 </head>
+<!-- image credit <a href="https://www.freepik.com/free-photo/black-background_1200051.htm">Designed by Freepik</a> -->
 <body class="background-image">
     <div class="container-fluid ">
         <div class="row">
-            <div class="col title">
-                <h1 class="title__text title__text--style">HANGMAN</h1>
+            <div class="col d-sm-none title">
+                 <h1 class="title__text-mobile title__text--style">HANG<br>MAN.</h1>
+            </div>
+            <div class="col d-none d-sm-block ">
+                <h1 class="title__text-desktop title__text--style">HANGMAN.</h1>
             </div>
         </div>
+        <!--<hr class="title-divider">-->
         <div class="row">
             <div class="col">
-                <form class="input-form" id = "username-form" method="POST">
-                    <input class="input-form__input" type="text" placeholder="username" id="username" name="username"></input>
-                    <button class="input-form__button" >GO TO GAME!</button>     
+                <p class="user-instructions">Enter your name:</p>
+                <form class="input-form input-form--style" id = "username-form" method="POST">
+                    <input class="input-form__input input-form__input--style" type="text" placeholder="username" id="username" name="username"></input>
+                    <button class="input-form__button input-form__button--style" >( PLAY )</button>     
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col ">
-                <p class="message">{{ username_taken }}</p>
+                <p class="user-instructions">{{ username_taken }}</p>
             </div>
         </div>
     </div>

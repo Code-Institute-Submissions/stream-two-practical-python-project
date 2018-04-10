@@ -1,4 +1,16 @@
 // FONTS //
-$logo-font: "Bungee Shade", cursive;
-$button-font:"Pontano Sans", sans-serif;
-$text-font: "Quicksand", sans-serif;
+@font-face {
+
+    // http://www.fontspace.com/kimberly-geswein/kg-second-chances-solid
+    font-family: 'KGSecondChancesSketch';
+    src: url('../fonts/KGSecondChancesSketch.ttf');
+}
+
+@font-face {
+// http://www.fontspace.com/fontscafe/chalk-hand-lettering-shaded-dem //
+    font-family: 'DJB Chalk It Up';
+    src: url('../fonts/DJB Chalk It Up.ttf');
+}
+
+$title-font:'KGSecondChancesSketch', sans-serif;
+$text-font: "DJB Chalk It Up", sans-serif;

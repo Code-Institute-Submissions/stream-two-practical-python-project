@@ -1,22 +1,98 @@
 @font-face {
-  font-family: 'Ank';
-  src: url("../fonts/ank.ttf"); }
-.title {
-  text-align: center;
-  font-family: 'Ank';
-  color: white; }
-
-/*#####################*/
+  font-family: 'KGSecondChancesSketch';
+  src: url("../fonts/KGSecondChancesSketch.ttf"); }
+@font-face {
+  font-family: 'DJB Chalk It Up';
+  src: url("../fonts/DJB Chalk It Up.ttf"); }
 body, html {
   height: 100%;
   margin: 0; }
 
+.title__text-mobile {
+  text-align: center;
+  font-family: "KGSecondChancesSketch", sans-serif;
+  color: white;
+  font-size: 4.5rem;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem; }
+
+.title__text-desktop {
+  text-align: center;
+  font-family: "KGSecondChancesSketch", sans-serif;
+  color: white;
+  font-size: 4.5rem;
+  margin-bottom: 2.5rem;
+  margin-top: 1.5rem; }
+  @media (min-width: 767px) {
+    .title__text-desktop {
+      font-size: 5.5rem;
+      margin-bottom: 4.5rem;
+      margin-top: 5.5rem; } }
+  @media (min-width: 991px) {
+    .title__text-desktop {
+      font-size: 7.5rem; } }
+
 .background-image {
   height: 100%;
-  background: url("../img/chalkboard.jpeg");
+  background: url("../img/OT8PER0.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed; }
+
+.input-form {
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+
+.input-form__input {
+  height: 2rem;
+  width: 9rem; }
+  @media (min-width: 991px) {
+    .input-form__input {
+      width: 12rem; } }
+
+.input-form__input--style {
+  font-family: "DJB Chalk It Up", sans-serif, sans-serif;
+  color: white;
+  background-color: #fff0;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-size: 1.5rem; }
+  @media (min-width: 991px) {
+    .input-form__input--style {
+      font-size: 2.0rem; } }
+
+.input-form__button {
+  padding-left: 2rem; }
+
+.input-form__button--style {
+  font-family: "DJB Chalk It Up", sans-serif;
+  font-size: 1.5rem;
+  color: white;
+  border: none;
+  background-color: #fff0; }
+  @media (min-width: 991px) {
+    .input-form__button--style {
+      font-size: 2.5rem; } }
+
+.user-instructions {
+  font-family: "DJB Chalk It Up", sans-serif;
+  text-align: center;
+  color: #ffffff;
+  font-size: 1.5rem;
+  margin-top: 0.5rem; }
+  @media (min-width: 767px) {
+    .user-instructions {
+      margin-top: 2.0rem; } }
+  @media (min-width: 991px) {
+    .user-instructions {
+      font-size: 2.0rem; } }
+
+.title-divider {
+  width: 50vw;
+  color: white;
+  margin-top: 0; }
 
 /*# sourceMappingURL=main.css.map */

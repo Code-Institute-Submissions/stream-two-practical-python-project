@@ -319,7 +319,7 @@ def index():
         usernames = read_doc(username_file)
         
         if username in usernames:
-            username_taken = "Username taken, please think of an original username."
+            username_taken = "Username taken, enter an original username."
         else: 
             write_to_doc(username_file, username + "\n")
             return redirect(username)

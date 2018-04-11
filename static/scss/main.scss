@@ -72,8 +72,10 @@ a:hover {
 
 .mask {
 
-    height:100%;
+    //height:100%;
     background-color: #0006;
+    background-size: cover;
+    background-repeat: no-repeat;
 
 }
 
@@ -89,10 +91,12 @@ a:hover {
 
     height: 2rem;
     width: 9rem;
+    padding-bottom: 0.3rem;
 
     @include desktop {
 
         width: 12rem;
+        padding-bottom: 1rem;
     }
 
 }
@@ -182,8 +186,8 @@ a:hover {
 
     @include tablet {
 
-        margin-top: 3rem;
-        margin-bottom: 2rem;
+        margin-top: 2rem;
+        margin-bottom: 1rem;
     }
 }
 
@@ -256,7 +260,7 @@ a:hover {
 
     @include tablet {
 
-        max-width: 21rem;
+        max-width: 36rem;
     }
 }
 .generate {
@@ -265,10 +269,7 @@ a:hover {
     justify-content: center;
     margin-bottom: 1rem;
 
-    @include tablet {
-
-        margin-bottom: 2rem;
-    }
+    
 }
 
 .generate__button--style {
@@ -318,6 +319,10 @@ a:hover {
 
     //padding-left: 0.5rem;
     @extend %message-text-shared;
+    @include tablet {
+
+        font-size: 1.5rem;
+    }
 
 }
 
@@ -333,6 +338,12 @@ a:hover {
     @extend %message-text-shared;
     font-size: 1.2rem;
     text-align: left;
+
+    @include tablet {
+
+        font-size: 1.5rem;
+        padding-left: 2rem;
+    }
 }
 
 .win__text {
@@ -367,6 +378,10 @@ a:hover {
     font-size: 2.0rem;
     color: #fff;
     text-align: center;
+    @include tablet {
+
+        font-size: 3rem;
+    }
     
 }
 

@@ -66,4 +66,9 @@ $large-desktop-width: 1199px;
     background-size: contain;
     margin-bottom: 1.5rem;
     margin-top: 0.5rem;
+
+    @include tablet {
+
+        height: 15rem;
+    }
 }

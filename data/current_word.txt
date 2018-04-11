@@ -40,9 +40,9 @@ CERTAIN
 daf_fail_count:9:
 
 daf_test
-daf_test_guesses:(6, 'E'):;
-IMPORTED
-daf_test_fail_count:9:
+daf_test_guesses:;
+ARGUMENT
+daf_test_fail_count:10:
 
 dasfs
 dasfs_guesses:;
@@ -53,3 +53,8 @@ gamer
 gamer_guesses:(5, 'L'):;
 FERTILE
 gamer_fail_count:11:
+
+megaman
+megaman_guesses:;
+REPEAT
+megaman_fail_count:10:

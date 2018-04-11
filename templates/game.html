@@ -20,9 +20,9 @@
             </header>
         </div>
         <div class="container-fluid">
-            <div class="row">
+            <div class="row user-container">
                 <div class="col user">
-                    <h2 class="user__message">Hi {{ username }}.</h2> 
+                    <h2 class="user__message">Hello {{ username }}.</h2> 
                 </div>
                 <div class="col scores">
                     <a class="scores__link"href="/{{ username }}/scores">Top Scores.</a>
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="container-fluid">
+        <div class="container guess-container">
             <div class="row">
                 <div class="col guess">
                     <form method="" id="guess-form">

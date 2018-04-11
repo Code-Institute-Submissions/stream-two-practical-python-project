@@ -1,6 +1,18 @@
 
 @import 'helpers/fonts';
 @import 'helpers/mixins';
+
+//------------- EXTENDS ------------------//
+
+%message-text-shared {
+
+    font-family: $text-font;
+    font-size: 1.0rem;
+    color: #fff;
+    text-align: center;
+
+}
+
 //------------- GLOBALS -------------------//
 body, html {
 
@@ -47,8 +59,6 @@ a:hover {
         font-size: 7.5rem;
     }
 }
-
-
 
 .background-image {
     height:100%;
@@ -161,6 +171,20 @@ a:hover {
     font-size: 3.0rem;
     margin-bottom: 0rem;
     margin-top: 1.5rem;
+
+    @include tablet{
+
+        font-size: 5rem;
+    }
+}
+
+.user-container {
+
+    @include tablet {
+
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
 }
 
 .user, .scores {
@@ -168,16 +192,22 @@ a:hover {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-.user__message {
 
-    text-align: left;
-    font-family: $title-font;
-    color: #fff;
-    font-size: 1.0rem;
+    @include tablet {
+
+        //margin-top: 2rem;
+    }
+
+}
+
+.scores {
+
     margin-bottom: 1.0rem;
     margin-top: 1.0rem;
 
+    @include tablet;
+    justify-content: right;
+    padding-right: 3rem;
 }
 
 .scores__link { 
@@ -186,16 +216,59 @@ a:hover {
     font-family: $title-font;
     color: #fff;
     font-size: 1.0rem;
+   
+
+    @include tablet {
+
+        font-size: 2rem;
+    }
+
+}
+.user {
+
     margin-bottom: 1.0rem;
     margin-top: 1.0rem;
 
+    @include tablet {
+    justify-content: left;
+    padding-left: 3rem;
+}
+}
+.user__message {
+
+    text-align: left;
+    font-family: $title-font;
+    color: #fff;
+    font-size: 1.0rem;
+    margin-bottom: 0;
+
+    @include tablet {
+
+        font-size: 2rem;
+    }
+
 }
 
+
+.guess-container {
+
+    max-width: 100vw;
+
+    @include tablet {
+
+        max-width: 21rem;
+    }
+}
 .generate {
 
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
+
+    @include tablet {
+
+        margin-bottom: 2rem;
+    }
 }
 
 .generate__button--style {
@@ -205,6 +278,11 @@ a:hover {
     color: #fff;
     border: none;
     background-color: #fff0;
+
+    @include tablet {
+
+        font-size: 2.5rem;
+    }
 }
 
 .guess {
@@ -221,6 +299,11 @@ a:hover {
     color: #fff;
     border: none;
     background-color: #fff0;
+
+    @include tablet {
+
+        font-size: 2.5rem;
+    }
 }
 
 /*.word-info {
@@ -230,14 +313,6 @@ a:hover {
 
 }*/
 
-%message-text-shared {
-
-    font-family: $text-font;
-    font-size: 1.0rem;
-    color: #fff;
-    text-align: center;
-
-}
 
 .word-info__text {
 

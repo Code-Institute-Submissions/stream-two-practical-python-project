@@ -48,3 +48,8 @@ dasfs
 dasfs_guesses:;
 PROPERTY
 dasfs_fail_count:8:
+
+gamer
+gamer_guesses:;
+THIRSTY
+gamer_fail_count:0:

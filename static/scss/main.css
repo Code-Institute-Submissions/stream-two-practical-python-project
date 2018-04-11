@@ -164,11 +164,24 @@ a:hover {
     justify-content: center;
 
 }*/
-.word-info__text {
+.word-info__text, .word-info__number, .score__text, .win__text, .lose__text {
   font-family: "DJB Chalk It Up", sans-serif;
   font-size: 1.0rem;
   color: #fff;
   text-align: center; }
+
+.word-info__number {
+  font-size: 2.0rem; }
+
+.score__text {
+  font-size: 1.2rem;
+  text-align: left; }
+
+.win__text {
+  font-size: 1.2rem; }
+
+.lose__text {
+  font-size: 1.2rem; }
 
 .hangman-image {
   height: 30rem;

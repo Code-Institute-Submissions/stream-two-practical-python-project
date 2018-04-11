@@ -281,7 +281,7 @@ def if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
         return win_message
 
 def if_guessed_incorrect_message_to_user(word):
-    lose_message = "YOU LOSE! The word was {0}. For a new word, hit generate!".format(word)
+    lose_message = "YOU LOSE! The word was {0}. Hit GET WORD to play again!".format(word)
 
     return lose_message
 

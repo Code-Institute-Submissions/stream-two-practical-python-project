@@ -230,15 +230,51 @@ a:hover {
 
 }*/
 
-.word-info__text {
+%message-text-shared {
 
-    //padding-left: 0.5rem;
     font-family: $text-font;
     font-size: 1.0rem;
     color: #fff;
     text-align: center;
 
 }
+
+.word-info__text {
+
+    //padding-left: 0.5rem;
+    @extend %message-text-shared;
+
+}
+
+.word-info__number {
+
+    @extend %message-text-shared;
+    font-size: 2.0rem;
+
+}
+
+.score__text {
+
+    @extend %message-text-shared;
+    font-size: 1.2rem;
+    text-align: left;
+}
+
+.win__text {
+
+    @extend %message-text-shared;
+    font-size: 1.2rem;
+
+}
+
+.lose__text {
+
+    @extend %message-text-shared;
+    font-size: 1.2rem;
+
+}
+
+
 .hangman-image {
 
     height:30rem;

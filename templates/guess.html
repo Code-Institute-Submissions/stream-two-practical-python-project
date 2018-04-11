@@ -5,27 +5,49 @@
         <p class="guesses__dash">{% for i in display_correct_guess %}{{ i }} {% endfor %}</p>
     </div>
 </div>
-<!--<div class="hangman-image">
-    <div id="{{ image_id }}"></div>
-</div> -->
-<!--<p>{{ incorrect_guess }}</p>-->
 
 {% if current_score == None %}
-<p>Score: 0 </p>
+<div class="row">
+    <div class="col score">
+        <p class="score__text">Score: 0 </p>
+    </div>
+</div>
+
 {% else %}
-<p>Current Score: {{ current_score }}</p>
+<div class="row">
+        <div class="col score">
+            <p class="score__text">Score: {{ current_score }}</p>
+        </div>
+    </div>
 {% endif %}
 
 {% if win_message == None %}
+<div class="row">
+    <div class="col win">
+        <p></p>
+    </div>
+</div>
 <p></p>
 {% else %}
-<p>{{ win_message }}</p>
+<div class="row win">
+    <div class="col win__message">
+        <p class="win__text">{{ win_message }}</p>
+    </div>
+</div>
 {% endif %}
 
 {% if lose_message == None %}
-<p></p>
+<div class="row">
+    <div class="col">
+        <p></p>
+    </div>
+</div>
 {% else %}
-<p>{{ lose_message }}</p>
+<div class="row">
+    <div class="col lose">
+        <p class="lose__text">{{ lose_message }}</p>
+    </div>
+</div>
 {% endif %}
 
 {% endblock %}

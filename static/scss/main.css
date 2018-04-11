@@ -183,10 +183,6 @@ a:hover {
 .lose__text {
   font-size: 1.2rem; }
 
-.hangman-image {
-  height: 30rem;
-  width: 100%; }
-
 .guesses {
   justify-content: center; }
 
@@ -196,84 +192,104 @@ a:hover {
   color: #fff;
   text-align: center; }
 
-#image_0 {
-  background: url("../img/image_1.png");
-  background-repeat: repeat;
-  height: 30rem;
-  width: 100%;
-  background-repeat: no-repeat;
-  background-position: center; }
-
 #image_1 {
-  background: url("../img/image_2.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_1.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 #image_2 {
-  background: url("../img/image_3.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_2.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 #image_3 {
-  background: url("../img/image_4.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_3.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 #image_4 {
-  background: url("../img/image_5.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_4.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 #image_5 {
-  background: url("../img/image_6.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_5.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 #image_6 {
-  background: url("../img/image_7.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_6.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 #image_7 {
-  background: url("../img/image_8.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_7.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 #image_8 {
-  background: url("../img/image_9.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_8.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 #image_9 {
-  background: url("../img/image_10.png");
-  background-repeat: repeat;
-  height: 30rem;
+  background: url("../img/image_9.png");
+  height: 6rem;
   width: 100%;
   background-repeat: no-repeat;
-  background-position: center; }
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
+
+#image_10 {
+  background: url("../img/image_10.png");
+  height: 6rem;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  margin-bottom: 1.5rem;
+  margin-top: 0.5rem; }
 
 /*# sourceMappingURL=main.css.map */

@@ -58,11 +58,12 @@ $large-desktop-width: 1199px;
 
 @mixin hangman-image {
 
-    background-repeat: repeat;
-    //background-size: auto auto;
-    height: 30rem;
+    height: 6rem;
     width: 100%;
     background-repeat: no-repeat;
     background-position: center;
-    //background-size: inherit;
+    //overflow: visible;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
 }

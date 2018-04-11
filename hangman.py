@@ -29,7 +29,7 @@ def read_and_replace(file, old, new):
     
 def write_username_and_current_word_to_file(username, letter_string, file):
     read_current_word_file = read_doc(file)
-    write_data = "\n{0}\n{1}_guesses:;\n{2}\n{3}_fail_count:10:\n".format(username, username, letter_string, username)
+    write_data = "\n{0}\n{1}_guesses:;\n{2}\n{3}_fail_count:11:\n".format(username, username, letter_string, username)
     if username in read_current_word_file:
         with open(file, "r") as f:
             for line in f:
@@ -44,7 +44,7 @@ def write_username_and_current_word_to_file(username, letter_string, file):
             for line in f:
                 print(line)
                 old_counter = line
-                new_counter = "{0}_fail_count:9:\n".format(username)
+                new_counter = "{0}_fail_count:11:\n".format(username)
                 break
         read_and_replace(file, old_word, new_word + "\n")
         read_and_replace(file, old_counter, new_counter) 
@@ -382,7 +382,7 @@ def guess(username, guess_data):
                     win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
                     current_score = get_current_user_score(username, scores_file)
 
-            elif incorrect_guesses_count == 0:
+            elif incorrect_guesses_count == 1:
                 lose_message = if_guessed_incorrect_message_to_user(word)
                 image_id = set_image_id(incorrect_guesses_count) 
                  
@@ -392,16 +392,17 @@ def guess(username, guess_data):
             win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
             incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
 
-            if incorrect_guesses_count > 0 and  are_total_correct_guesses_the_word == False:
+            if incorrect_guesses_count > 1 and  are_total_correct_guesses_the_word == False:
                 incorrect_guesses_counter_iterator(current_word_file, username) 
                 incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
                 image_id = set_image_id(incorrect_guesses_count)
                 correct_guesses = get_users_correct_guesses(username, current_word_file)
                 display_correct_guess = display_correct_guesses(word, correct_guesses)
-            elif incorrect_guesses_count == 0:
+            elif incorrect_guesses_count == 1:
                 correct_guesses = get_users_correct_guesses(username, current_word_file)
                 display_correct_guess = display_correct_guesses(word, correct_guesses)
                 lose_message = if_guessed_incorrect_message_to_user(word)
+                image_id = set_image_id(incorrect_guesses_count)
 
     return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess, win_message=win_message, current_score=current_score, lose_message=lose_message, image_id=image_id)
     

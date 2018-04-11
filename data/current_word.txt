@@ -50,6 +50,6 @@ PROPERTY
 dasfs_fail_count:8:
 
 gamer
-gamer_guesses:;
-THIRSTY
-gamer_fail_count:0:
+gamer_guesses:(5, 'L'):;
+FERTILE
+gamer_fail_count:11:

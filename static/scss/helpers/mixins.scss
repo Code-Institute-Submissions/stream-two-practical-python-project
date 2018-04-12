@@ -66,10 +66,12 @@ $large-desktop-width: 1199px;
     background-size: contain;
     margin-bottom: 1.5rem;
     margin-top: 0.5rem;
+    background-attachment: scroll;
 
     @include tablet {
 
         height: 15rem;
+        margin-bottom: 2rem;
     }
 
     @include large {

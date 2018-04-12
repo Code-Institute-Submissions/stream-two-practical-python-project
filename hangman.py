@@ -193,7 +193,7 @@ def get_scores_for_leaderboard(scores_file):
             all_scores.append(scores_list)
         all_scores.sort(key=operator.itemgetter(1), reverse=True)
 
-        return all_scores[:5]
+        return all_scores[:10]
     
 ################# GAME LOGIC FUNCTIONS ##############################
 
@@ -408,8 +408,8 @@ def guess(username, guess_data):
     
 
 
-##if __name__ == "__main__":
-    ##app.run(host=os.getenv("IP"),port=os.getenv("PORT"), debug=True)
+#if __name__ == "__main__":
+    #app.run(host=os.getenv("IP"),port=os.getenv("PORT"), debug=True)
 
 port = int(os.environ.get("PORT",5000))
 

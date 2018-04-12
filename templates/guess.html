@@ -1,25 +1,26 @@
 {% block content %}
-
+{% if current_score == None %}
 <div class="row">
-    <div class="col guesses">
+    <div class="col-xs-12 col-lg-3 score">
+        <p class="score__text">Score: 0 </p>
+    </div>
+<!--</div>-->
+
+{% else %}
+<!--<div class="row">-->
+    <div class="col-xs-12 col-lg-3 score">
+        <p class="score__text">Score: {{ current_score }}</p>
+    </div>
+<!--</div>-->
+{% endif %}
+
+<!--<div class="row">-->
+    <div class="col-xs-12 col-lg-6 guesses">
         <p class="guesses__dash">{% for i in display_correct_guess %}{{ i }} {% endfor %}</p>
     </div>
 </div>
 
-{% if current_score == None %}
-<div class="row">
-    <div class="col score">
-        <p class="score__text">Score: 0 </p>
-    </div>
-</div>
 
-{% else %}
-<div class="row">
-    <div class="col score">
-        <p class="score__text">Score: {{ current_score }}</p>
-    </div>
-</div>
-{% endif %}
 
 <div class="row">
     <div class="col">

@@ -41,7 +41,7 @@ daf_fail_count:9:
 
 daf_test
 daf_test_guesses:;
-ARGUMENT
+RURAL
 daf_test_fail_count:10:
 
 dasfs
@@ -73,3 +73,13 @@ testers
 testers_guesses:(0, 'E'):(3, 'E'):;
 EAGER
 testers_fail_count:1:
+
+player
+player_guesses:(0, 'M'):;
+RURAL
+player_fail_count:11:
+
+player 1
+player 1_guesses:;
+RURAL
+player 1_fail_count:1:

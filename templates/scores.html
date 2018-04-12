@@ -7,25 +7,49 @@
     <title>HangMan</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
-    <!--<script src="../static/js/main.js"></script>-->
+    <script src="../static/js/main.js"></script>
     <link rel="stylesheet" href="../static/scss/main.css" type="text/css">
 </head>
-<body>
-    <h1>LeaderBoard</h1>
-    <p>You are logged in as {{ username }}</p>
-    <a href="{{ url_for('index') }}">Log Out</a>
-    <h2>Top Scores</h2>
-    <table>
-        <tr>
-            <th>Username</th>
-            <th>Score</th>
-        </tr>
-        {% for i in top_scores %}
-        <tr>
-            <td>{{ i[0] }}</td>
-            <td>{{ i[1] }}</td>
-        </tr>
-        {% endfor %}   
-    </table>
+<body class="background-image">
+    <header class="container-fluid">
+        <div class="row">
+            <div class="col title ">
+                <h1 class="title__text-game title__text-game--style">LeaderBoard</h1>
+            </div>
+        </div>
+    </header>
+    <section class="container-fluid">
+        <div class="row user-container">
+            <div class="col user">
+                <p class="user__message">Hello: {{ username }}</p>
+            </div>
+            <div class="col href">
+                <a class="href__link" href="{{ url_for('index') }}">Log Out</a>
+            </div>
+        </div>
+    </section>
+    <section class="container-fluid">
+        <!--<div class="row">
+            <div class="col leaderboard ">
+                <h2 class="leaderboard__heading leaderboard__heading--style">Top Scores</h2>
+            </div>
+        </div>-->
+        <div class="row">
+            <div class="col leaderboard-container">
+                <table class="leaderboard">
+                    <tr class="leaderboard__table--headings">
+                        <th class="leaderboard__table--left-header">Username</th>
+                        <th class="leaderboard__table--right-header">Score</th>
+                    </tr>
+                    {% for i in top_scores %}
+                    <tr class="leaderboard__table--data">
+                        <td class="leaderboard__table--left-data">{{ i[0] }}</td>
+                        <td class="leaderboard__table--right-data">{{ i[1] }}</td>
+                    </tr>
+                    {% endfor %}   
+                </table>
+            </div>
+        </div>
+    </section>
 </body>
 </html> 

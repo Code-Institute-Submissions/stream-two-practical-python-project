@@ -125,41 +125,44 @@ a:hover {
     .title__text-game {
       font-size: 4rem; } }
 
-@media (min-width: 767px) {
-  .user-container {
-    margin-top: 2rem;
-    margin-bottom: 1rem; } }
-@media (min-width: 991px) {
-  .user-container {
-    margin-top: 0rem;
-    margin-bottom: 0rem; } }
+.user-container {
+  margin-top: 1rem; }
+  @media (min-width: 767px) {
+    .user-container {
+      margin-top: 2rem;
+      margin-bottom: 1rem; } }
+  @media (min-width: 991px) {
+    .user-container {
+      margin-top: 0rem;
+      margin-bottom: 0rem; } }
 
-.user, .scores {
+.user, .href {
   display: flex;
-  align-items: center;
-  justify-content: center; }
+  align-items: center; }
 
-.scores {
+.href {
   margin-bottom: 1.0rem;
   margin-top: 1.0rem;
+  justify-content: center;
   justify-content: right;
   padding-right: 3rem; }
 
-.scores__link {
+.href__link {
   text-align: left;
   font-family: "KGSecondChancesSketch", sans-serif;
   color: #fff;
   font-size: 1.0rem; }
   @media (min-width: 767px) {
-    .scores__link {
+    .href__link {
       font-size: 2rem; } }
   @media (min-width: 991px) {
-    .scores__link {
+    .href__link {
       font-size: 1.5rem; } }
 
 .user {
   margin-bottom: 1.0rem;
-  margin-top: 1.0rem; }
+  margin-top: 1.0rem;
+  justify-content: left; }
   @media (min-width: 767px) {
     .user {
       justify-content: left;
@@ -288,10 +291,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_1 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_1 {
       height: 22rem;
@@ -305,10 +310,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_2 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_2 {
       height: 22rem;
@@ -322,10 +329,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_3 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_3 {
       height: 22rem;
@@ -339,10 +348,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_4 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_4 {
       height: 22rem;
@@ -356,10 +367,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_5 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_5 {
       height: 22rem;
@@ -373,10 +386,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_6 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_6 {
       height: 22rem;
@@ -390,10 +405,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_7 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_7 {
       height: 22rem;
@@ -407,10 +424,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_8 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_8 {
       height: 22rem;
@@ -424,10 +443,12 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_9 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_9 {
       height: 22rem;
@@ -441,13 +462,70 @@ a:hover {
   background-position: center;
   background-size: contain;
   margin-bottom: 1.5rem;
-  margin-top: 0.5rem; }
+  margin-top: 0.5rem;
+  background-attachment: scroll; }
   @media (min-width: 767px) {
     #image_10 {
-      height: 15rem; } }
+      height: 15rem;
+      margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
     #image_10 {
       height: 22rem;
       margin-bottom: 2rem; } }
+
+/*------------------ SCORES PAGE ----------------------*/
+.leaderboard-container {
+  display: flex;
+  justify-content: center; }
+
+.leaderboard__heading {
+  text-align: center;
+  font-family: "DJB Chalk It Up", sans-serif;
+  color: #fff;
+  font-size: 4.0rem; }
+
+.leaderboard__table--headings {
+  text-align: center;
+  font-family: "DJB Chalk It Up", sans-serif;
+  color: #fff;
+  font-size: 1.0rem; }
+
+.leaderboard__table--data {
+  text-align: center;
+  font-family: "DJB Chalk It Up", sans-serif;
+  color: #fff;
+  font-size: 1.0rem; }
+
+.leaderboard {
+  width: 15rem;
+  height: 25rem;
+  margin-top: 1rem; }
+  @media (min-width: 1199px) {
+    .leaderboard {
+      width: 25rem;
+      height: 25rem;
+      margin-top: 2.5rem; } }
+
+.leaderboard__table--headings {
+  font-size: 2rem; }
+  @media (min-width: 1199px) {
+    .leaderboard__table--headings {
+      font-size: 3rem; } }
+
+.leaderboard__table--data {
+  font-size: 1.5rem; }
+  @media (min-width: 1199px) {
+    .leaderboard__table--data {
+      font-size: 2rem; } }
+
+.leaderboard__table--headings {
+  border-bottom: 1px solid #fff; }
+
+.leaderboard__table--left-data {
+  border-right: 1px solid #fff;
+  width: 50%; }
+
+.leaderboard__table--right-data {
+  width: 50%; }
 
 /*# sourceMappingURL=main.css.map */

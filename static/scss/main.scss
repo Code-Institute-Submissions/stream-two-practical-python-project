@@ -196,6 +196,7 @@ a:hover {
 
 .user-container {
 
+    margin-top: 1rem;
     @include tablet {
 
         margin-top: 2rem;
@@ -209,30 +210,32 @@ a:hover {
     }
 }
 
-.user, .scores {
+.user, .href {
 
     display: flex;
     align-items: center;
-    justify-content: center;
-
+    //justify-content: center;
+    //margin-top: 1.5rem;
     @include tablet {
 
+        //justify-content: center;
         //margin-top: 2rem;
     }
 
 }
 
-.scores {
+.href {
 
     margin-bottom: 1.0rem;
     margin-top: 1.0rem;
+    justify-content: center;
 
     @include tablet;
     justify-content: right;
     padding-right: 3rem;
 }
 
-.scores__link { 
+.href__link { 
 
     text-align: left;
     font-family: $title-font;
@@ -243,6 +246,7 @@ a:hover {
     @include tablet {
 
         font-size: 2rem;
+        //justify-content: right;
     }
 
     @include desktop {
@@ -255,12 +259,14 @@ a:hover {
 
     margin-bottom: 1.0rem;
     margin-top: 1.0rem;
+    justify-content: left;
 
     @include tablet {
     justify-content: left;
     padding-left: 3rem;
 }
 }
+
 .user__message {
 
     text-align: left;
@@ -516,3 +522,89 @@ a:hover {
     background: url("../img/image_10.png");
     @include hangman-image;
 }
+
+/*------------------ SCORES PAGE ----------------------*/
+
+.leaderboard-container {
+
+    display: flex;
+    justify-content: center;
+}
+
+.leaderboard__heading {
+
+    text-align: center;
+    font-family: $text-font;
+    color: #fff;
+    font-size: 4.0rem;
+}
+.leaderboard__table--headings {
+
+    text-align: center;
+    font-family: $text-font;
+    color: #fff;
+    font-size: 1.0rem;
+}
+
+.leaderboard__table--data {
+
+    text-align: center;
+    font-family: $text-font;
+    color: #fff;
+    font-size: 1.0rem;
+}
+
+.leaderboard {
+
+    width: 15rem;
+    height: 25rem;
+    margin-top: 1rem;
+
+    @include large {
+
+        width: 25rem;
+        height: 25rem;
+        margin-top: 2.5rem;
+       
+    }
+    
+}
+
+.leaderboard__table--headings {
+
+    font-size: 2rem;
+    
+    @include large {
+
+        font-size: 3rem;
+    }
+    
+}
+.leaderboard__table--data {
+
+    font-size: 1.5rem;
+
+    @include large {
+        
+        font-size: 2rem;
+    }
+    
+}
+
+.leaderboard__table--headings {
+
+    border-bottom: 1px solid #fff;
+}
+
+.leaderboard__table--left-data {
+
+    border-right: 1px solid #fff;
+    width: 50%;
+}
+
+.leaderboard__table--right-data {
+
+    //border-right: 1px solid #fff;
+    width: 50%;
+}
+

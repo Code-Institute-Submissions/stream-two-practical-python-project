@@ -6,7 +6,7 @@ hheyyye_fail_count:9:
 
 ruli
 ruli_guesses:(2, 'L'):(4, 'L'):(1, 'E'):(5, 'E'):(0, 'H'):(3, 'P'):(6, 'S'):(7, 'S'):;
-HELPLESS
+CRAWL
 ruli_fail_count:9:
 
 mad dog
@@ -66,5 +66,10 @@ max_fail_count:1:
 
 whatevs
 whatevs_guesses:;
-SUBTRACT
-whatevs_fail_count:1:
+CRAWL
+whatevs_fail_count:11:
+
+testers
+testers_guesses:(0, 'E'):(3, 'E'):;
+EAGER
+testers_fail_count:1:

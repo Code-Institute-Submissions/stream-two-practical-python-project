@@ -101,6 +101,7 @@ a:hover {
     }
 
 }
+
 .input-form__input--style {
 
     font-family: $text-font, sans-serif;
@@ -181,6 +182,16 @@ a:hover {
 
         font-size: 5rem;
     }
+
+    @include desktop {
+
+        font-size: 3rem;
+    }
+
+    @include large {
+
+        font-size: 4rem;
+    }
 }
 
 .user-container {
@@ -189,6 +200,12 @@ a:hover {
 
         margin-top: 2rem;
         margin-bottom: 1rem;
+    }
+
+    @include desktop {
+
+        margin-top: 0rem;
+        margin-bottom:0rem;
     }
 }
 
@@ -228,6 +245,11 @@ a:hover {
         font-size: 2rem;
     }
 
+    @include desktop {
+
+        font-size: 1.5rem;
+    }
+
 }
 .user {
 
@@ -252,6 +274,11 @@ a:hover {
         font-size: 2rem;
     }
 
+    @include desktop {
+
+        font-size: 1.5rem;
+    }
+
 }
 
 
@@ -262,6 +289,11 @@ a:hover {
     @include tablet {
 
         max-width: 36rem;
+    }
+
+    @include desktop {
+
+        max-width: 100vw;
     }
 }
 .generate {
@@ -285,6 +317,11 @@ a:hover {
 
         font-size: 2.5rem;
     }
+
+    @include desktop {
+
+        font-size: 2rem;
+    }
 }
 
 .guess {
@@ -305,6 +342,11 @@ a:hover {
     @include tablet {
 
         font-size: 2.5rem;
+    }
+
+    @include desktop {
+
+        font-size: 2rem;
     }
 }
 
@@ -345,6 +387,11 @@ a:hover {
 
         font-size: 1.5rem;
         padding-left: 2rem;
+    }
+
+    @include large {
+
+        font-size: 2rem;
     }
 }
 
@@ -392,6 +439,17 @@ a:hover {
     color: #fff;
     text-align: center;
     @include tablet {
+
+        font-size: 3rem;
+    }
+
+    @include desktop {
+
+        margin-bottom: 0;
+        font-size:2rem;
+    }
+
+    @include large {
 
         font-size: 3rem;
     }

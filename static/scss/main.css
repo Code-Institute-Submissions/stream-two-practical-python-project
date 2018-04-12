@@ -118,11 +118,21 @@ a:hover {
   @media (min-width: 767px) {
     .title__text-game {
       font-size: 5rem; } }
+  @media (min-width: 991px) {
+    .title__text-game {
+      font-size: 3rem; } }
+  @media (min-width: 1199px) {
+    .title__text-game {
+      font-size: 4rem; } }
 
 @media (min-width: 767px) {
   .user-container {
     margin-top: 2rem;
     margin-bottom: 1rem; } }
+@media (min-width: 991px) {
+  .user-container {
+    margin-top: 0rem;
+    margin-bottom: 0rem; } }
 
 .user, .scores {
   display: flex;
@@ -143,6 +153,9 @@ a:hover {
   @media (min-width: 767px) {
     .scores__link {
       font-size: 2rem; } }
+  @media (min-width: 991px) {
+    .scores__link {
+      font-size: 1.5rem; } }
 
 .user {
   margin-bottom: 1.0rem;
@@ -161,12 +174,18 @@ a:hover {
   @media (min-width: 767px) {
     .user__message {
       font-size: 2rem; } }
+  @media (min-width: 991px) {
+    .user__message {
+      font-size: 1.5rem; } }
 
 .guess-container {
   max-width: 100vw; }
   @media (min-width: 767px) {
     .guess-container {
       max-width: 36rem; } }
+  @media (min-width: 991px) {
+    .guess-container {
+      max-width: 100vw; } }
 
 .generate {
   display: flex;
@@ -182,6 +201,9 @@ a:hover {
   @media (min-width: 767px) {
     .generate__button--style {
       font-size: 2.5rem; } }
+  @media (min-width: 991px) {
+    .generate__button--style {
+      font-size: 2rem; } }
 
 .guess {
   display: flex;
@@ -198,6 +220,9 @@ a:hover {
   @media (min-width: 767px) {
     .guess-form__button {
       font-size: 2.5rem; } }
+  @media (min-width: 991px) {
+    .guess-form__button {
+      font-size: 2rem; } }
 
 /*.word-info {
 
@@ -220,6 +245,9 @@ a:hover {
     .score__text {
       font-size: 1.5rem;
       padding-left: 2rem; } }
+  @media (min-width: 1199px) {
+    .score__text {
+      font-size: 2rem; } }
 
 .win__text {
   font-size: 1.2rem; }
@@ -244,6 +272,13 @@ a:hover {
   @media (min-width: 767px) {
     .guesses__dash {
       font-size: 3rem; } }
+  @media (min-width: 991px) {
+    .guesses__dash {
+      margin-bottom: 0;
+      font-size: 2rem; } }
+  @media (min-width: 1199px) {
+    .guesses__dash {
+      font-size: 3rem; } }
 
 #image_1 {
   background: url("../img/image_1.png");
@@ -257,6 +292,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_1 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_1 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_2 {
   background: url("../img/image_2.png");
@@ -270,6 +309,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_2 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_2 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_3 {
   background: url("../img/image_3.png");
@@ -283,6 +326,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_3 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_3 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_4 {
   background: url("../img/image_4.png");
@@ -296,6 +343,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_4 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_4 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_5 {
   background: url("../img/image_5.png");
@@ -309,6 +360,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_5 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_5 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_6 {
   background: url("../img/image_6.png");
@@ -322,6 +377,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_6 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_6 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_7 {
   background: url("../img/image_7.png");
@@ -335,6 +394,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_7 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_7 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_8 {
   background: url("../img/image_8.png");
@@ -348,6 +411,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_8 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_8 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_9 {
   background: url("../img/image_9.png");
@@ -361,6 +428,10 @@ a:hover {
   @media (min-width: 767px) {
     #image_9 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_9 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 #image_10 {
   background: url("../img/image_10.png");
@@ -374,5 +445,9 @@ a:hover {
   @media (min-width: 767px) {
     #image_10 {
       height: 15rem; } }
+  @media (min-width: 1199px) {
+    #image_10 {
+      height: 22rem;
+      margin-bottom: 2rem; } }
 
 /*# sourceMappingURL=main.css.map */

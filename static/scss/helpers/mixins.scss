@@ -71,4 +71,11 @@ $large-desktop-width: 1199px;
 
         height: 15rem;
     }
+
+    @include large {
+
+        height: 22rem;
+        margin-bottom: 2rem;
+    }
+    
 }

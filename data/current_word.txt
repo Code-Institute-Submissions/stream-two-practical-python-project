@@ -58,3 +58,13 @@ megaman
 megaman_guesses:;
 REPEAT
 megaman_fail_count:10:
+
+max
+max_guesses:(5, 'E'):;
+TICKLE
+max_fail_count:1:
+
+whatevs
+whatevs_guesses:;
+SUBTRACT
+whatevs_fail_count:1:

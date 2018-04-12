@@ -44,16 +44,11 @@ a:hover {
 
 .background-image {
   height: 100%;
-  background: url("../img/OT8PER0-optim.jpg");
+  background: url("../img/OT8PER0.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   background-attachment: fixed; }
-
-.mask {
-  background-color: #0006;
-  background-size: cover;
-  background-repeat: no-repeat; }
 
 .input-form {
   display: flex;
@@ -219,7 +214,8 @@ a:hover {
 
 .score__text {
   font-size: 1.2rem;
-  text-align: left; }
+  text-align: left;
+  margin-bottom: 0; }
   @media (min-width: 767px) {
     .score__text {
       font-size: 1.5rem;
@@ -227,9 +223,15 @@ a:hover {
 
 .win__text {
   font-size: 1.2rem; }
+  @media (min-width: 767px) {
+    .win__text {
+      font-size: 1.5rem; } }
 
 .lose__text {
   font-size: 1.2rem; }
+  @media (min-width: 767px) {
+    .lose__text {
+      font-size: 1.5rem; } }
 
 .guesses {
   justify-content: center; }

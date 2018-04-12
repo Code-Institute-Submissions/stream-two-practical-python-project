@@ -62,7 +62,7 @@ a:hover {
 
 .background-image {
     height:100%;
-    background: url("../img/OT8PER0-optim.jpg");
+    background: url("../img/OT8PER0.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -70,14 +70,15 @@ a:hover {
     
 }
 
-.mask {
+//.mask {
 
-    //height:100%;
-    background-color: #0006;
-    background-size: cover;
-    background-repeat: no-repeat;
+    //height:inherit;
+    //background-color: #0006;
+    ///background-size: cover;
+    ///background-repeat: no-repeat;
+//height: inherit;
 
-}
+//}
 
 .input-form {
 
@@ -338,6 +339,7 @@ a:hover {
     @extend %message-text-shared;
     font-size: 1.2rem;
     text-align: left;
+    margin-bottom: 0;
 
     @include tablet {
 
@@ -351,6 +353,12 @@ a:hover {
     @extend %message-text-shared;
     font-size: 1.2rem;
 
+    @include tablet {
+
+        font-size: 1.5rem;
+
+    }
+
 }
 
 .lose__text {
@@ -358,6 +366,11 @@ a:hover {
     @extend %message-text-shared;
     font-size: 1.2rem;
 
+    @include tablet {
+        
+        font-size: 1.5rem;
+
+    }
 }
 
 

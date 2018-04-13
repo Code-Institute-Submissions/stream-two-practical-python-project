@@ -83,3 +83,13 @@ player 1
 player 1_guesses:;
 RURAL
 player 1_fail_count:1:
+
+qwd
+qwd_guesses:(5, 'E'):;
+ORANGES
+qwd_fail_count:11:
+
+useruser
+useruser_guesses:;
+ACCOUNT
+useruser_fail_count:11:

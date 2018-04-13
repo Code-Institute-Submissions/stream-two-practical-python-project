@@ -143,9 +143,11 @@ a:hover {
 .href {
   margin-bottom: 1.0rem;
   margin-top: 1.0rem;
-  justify-content: center;
-  justify-content: right;
-  padding-right: 3rem; }
+  justify-content: right; }
+  @media (min-width: 767px) {
+    .href {
+      justify-content: right;
+      margin-right: 3rem; } }
 
 .href__link {
   text-align: left;

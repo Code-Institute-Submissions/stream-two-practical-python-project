@@ -228,11 +228,14 @@ a:hover {
 
     margin-bottom: 1.0rem;
     margin-top: 1.0rem;
-    justify-content: center;
-
-    @include tablet;
     justify-content: right;
-    padding-right: 3rem;
+   // margin-right: 0rem;
+
+    @include tablet {
+    justify-content: right;
+    margin-right: 3rem;
+
+    }
 }
 
 .href__link { 

@@ -96,8 +96,9 @@ a:hover {
 
     @include desktop {
 
+        height: 3rem;
         width: 12rem;
-        padding-bottom: 1rem;
+        padding-bottom: 0rem;
     }
 
 }

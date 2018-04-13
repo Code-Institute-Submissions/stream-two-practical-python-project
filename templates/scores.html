@@ -27,6 +27,11 @@
                 <a class="href__link" href="{{ url_for('index') }}">Log Out</a>
             </div>
         </div>
+        <div class="row">
+            <div class="col back-to-game">
+                <a class="back-to-game__link" href="{{ url_for('user', variable=username) }}">Back to Game</a>
+            </div>
+        </div>
     </section>
     <section class="container-fluid">
         <!--<div class="row">
@@ -38,7 +43,7 @@
             <div class="col leaderboard-container">
                 <table class="leaderboard">
                     <tr class="leaderboard__table--headings">
-                        <th class="leaderboard__table--left-header">Username</th>
+                        <th class="leaderboard__table--left-header">Name</th>
                         <th class="leaderboard__table--right-header">Score</th>
                     </tr>
                     {% for i in top_scores %}

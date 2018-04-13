@@ -56,14 +56,11 @@ a:hover {
   align-items: center; }
 
 .input-form__input {
-  height: 2rem;
-  width: 9rem;
-  padding-bottom: 0.3rem; }
+  height: 3rem;
+  width: 9rem; }
   @media (min-width: 991px) {
     .input-form__input {
-      height: 3rem;
-      width: 12rem;
-      padding-bottom: 0rem; } }
+      width: 12rem; } }
 
 .input-form__input--style {
   font-family: "DJB Chalk It Up", sans-serif, sans-serif;
@@ -491,35 +488,29 @@ a:hover {
   text-align: center;
   font-family: "DJB Chalk It Up", sans-serif;
   color: #fff;
-  font-size: 1.0rem; }
-
-.leaderboard__table--data {
-  text-align: center;
-  font-family: "DJB Chalk It Up", sans-serif;
-  color: #fff;
-  font-size: 1.0rem; }
-
-.leaderboard {
-  width: 15rem;
-  height: 25rem;
-  margin-top: 1rem; }
-  @media (min-width: 1199px) {
-    .leaderboard {
-      width: 25rem;
-      height: 25rem;
-      margin-top: 2.5rem; } }
-
-.leaderboard__table--headings {
-  font-size: 2rem; }
+  font-size: 2.0rem; }
   @media (min-width: 1199px) {
     .leaderboard__table--headings {
       font-size: 3rem; } }
 
 .leaderboard__table--data {
+  text-align: center;
+  font-family: "DJB Chalk It Up", sans-serif;
+  color: #fff;
   font-size: 1.5rem; }
   @media (min-width: 1199px) {
     .leaderboard__table--data {
       font-size: 2rem; } }
+
+.leaderboard {
+  width: 15rem;
+  height: 25rem;
+  padding-bottom: 2rem; }
+  @media (min-width: 1199px) {
+    .leaderboard {
+      width: 25rem;
+      height: 25rem;
+      margin-top: 2.5rem; } }
 
 .leaderboard__table--headings {
   border-bottom: 1px solid #fff; }
@@ -529,6 +520,10 @@ a:hover {
   width: 50%; }
 
 .leaderboard__table--right-data {
+  width: 50%; }
+
+.leaderboard__table--left-header,
+.leaderboard__table--right-header {
   width: 50%; }
 
 /*# sourceMappingURL=main.css.map */

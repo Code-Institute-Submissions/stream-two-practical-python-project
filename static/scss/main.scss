@@ -90,15 +90,15 @@ a:hover {
 
 .input-form__input {
 
-    height: 2rem;
+    height: 3rem;
     width: 9rem;
-    padding-bottom: 0.3rem;
+    //padding-bottom: 0.3rem;
 
     @include desktop {
 
-        height: 3rem;
+       // height: 3rem;
         width: 12rem;
-        padding-bottom: 0rem;
+       // padding-bottom: 0rem;
     }
 
 }
@@ -547,7 +547,12 @@ a:hover {
     text-align: center;
     font-family: $text-font;
     color: #fff;
-    font-size: 1.0rem;
+    font-size: 2.0rem;
+
+    @include large {
+
+        font-size: 3rem;
+    }
 }
 
 .leaderboard__table--data {
@@ -555,14 +560,21 @@ a:hover {
     text-align: center;
     font-family: $text-font;
     color: #fff;
-    font-size: 1.0rem;
+    font-size: 1.5rem;
+
+    @include large {
+        
+        font-size: 2rem;
+    }
+    
 }
 
 .leaderboard {
 
     width: 15rem;
     height: 25rem;
-    margin-top: 1rem;
+    //margin-top: 1rem;
+    padding-bottom: 2rem;
 
     @include large {
 
@@ -570,27 +582,6 @@ a:hover {
         height: 25rem;
         margin-top: 2.5rem;
        
-    }
-    
-}
-
-.leaderboard__table--headings {
-
-    font-size: 2rem;
-    
-    @include large {
-
-        font-size: 3rem;
-    }
-    
-}
-.leaderboard__table--data {
-
-    font-size: 1.5rem;
-
-    @include large {
-        
-        font-size: 2rem;
     }
     
 }
@@ -612,3 +603,8 @@ a:hover {
     width: 50%;
 }
 
+.leaderboard__table--left-header, 
+.leaderboard__table--right-header {
+
+    width: 50%;
+}

@@ -407,12 +407,13 @@ def guess(username, guess_data):
     return render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess, win_message=win_message, current_score=current_score, lose_message=lose_message, image_id=image_id)
     
 
-"""
+
 if __name__ == "__main__":
     app.run(host=os.getenv("IP"),port=os.getenv("PORT"), debug=True)
-"""
 
-port = int(os.environ.get("PORT",5000))
+
+"""port = int(os.environ.get("PORT",5000))
 
 if __name__ == '__main__':
     app.run(debug=False, host="0.0.0.0", port = port)
+"""

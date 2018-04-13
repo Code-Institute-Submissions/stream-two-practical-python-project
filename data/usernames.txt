@@ -21,3 +21,8 @@ player
 player 1
 qwd
 useruser
+player1
+player7
+player8
+player 9
+player10

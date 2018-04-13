@@ -93,3 +93,8 @@ useruser
 useruser_guesses:;
 ACCOUNT
 useruser_fail_count:11:
+
+player1
+player1_guesses:;
+ACTOR
+player1_fail_count:1:

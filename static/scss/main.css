@@ -106,6 +106,10 @@ a:hover {
   margin-top: 0;
   height: 0.5; }
 
+.gen-word__word {
+  font-family: "DJB Chalk It Up", sans-serif;
+  color: #fff; }
+
 .title__text-game {
   text-align: center;
   font-family: "KGSecondChancesSketch", sans-serif;

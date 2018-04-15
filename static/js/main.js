@@ -4,12 +4,18 @@ addEventListener("DOMContentLoaded", function() {
     const guessButton = document.getElementsByClassName("guess-form__button");
     const guessForm = document.getElementById("guess-form");
     const username = document.getElementById("generate").value;
-    const wordRequestDiv = document.getElementById("word-request");
+    //const wordRequestDiv = document.getElementById("word-request");
     const guessRequestDiv = document.getElementById("guess-request");
-    
+
+    const word = document.getElementById("word"); 
+    const score = document.getElementById("score");
+    let word_array = "";
+    let dashes = [];
    // let guessInput = document.getElementById("guess-letter-{{ letter }}");
    // guessInput.value = "";
     //let data = guessInput;
+
+    //------------------------- FUNCTION DECLARATIONS ------------------------//
 
     const getRequest = (url) => {
 
@@ -18,14 +24,15 @@ addEventListener("DOMContentLoaded", function() {
             const xhr = new XMLHttpRequest();
 
             xhr.open("GET",url, true)
-            xhr.responseType = "text";
+           // xhr.responseType = "json";
             xhr.onload = function() {
         
                 if (xhr.readyState == 4 && xhr.status == 200) { 
                     //template(JSON.parse(this.responseText));
+                    //console.log(this.responseText)
                     const response = xhr.responseText;
                     resolve(response)
-                    console.log(xhr.responseText);
+                    //console.log(response);
                 } else {
                     const error = xhr.responseText;
                     reject(error)
@@ -52,7 +59,7 @@ addEventListener("DOMContentLoaded", function() {
                     const response = xhr.responseText;
                     
                     resolve(response, guess_data)
-                    console.log(xhr.responseText);
+                    //console.log(xhr.responseText);
                 } else {
                     const error = xhr.responseText;
                     reject(error)
@@ -65,11 +72,49 @@ addEventListener("DOMContentLoaded", function() {
 
     }
 
+    const displayDashes = () => {
+
+        word.innerHTML = dashes.join(" ");
+
+    }
+
+    const displayDashes = (wordArray) => {
+
+        dashes = [];
+        for(letter = 0; letter < wordArray.length; letter++) {
+            dashes.push(" _ ");
+        }
+        
+        joinDashes();
+       
+    }
+
+    const appendDashesWithGuess = (guessResponse) => {
+
+        guessResult = guessResponse.displayGuess;
+        dashes = [];
+        dashes = guessResult;
+        
+    }
+
+    const displayScore = (guessResponse) => {
+
+        score = guessResponse.currentScore;
+
+
+    }
+
+    //----------------- XHR REQUESTS ---------------------//
+
     generate.addEventListener("click", function() {
         
         getRequest(`/${username}/word`)
             .then((response) => {
-                wordRequestDiv.innerHTML = response;
+
+                wordArray = JSON.parse(response);//wordRequestDiv.innerHTML = response;
+                
+                displayDashes(wordArray);
+
             })
             .catch((error) => {
 
@@ -90,9 +135,10 @@ addEventListener("DOMContentLoaded", function() {
             postRequest(`/${username}/${guess_data}`, guess_data)
                 .then((response, guess_data) => {
                     
-                    guessRequestDiv.innerHTML = response;
-                    console.log(`successful post of ${response} ${guess_data}`)
+                    let guessResponse = JSON.parse(response);
 
+                    appendDashesWithGuess(guessResponse);
+                 
                 })
                 .catch((error) => {
 

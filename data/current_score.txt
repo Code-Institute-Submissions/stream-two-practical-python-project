@@ -34,3 +34,6 @@
 
 :testers
 :testers:22:
+
+:player 11
+:player 11:11:

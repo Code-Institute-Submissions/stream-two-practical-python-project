@@ -27,3 +27,11 @@ player8
 player 9
 player10
 player 11
+player 12
+player 13
+player 14
+player 15
+player 16
+player 17
+player 18
+player 19

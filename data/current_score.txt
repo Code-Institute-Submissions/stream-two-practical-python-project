@@ -36,4 +36,16 @@
 :testers:22:
 
 :player 11
-:player 11:144:
+:player 11:176:
+
+:player 16
+:player 16:8:
+
+:player 17
+:player 17:9:
+
+:player 18
+:player 18:8:
+
+:player 19
+:player 19:8:

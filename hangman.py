@@ -332,7 +332,11 @@ def user(username):
     scores_file = "data/current_score.txt"
     current_score = get_current_user_score(username, scores_file)
 
-    
+    if current_score == None: 
+        current_score = ""
+    else:
+        current_score = get_current_user_score(username, scores_file)
+        
     return render_template("game.html", username=username, alphabet=alphabet, score=current_score)
 
 @app.route("/<username>/scores")
@@ -368,10 +372,7 @@ def guess(username, guess_data):
         scores_file = "data/current_score.txt"
         guess = guess_data
         word = get_users_current_word(username, current_word_file)
-        display_correct_guess = ""
-        ##win_message = ""
         current_score = ""
-        ##lose_message = ""
         image_id = ""
 
         check_guess = is_guess_in_word(guess, word)
@@ -382,7 +383,7 @@ def guess(username, guess_data):
         if check_guess == True:
             incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
             image_id = set_image_id(incorrect_guesses_count)
-            if incorrect_guesses_count > 0:
+            if incorrect_guesses_count > 1:
                 correct_guess = get_string_of_guess(check_guess, guess, word)
                 write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
                 correct_guesses = get_users_correct_guesses(username, current_word_file)
@@ -392,17 +393,14 @@ def guess(username, guess_data):
 
                 if are_total_correct_guesses_the_word == True:
                     write_current_scores_to_file(username, scores_file, word)
-                   ## win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
                     current_score = get_current_user_score(username, scores_file)
 
             elif incorrect_guesses_count == 1:
-                ##lose_message = if_guessed_incorrect_message_to_user(word)
                 image_id = set_image_id(incorrect_guesses_count) 
                  
         elif check_guess == False:
             number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))
             are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
-            ##win_message = if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word)
             incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
 
             if incorrect_guesses_count > 1 and  are_total_correct_guesses_the_word == False:
@@ -414,11 +412,8 @@ def guess(username, guess_data):
             elif incorrect_guesses_count == 1:
                 correct_guesses = get_users_correct_guesses(username, current_word_file)
                 display_correct_guess = display_correct_guesses(word, correct_guesses)
-                ##lose_message = if_guessed_incorrect_message_to_user(word)
-                image_id = set_image_id(incorrect_guesses_count)
 
-                ##print(type(guess))
-                ##print(type(word))
+                image_id = set_image_id(incorrect_guesses_count)
 
         results = {
             

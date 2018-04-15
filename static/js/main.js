@@ -4,18 +4,13 @@ addEventListener("DOMContentLoaded", function() {
     const guessButton = document.getElementsByClassName("guess-form__button");
     const guessForm = document.getElementById("guess-form");
     const username = document.getElementById("generate").value;
-    //const wordRequestDiv = document.getElementById("word-request");
-    const guessRequestDiv = document.getElementById("guess-request");
-
     const word = document.getElementById("word"); 
     const score = document.getElementById("score");
     const winLoseMessage = document.getElementById("result-message");
-    const image = document.getElementsByClassName("image")[0];
+    const image = document.getElementsByClassName("image__image")[0];
     let word_array = [];
     let dashes = [];
-   // let guessInput = document.getElementById("guess-letter-{{ letter }}");
-   // guessInput.value = "";
-    //let data = guessInput;
+
 
     //------------------------- FUNCTION DECLARATIONS ------------------------//
 
@@ -26,15 +21,13 @@ addEventListener("DOMContentLoaded", function() {
             const xhr = new XMLHttpRequest();
 
             xhr.open("GET",url, true)
-           // xhr.responseType = "json";
             xhr.onload = function() {
         
                 if (xhr.readyState == 4 && xhr.status == 200) { 
-                    //template(JSON.parse(this.responseText));
-                    //console.log(this.responseText)
+
                     const response = xhr.responseText;
                     resolve(response)
-                    //console.log(response);
+               
                 } else {
                     const error = xhr.responseText;
                     reject(error)
@@ -57,11 +50,10 @@ addEventListener("DOMContentLoaded", function() {
             xhr.onload = function() {
         
                 if (xhr.readyState == 4 && xhr.status == 200) { 
-                    //template(JSON.parse(this.responseText));
+             
                     const response = xhr.responseText;
-                    
                     resolve(response, guess_data)
-                    //console.log(xhr.responseText);
+                  
                 } else {
                     const error = xhr.responseText;
                     reject(error)
@@ -69,7 +61,7 @@ addEventListener("DOMContentLoaded", function() {
             };
             
             xhr.send(guess_data)
-            console.log(guess_data);
+          
         })
 
     }
@@ -103,9 +95,8 @@ addEventListener("DOMContentLoaded", function() {
 
     const displayScore = (guessResponse) => {
 
-        const currentScore = guessResponse.currentScore;
-        score.innerHTML = currentScore;
-        console.log(currentScore);
+        score.innerHTML = guessResponse.currentScore;;
+
     }
 
     const isGameWon = (guessResponse) => {
@@ -118,8 +109,8 @@ addEventListener("DOMContentLoaded", function() {
 
             return false;
         }
-
     }
+
     const winMessage = (guessResponse) => {
 
         wordLength = wordArray.length; 
@@ -131,16 +122,14 @@ addEventListener("DOMContentLoaded", function() {
             winLoseMessage.innerHTML = winMessageToUser;
 
         } 
-
     }
 
     const loseMessage = (guessResponse) => {
 
         const theWordWas = wordArray.join("");
         const loseMessageToUser = `You LOSE! The word was ${theWordWas}. Hit GET WORD to play again.`
-        const guessCounter = guessResponse.guessCount;
-
-        if (guessCounter == 1 ) {
+    
+        if (guessResponse.guessCount == 1 ) {
 
             winLoseMessage.innerHTML = loseMessageToUser;
         }
@@ -164,28 +153,42 @@ addEventListener("DOMContentLoaded", function() {
 
     }
 
+    const setGuessButtonsToFalse = () => {
+
+        for (let i = 0; i < guessButton.length; i++) {
+
+            guessButton[i].setAttribute("data", false);
+
+        }
+    }
+
+    const setGuessButtonsToLetter = () => {
+
+        for (let i = 0; i < guessButton.length; i++) {
+
+            let letter = guessButton[i].value;
+            guessButton[i].setAttribute("data", letter);
+
+        }
+    }
+
     const stopScoreSummingOnWin = (guessResponse) => {
 
         const result = isGameWon(guessResponse); 
 
         if (result == true) {
 
-            for (let i = 0; i < guessButton.length; i++) {
-                
-                guessButton[i].setAttribute("data", false);
+            setGuessButtonsToFalse();
 
-            } 
         } else if (result == false) {
 
-            for (let i = 0; i < guessButton.length; i++) {
-                let letter = guessButton[i].value;
-                
-                guessButton[i].setAttribute("data", letter);
+            setGuessButtonsToLetter();
 
-            } 
+        } 
     
-        }
     }
+    
+  
     //----------------- XHR REQUESTS ---------------------//
 
     generate.addEventListener("click", function() {
@@ -193,8 +196,7 @@ addEventListener("DOMContentLoaded", function() {
         getRequest(`/${username}/word`)
             .then((response) => {
 
-                wordArray = JSON.parse(response);//wordRequestDiv.innerHTML = response;
-                console.log(wordArray)
+                wordArray = JSON.parse(response);
                 createDashes(wordArray);
                 clearWinLoseMessage();
                 clearImage();
@@ -214,7 +216,7 @@ addEventListener("DOMContentLoaded", function() {
 
             e.preventDefault();
             let guess_data = this.getAttribute('data');
-            //let guess_data = guess;
+            
             
             if (guess_data != false) {
                 postRequest(`/${username}/${guess_data}`, guess_data)
@@ -228,7 +230,6 @@ addEventListener("DOMContentLoaded", function() {
                         loseMessage(guessResponse);
                         setImage(guessResponse);
                         stopScoreSummingOnWin(guessResponse);
-                        //console.log(getElementsByClassName("image"));
                         
                     })
                     .catch((error) => {

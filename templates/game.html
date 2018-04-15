@@ -12,63 +12,75 @@
 </head>
 <body class="background-image">
    <!-- <div class="mask"> -->
-        <div class="container-fluid">
-            <header class="row">
-                <div class="col title">
-                    <h1 class="title__text-game title__text-game--style">HANGMAN.</h1>
-                </div>
-            </header>
-        </div>
-        <div class="container-fluid">
-            <nav class="row nav-container">
-                <div class="col nav__user">
-                    <h2 class="nav__user-message">Hello: {{ username }}.</h2> 
-                </div>
-                <div class="col nav__top-scores">
-                    <a class="nav__top-scores-link" href="/{{ username }}/scores">Top Scores.</a>
-                </div>
-            </nav>
-        </div>
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col generate">
-                    <button id="generate" class="generate__button--style" value="{{ username }}"> ( GET WORD )</button>
-                </div>
+    <div class="container-fluid">
+        <header class="row">
+            <div class="col title">
+                <h1 class="title__text-game title__text-game--style">HANGMAN.</h1>
             </div>
-        </div>
-        <div class="container guess-container">
-            <div class="row">
-                <div class="col guess">
-                    <form method="" id="guess-form">
-                        {% for letter in alphabet %}
-                        <button class="guess-form__button" id="guess-button-{{ letter }}" value="{{ letter }}" data="{{ letter }}">{{ letter }}</button>
-                        {% endfor %}
-                    </form>
-                </div>
+        </header>
+    </div>
+    <div class="container-fluid">
+        <nav class="row nav-container">
+            <div class="col nav__user">
+                <h2 class="nav__user-message">Hello: {{ username }}.</h2> 
             </div>
-        </div>
-        <!--<div class="container-fluid" id="word-request">
-            {% block word %}
-            {% endblock %}  
-        </div>-->
-         <div>
-            <p class="score">Score:<span id="score">{{ score }}</span></p>
-        </div>
-        <div>
-            <p id="word" class="gen-word__word"></p>
-        </div>
+            <div class="col nav__top-scores">
+                <a class="nav__top-scores-link" href="/{{ username }}/scores">Top Scores.</a>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid">
         <div class="row">
-                <div class="col">
-                    <div id="" class="image"></div>
+            <div class="col generate">
+                <button id="generate" class="generate__button--style" value="{{ username }}"> ( GET WORD )</button>
+            </div>
+        </div>
+    </div>
+    <div class="container guess-container">
+        <div class="row">
+            <div class="col guess">
+                <form method="" id="guess-form">
+                    {% for letter in alphabet %}
+                    <button class="guess-form__button" id="guess-button-{{ letter }}" value="{{ letter }}" data="{{ letter }}">{{ letter }}</button>
+                    {% endfor %}
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-12 col-lg-3 score">
+                <p class="score__text">Score: <span id="score">{{ score }}</span></p>
+            </div>
+            <div class="col-xs-12 col-lg-6 guesses">
+                <p id="word" class="guesses__dash"></p>
+            </div>
+        </div>
+    </div>
+   <!-- <div class="container-fluid">
+        <div class="row">
+            
+        </div>
+    </div> -->
+    <div class="container-fluid">
+        <div class="row">
+                <div class="col image">
+                    <div id="" class="image__image"></div>
                 </div>
             </div>
         <div>
-            <p class="result-message" id ="result-message"></p>
+    </div>
+    <div class="container-fluid">
+        <div class="row win">
+            <div class="col win__message">
+                <p class="win__text" id ="result-message"></p>
+            </div>
         </div>
-        <div class="container-fluid" id="guess-request">
+    </div>
+        <!--<div class="container-fluid" id="guess-request">
             {% block guess %}
             {% endblock %}
-        </div>
+        </div>-->
     <!--</div>-->
 </body>
 

@@ -9,6 +9,7 @@ addEventListener("DOMContentLoaded", function() {
 
     const word = document.getElementById("word"); 
     const score = document.getElementById("score");
+    const winLoseMessage = document.getElementById("result-message");
     let word_array = "";
     let dashes = [];
    // let guessInput = document.getElementById("guess-letter-{{ letter }}");
@@ -78,14 +79,14 @@ addEventListener("DOMContentLoaded", function() {
 
     }
 
-    const displayDashes = (wordArray) => {
+    const createDashes = (wordArray) => {
 
         dashes = [];
         for(letter = 0; letter < wordArray.length; letter++) {
             dashes.push(" _ ");
         }
         
-        joinDashes();
+        displayDashes();
        
     }
 
@@ -94,16 +95,62 @@ addEventListener("DOMContentLoaded", function() {
         guessResult = guessResponse.displayGuess;
         dashes = [];
         dashes = guessResult;
+
+        displayDashes();
         
     }
 
     const displayScore = (guessResponse) => {
 
-        score = guessResponse.currentScore;
+        const currentScore = guessResponse.currentScore;
+        score.innerHTML = currentScore;
+        console.log(currentScore);
+    }
 
+    const isGameWon = (guessResponse) => {
+
+        if(guessResponse.win == true) {
+
+            return true;
+
+        } else {
+
+            return false;
+        }
+
+    }
+    const winMessage = (guessResponse) => {
+
+        wordLength = wordArray.length; 
+        const winMessageToUser = `You are correct! You get ${wordLength} points!`;
+        const winLose = isGameWon(guessResponse);
+        
+        if (winLose == true) {
+
+            winLoseMessage.innerHTML = winMessageToUser;
+
+        } 
 
     }
 
+    const loseMessage = (guessResponse) => {
+
+        const theWordWas = wordArray.join("");
+        const loseMessageToUser = `You LOSE! The word was ${theWordWas}. Hit GET WORD to play again.`
+        const guessCounter = guessResponse.guessCount;
+
+        if (guessCounter == 1 ) {
+
+            winLoseMessage.innerHTML = loseMessageToUser;
+        }
+    }
+
+    const setImage = (guessResponse) => {
+
+        const currentImageNumber = guessResponse.imageId;
+        const currentImage = document.getElementsByClassName("image")[0].setAttribute("id", currentImageNumber);
+        //console.log(currentImage[0]);
+    }
     //----------------- XHR REQUESTS ---------------------//
 
     generate.addEventListener("click", function() {
@@ -112,8 +159,8 @@ addEventListener("DOMContentLoaded", function() {
             .then((response) => {
 
                 wordArray = JSON.parse(response);//wordRequestDiv.innerHTML = response;
-                
-                displayDashes(wordArray);
+                console.log(wordArray)
+                createDashes(wordArray);
 
             })
             .catch((error) => {
@@ -136,13 +183,17 @@ addEventListener("DOMContentLoaded", function() {
                 .then((response, guess_data) => {
                     
                     let guessResponse = JSON.parse(response);
-
                     appendDashesWithGuess(guessResponse);
-                 
+                    displayScore(guessResponse);
+                    winMessage(guessResponse);
+                    loseMessage(guessResponse);
+                    setImage(guessResponse);
+                    //console.log(getElementsByClassName("image"));
+                    
                 })
                 .catch((error) => {
 
-                    console.log(`unsuccessful post ${error}`)
+                    console.log(error)
 
                 })
             

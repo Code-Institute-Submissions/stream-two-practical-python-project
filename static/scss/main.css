@@ -110,6 +110,10 @@ a:hover {
   font-family: "DJB Chalk It Up", sans-serif;
   color: #fff; }
 
+.score, .result-message {
+  font-family: "DJB Chalk It Up", sans-serif;
+  color: #fff; }
+
 .title__text-game {
   text-align: center;
   font-family: "KGSecondChancesSketch", sans-serif;
@@ -277,7 +281,7 @@ a:hover {
     .guesses__dash {
       font-size: 3rem; } }
 
-#image_1 {
+.image_1 {
   background: url("../img/image_1.png");
   height: 6rem;
   width: 100%;
@@ -288,15 +292,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_1 {
+    .image_1 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_1 {
+    .image_1 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_2 {
+.image_2 {
   background: url("../img/image_2.png");
   height: 6rem;
   width: 100%;
@@ -307,15 +311,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_2 {
+    .image_2 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_2 {
+    .image_2 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_3 {
+.image_3 {
   background: url("../img/image_3.png");
   height: 6rem;
   width: 100%;
@@ -326,15 +330,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_3 {
+    .image_3 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_3 {
+    .image_3 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_4 {
+.image_4 {
   background: url("../img/image_4.png");
   height: 6rem;
   width: 100%;
@@ -345,15 +349,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_4 {
+    .image_4 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_4 {
+    .image_4 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_5 {
+.image_5 {
   background: url("../img/image_5.png");
   height: 6rem;
   width: 100%;
@@ -364,15 +368,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_5 {
+    .image_5 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_5 {
+    .image_5 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_6 {
+.image_6 {
   background: url("../img/image_6.png");
   height: 6rem;
   width: 100%;
@@ -383,15 +387,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_6 {
+    .image_6 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_6 {
+    .image_6 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_7 {
+.image_7 {
   background: url("../img/image_7.png");
   height: 6rem;
   width: 100%;
@@ -402,15 +406,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_7 {
+    .image_7 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_7 {
+    .image_7 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_8 {
+.image_8 {
   background: url("../img/image_8.png");
   height: 6rem;
   width: 100%;
@@ -421,15 +425,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_8 {
+    .image_8 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_8 {
+    .image_8 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_9 {
+.image_9 {
   background: url("../img/image_9.png");
   height: 6rem;
   width: 100%;
@@ -440,15 +444,15 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_9 {
+    .image_9 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_9 {
+    .image_9 {
       height: 22rem;
       margin-bottom: 2rem; } }
 
-#image_10 {
+.image_10 {
   background: url("../img/image_10.png");
   height: 6rem;
   width: 100%;
@@ -459,11 +463,11 @@ a:hover {
   margin-top: 0.5rem;
   background-attachment: scroll; }
   @media (min-width: 767px) {
-    #image_10 {
+    .image_10 {
       height: 15rem;
       margin-bottom: 2rem; } }
   @media (min-width: 1199px) {
-    #image_10 {
+    .image_10 {
       height: 22rem;
       margin-bottom: 2rem; } }
 

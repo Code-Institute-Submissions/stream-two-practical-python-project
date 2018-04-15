@@ -26,12 +26,12 @@ bliss_fail_count:10:
 
 siissi
 siissi_guesses:(0, 'L'):(6, 'L'):(1, 'I'):(2, 'K'):(3, 'E'):(7, 'E'):(4, 'A'):(5, 'B'):;
-LAND
+NATURE
 siissi_fail_count:10:
 
 whatever
 whatever_guesses:(0, 'C'):(1, 'A'):(2, 'K'):(3, 'E'):(4, 'S'):;
-LAND
+NATURE
 whatever_fail_count:9:
 
 daf
@@ -41,7 +41,7 @@ daf_fail_count:9:
 
 daf_test
 daf_test_guesses:;
-LAND
+NATURE
 daf_test_fail_count:10:
 
 dasfs
@@ -56,7 +56,7 @@ gamer_fail_count:11:
 
 megaman
 megaman_guesses:;
-LAND
+NATURE
 megaman_fail_count:10:
 
 max
@@ -76,12 +76,12 @@ testers_fail_count:1:
 
 player
 player_guesses:(0, 'M'):;
-LAND
+NATURE
 player_fail_count:11:
 
 player 1
 player 1_guesses:;
-LAND
+NATURE
 player 1_fail_count:1:
 
 qwd
@@ -100,6 +100,6 @@ ACTOR
 player1_fail_count:1:
 
 player 11
-player 11_guesses:(0, 'L'):(1, 'A'):(2, 'N'):(3, 'D'):;
-LAND
-player 11_fail_count:6:
+player 11_guesses:;
+NATURE
+player 11_fail_count:1:

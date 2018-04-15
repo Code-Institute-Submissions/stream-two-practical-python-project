@@ -51,8 +51,19 @@
             {% block word %}
             {% endblock %}  
         </div>-->
-        <div id="gen-word">
+         <div>
+            <p class="score">Score:<span id="score">{{ score }}</span></p>
+        </div>
+        <div>
             <p id="word" class="gen-word__word"></p>
+        </div>
+        <div class="row">
+                <div class="col">
+                    <div id="" class="image"></div>
+                </div>
+            </div>
+        <div>
+            <p class="result-message" id ="result-message"></p>
         </div>
         <div class="container-fluid" id="guess-request">
             {% block guess %}

@@ -178,6 +178,12 @@ a:hover {
     color: #fff;
 }
 
+.score, .result-message {
+
+    font-family: $text-font;
+    color: #fff;
+}
+
 //----------------------------------------------------//
 
 .title__text-game {
@@ -467,62 +473,62 @@ a:hover {
     
 }
 
-#image_1 {
+.image_1 {
 
     background: url("../img/image_1.png");
     @include hangman-image;
 
 }
 
-#image_2 {
+.image_2 {
 
     background: url("../img/image_2.png");
     @include hangman-image;
 }
 
-#image_3 {
+.image_3 {
 
     background: url("../img/image_3.png");
     @include hangman-image;
 }
 
-#image_4 {
+.image_4 {
 
     background: url("../img/image_4.png");
     @include hangman-image;
 }
 
-#image_5 {
+.image_5 {
 
     background: url("../img/image_5.png");
     @include hangman-image;
 }
 
-#image_6 {
+.image_6 {
 
     background: url("../img/image_6.png");
     @include hangman-image;
 }
 
-#image_7 {
+.image_7 {
 
     background: url("../img/image_7.png");
     @include hangman-image;
 }
 
-#image_8 {
+.image_8 {
 
     background: url("../img/image_8.png");
     @include hangman-image;
 }
 
-#image_9 {
+.image_9 {
 
     background: url("../img/image_9.png");
     @include hangman-image;
 }
 
-#image_10 {
+.image_10 {
 
     background: url("../img/image_10.png");
     @include hangman-image;
@@ -662,7 +668,6 @@ a:hover {
 }
 
 }
-
 
 
 .nav__logout-link {

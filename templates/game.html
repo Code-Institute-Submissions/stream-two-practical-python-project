@@ -41,7 +41,7 @@
                 <div class="col guess">
                     <form method="" id="guess-form">
                         {% for letter in alphabet %}
-                        <button class="guess-form__button" id="guess-button-{{ letter }}" value="guess-button" data="{{ letter }}">{{ letter }}</button>
+                        <button class="guess-form__button" id="guess-button-{{ letter }}" value="{{ letter }}" data="{{ letter }}">{{ letter }}</button>
                         {% endfor %}
                     </form>
                 </div>

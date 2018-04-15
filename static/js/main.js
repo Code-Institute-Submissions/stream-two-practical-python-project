@@ -10,7 +10,8 @@ addEventListener("DOMContentLoaded", function() {
     const word = document.getElementById("word"); 
     const score = document.getElementById("score");
     const winLoseMessage = document.getElementById("result-message");
-    let word_array = "";
+    const image = document.getElementsByClassName("image")[0];
+    let word_array = [];
     let dashes = [];
    // let guessInput = document.getElementById("guess-letter-{{ letter }}");
    // guessInput.value = "";
@@ -148,8 +149,42 @@ addEventListener("DOMContentLoaded", function() {
     const setImage = (guessResponse) => {
 
         const currentImageNumber = guessResponse.imageId;
-        const currentImage = document.getElementsByClassName("image")[0].setAttribute("id", currentImageNumber);
-        //console.log(currentImage[0]);
+        const currentImage = image.setAttribute("id", currentImageNumber);
+        
+    }
+
+    const clearWinLoseMessage = () => {
+
+        winLoseMessage.innerHTML = "";
+    }
+
+    const clearImage = () => {
+
+        const currentImage = image.setAttribute("id", "");
+
+    }
+
+    const stopScoreSummingOnWin = (guessResponse) => {
+
+        const result = isGameWon(guessResponse); 
+
+        if (result == true) {
+
+            for (let i = 0; i < guessButton.length; i++) {
+                
+                guessButton[i].setAttribute("data", false);
+
+            } 
+        } else if (result == false) {
+
+            for (let i = 0; i < guessButton.length; i++) {
+                let letter = guessButton[i].value;
+                
+                guessButton[i].setAttribute("data", letter);
+
+            } 
+    
+        }
     }
     //----------------- XHR REQUESTS ---------------------//
 
@@ -161,11 +196,13 @@ addEventListener("DOMContentLoaded", function() {
                 wordArray = JSON.parse(response);//wordRequestDiv.innerHTML = response;
                 console.log(wordArray)
                 createDashes(wordArray);
+                clearWinLoseMessage();
+                clearImage();
 
             })
             .catch((error) => {
 
-                console.log(`Could not get file ${error}`)
+                console.log(error);
             })
                     
     });
@@ -176,27 +213,30 @@ addEventListener("DOMContentLoaded", function() {
         guessButton[i].addEventListener("click", function(e) {
 
             e.preventDefault();
-            let guess = this.getAttribute('data');
-            let guess_data = guess;
-
-            postRequest(`/${username}/${guess_data}`, guess_data)
-                .then((response, guess_data) => {
-                    
-                    let guessResponse = JSON.parse(response);
-                    appendDashesWithGuess(guessResponse);
-                    displayScore(guessResponse);
-                    winMessage(guessResponse);
-                    loseMessage(guessResponse);
-                    setImage(guessResponse);
-                    //console.log(getElementsByClassName("image"));
-                    
-                })
-                .catch((error) => {
-
-                    console.log(error)
-
-                })
+            let guess_data = this.getAttribute('data');
+            //let guess_data = guess;
             
+            if (guess_data != false) {
+                postRequest(`/${username}/${guess_data}`, guess_data)
+                    .then((response, guess_data) => {
+                        
+                        let guessResponse = JSON.parse(response);
+                        
+                        appendDashesWithGuess(guessResponse);
+                        displayScore(guessResponse);
+                        winMessage(guessResponse);
+                        loseMessage(guessResponse);
+                        setImage(guessResponse);
+                        stopScoreSummingOnWin(guessResponse);
+                        //console.log(getElementsByClassName("image"));
+                        
+                    })
+                    .catch((error) => {
+
+                        console.log(error)
+
+                    })
+                }
         });
     }
    

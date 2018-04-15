@@ -123,62 +123,58 @@ a:hover {
     .title__text-game {
       font-size: 4rem; } }
 
-.user-container {
+.nav-container {
   margin-top: 1rem; }
   @media (min-width: 767px) {
-    .user-container {
+    .nav-container {
       margin-top: 2rem;
       margin-bottom: 1rem; } }
   @media (min-width: 991px) {
-    .user-container {
-      margin-top: 0rem;
-      margin-bottom: 0rem; } }
+    .nav-container {
+      margin-top: 1rem;
+      margin-bottom: 1rem; } }
 
-.user, .href {
+.nav__user, .nav__top-scores {
   display: flex;
   align-items: center; }
 
-.href {
-  margin-bottom: 1.0rem;
-  margin-top: 1.0rem;
+.nav__top-scores {
   justify-content: right; }
   @media (min-width: 767px) {
-    .href {
+    .nav__top-scores {
       justify-content: right;
       margin-right: 3rem; } }
 
-.href__link {
+.nav__top-scores-link {
   text-align: left;
   font-family: "KGSecondChancesSketch", sans-serif;
   color: #fff;
   font-size: 1.0rem; }
   @media (min-width: 767px) {
-    .href__link {
+    .nav__top-scores-link {
       font-size: 2rem; } }
   @media (min-width: 991px) {
-    .href__link {
+    .nav__top-scores-link {
       font-size: 1.5rem; } }
 
-.user {
-  margin-bottom: 1.0rem;
-  margin-top: 1.0rem;
+.nav__user {
   justify-content: left; }
   @media (min-width: 767px) {
-    .user {
+    .nav__user {
       justify-content: left;
       padding-left: 3rem; } }
 
-.user__message {
+.nav__user-message {
   text-align: left;
   font-family: "KGSecondChancesSketch", sans-serif;
   color: #fff;
   font-size: 1.0rem;
   margin-bottom: 0; }
   @media (min-width: 767px) {
-    .user__message {
+    .nav__user-message {
       font-size: 2rem; } }
   @media (min-width: 991px) {
-    .user__message {
+    .nav__user-message {
       font-size: 1.5rem; } }
 
 .guess-container {
@@ -227,12 +223,6 @@ a:hover {
     .guess-form__button {
       font-size: 2rem; } }
 
-/*.word-info {
-
-    display: flex;
-    justify-content: center;
-
-}*/
 @media (min-width: 767px) {
   .word-info__text {
     font-size: 1.5rem; } }
@@ -476,7 +466,8 @@ a:hover {
 /*------------------ SCORES PAGE ----------------------*/
 .leaderboard-container {
   display: flex;
-  justify-content: center; }
+  justify-content: center;
+  margin-bottom: 2rem; }
 
 .leaderboard__heading {
   text-align: center;
@@ -505,7 +496,11 @@ a:hover {
 .leaderboard {
   width: 15rem;
   height: 25rem;
+  margin-top: 1rem;
   padding-bottom: 2rem; }
+  @media (min-width: 767px) {
+    .leaderboard {
+      margin-top: 2rem; } }
   @media (min-width: 1199px) {
     .leaderboard {
       width: 25rem;
@@ -525,5 +520,47 @@ a:hover {
 .leaderboard__table--left-header,
 .leaderboard__table--right-header {
   width: 50%; }
+
+.nav__back-to-game {
+  display: flex;
+  justify-content: center; }
+  @media (min-width: 767px) {
+    .nav__back-to-game {
+      justify-content: center;
+      padding-left: 3rem; } }
+
+.nav__back-to-game-link {
+  text-align: center;
+  font-family: "KGSecondChancesSketch", sans-serif;
+  color: #fff;
+  font-size: 1.0rem;
+  margin-bottom: 0; }
+  @media (min-width: 767px) {
+    .nav__back-to-game-link {
+      font-size: 2rem; } }
+  @media (min-width: 991px) {
+    .nav__back-to-game-link {
+      font-size: 1.5rem; } }
+
+.nav__logout {
+  display: flex;
+  justify-content: right; }
+  @media (min-width: 767px) {
+    .nav__logout {
+      padding-left: 3rem; } }
+
+.nav__logout-link {
+  text-align: right;
+  font-family: "KGSecondChancesSketch", sans-serif;
+  color: #fff;
+  font-size: 1.0rem;
+  margin-bottom: 0; }
+  @media (min-width: 767px) {
+    .nav__logout-link {
+      font-size: 2rem;
+      padding-right: 3rem; } }
+  @media (min-width: 991px) {
+    .nav__logout-link {
+      font-size: 1.5rem; } }
 
 /*# sourceMappingURL=main.css.map */

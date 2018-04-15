@@ -18,21 +18,19 @@
             </div>
         </div>
     </header>
-    <section class="container-fluid">
-        <div class="row user-container">
-            <div class="col user">
-                <p class="user__message">Hello: {{ username }}</p>
+    <nav class="container-fluid">
+        <div class="row nav-container">
+            <div class="col nav__user">
+                <p class="nav__user-message">Hello: {{ username }}</p>
             </div>
-            <div class="col href">
-                <a class="href__link" href="{{ url_for('index') }}">Log Out</a>
+            <div class="col nav__back-to-game">
+                <a class="nav__back-to-game-link" href="{{ url_for('user', username=username) }}">Back to Game</a>
             </div>
-        </div>
-        <div class="row">
-            <div class="col back-to-game">
-                <a class="back-to-game__link" href="{{ url_for('user', username=username) }}">Back to Game</a>
+            <div class="col nav__logout">
+                <a class="nav__logout-link" href="{{ url_for('index') }}">Log Out</a>
             </div>
         </div>
-    </section>
+    </nav>
     <section class="container-fluid">
         <!--<div class="row">
             <div class="col leaderboard ">

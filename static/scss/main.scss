@@ -424,6 +424,10 @@ a:hover {
 
     }
 
+    @include large {
+
+        margin-top: 1.5rem;
+    }
 }
 
 .lose__text {

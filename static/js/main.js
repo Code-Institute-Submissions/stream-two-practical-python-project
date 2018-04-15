@@ -14,6 +14,8 @@ addEventListener("DOMContentLoaded", function() {
 
     //------------------------- FUNCTION DECLARATIONS ------------------------//
 
+    //--------------------------- XHR ----------------------------------------//
+
     const getRequest = (url) => {
 
         return new Promise((resolve, reject) => {
@@ -66,6 +68,8 @@ addEventListener("DOMContentLoaded", function() {
 
     }
 
+    //---------------------------------------------------------------//
+
     const displayDashes = () => {
 
         word.innerHTML = dashes.join(" ");
@@ -114,7 +118,7 @@ addEventListener("DOMContentLoaded", function() {
     const winMessage = (guessResponse) => {
 
         wordLength = wordArray.length; 
-        const winMessageToUser = `You are correct! You get ${wordLength} points!`;
+        const winMessageToUser = `You are correct! You get ${wordLength} points! Hit GET WORD to play again.`;
         const winLose = isGameWon(guessResponse);
         
         if (winLose == true) {

@@ -125,6 +125,11 @@ CONSIDER
 player 18_fail_count:11:
 
 player 19
-player 19_guesses:(0, 'C'):(1, 'O'):(2, 'N'):(3, 'G'):(4, 'R'):(5, 'E'):(6, 'S'):(7, 'S'):;
-CONGRESS
+player 19_guesses:;
+DEFICIENCY
 player 19_fail_count:11:
+
+player19
+player19_guesses:(2, 'A'):(0, 'P'):;
+PRAY
+player19_fail_count:5:

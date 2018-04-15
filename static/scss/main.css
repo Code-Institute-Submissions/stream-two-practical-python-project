@@ -255,6 +255,9 @@ a:hover {
   @media (min-width: 767px) {
     .win__text {
       font-size: 1.5rem; } }
+  @media (min-width: 1199px) {
+    .win__text {
+      margin-top: 1.5rem; } }
 
 .lose__text {
   font-size: 1.2rem; }

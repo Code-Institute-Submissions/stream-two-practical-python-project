@@ -49,3 +49,6 @@
 
 :player 19
 :player 19:8:
+
+:player19
+:player19:7:

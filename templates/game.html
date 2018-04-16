@@ -6,12 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HangMan</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
     <script src="../static/js/main.js"></script>
     <link rel="stylesheet" href="../static/scss/main.css" type="text/css">
 </head>
 <body class="background-image">
-   <!-- <div class="mask"> -->
     <div class="container-fluid">
         <header class="row">
             <div class="col title">
@@ -25,7 +23,10 @@
                 <h2 class="nav__user-message">Hello: {{ username }}.</h2> 
             </div>
             <div class="col nav__top-scores">
-                <a class="nav__top-scores-link" href="/{{ username }}/scores">Top Scores.</a>
+                <a id="top-scores" class="nav__top-scores-link" href="/{{ username }}/scores">Top Scores.</a>
+            </div>
+            <div class="col nav__logout">
+                <a id="log-out" class="nav__logout-link" href="{{ url_for('index') }}">Log Out.</a>
             </div>
         </nav>
     </div>
@@ -57,11 +58,6 @@
             </div>
         </div>
     </div>
-   <!-- <div class="container-fluid">
-        <div class="row">
-            
-        </div>
-    </div> -->
     <div class="container-fluid">
         <div class="row">
                 <div class="col image">
@@ -77,12 +73,6 @@
             </div>
         </div>
     </div>
-        <!--<div class="container-fluid" id="guess-request">
-            {% block guess %}
-            {% endblock %}
-        </div>-->
-    <!--</div>-->
 </body>
-
 </html>
 

@@ -206,26 +206,7 @@ class TestHangman(unittest.TestCase):
         guesses_equal_to_word = hangman.are_number_of_guesses_equal_to_word(number_of_guesses_length, word)
 
         self.assertTrue(word, guesses_equal_to_word)
-
-    def test_if_guess_correct_message_to_user(self):
-        are_total_guesses_the_word = True
-        word = "WORD\n"
-        win_message = "You are correct! You get {0} points.".format((len(word) -1))
-
-        correct_guess = hangman.if_guessed_correct_message_to_user(are_total_guesses_the_word, word)
-
-        self.assertEqual(correct_guess, win_message)
-        self.assertIsInstance(correct_guess, str)
-
-    def test_if_guess_incorrect_message_to_user(self):
-        word = "WORD\n"
-        lose_message = "YOU LOSE! The word was {0}. For a new word, hit generate!".format(word)
-
-        incorrect_guess = hangman.if_guessed_incorrect_message_to_user(word)
-
-        self.assertEqual(incorrect_guess, lose_message)
-        self.assertIsInstance(incorrect_guess, str)
-
+  
     def test_display_correct_guesses(self):
         word = "WORD\n"
         correct_guesses = "test_guesses:(0, 'W'):(1, 'O'):;"
@@ -238,7 +219,7 @@ class TestHangman(unittest.TestCase):
     def test_write_incorrect_guess_counter_to_file(self):
         username = "test"
         file = tempfile.mkstemp()[1]
-        counter = "9"
+        counter = "10"
         letter_string = "WORD"
 
         hangman.write_username_and_current_word_to_file(username, letter_string,file)
@@ -263,7 +244,7 @@ class TestHangman(unittest.TestCase):
         finally:
             os.remove(file)
 
-        self.assertEqual(total_guesses, 10)
+        self.assertEqual(total_guesses, 11)
 
     def test_set_image_id(self):
         incorrect_guess_count = 10
@@ -277,7 +258,7 @@ class TestHangman(unittest.TestCase):
         sorted_scores = hangman.get_scores_for_leaderboard(scores_file)
 
         self.assertTrue(sorted_scores, list)
-        self.assertEqual(len(sorted_scores), 5)
+        self.assertEqual(len(sorted_scores), 10)
 
 class ExpectedFailuretTestCase(unittest.TestCase):
     @unittest.expectedFailure

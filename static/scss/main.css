@@ -4,7 +4,7 @@
 @font-face {
   font-family: 'DJB Chalk It Up';
   src: url("../fonts/DJB Chalk It Up.ttf"); }
-.word-info__text, .word-info__number, .score__text, .win__text, .lose__text {
+.score__text, .win__text {
   font-family: "DJB Chalk It Up", sans-serif;
   font-size: 1.0rem;
   color: #fff;
@@ -82,10 +82,18 @@ a:hover {
   font-size: 1.5rem;
   color: #fff;
   border: none;
-  background-color: #fff0; }
+  background-color: #fff0;
+  transition: color, 0.3s, ease-in-out; }
   @media (min-width: 991px) {
     .input-form__button--style {
       font-size: 2.5rem; } }
+
+.input-form__button--style:hover {
+  color: #b3b3b3;
+  cursor: pointer; }
+
+.input-form__button--clicked {
+  color: #b3b3b3; }
 
 .user-instructions {
   font-family: "DJB Chalk It Up", sans-serif;
@@ -100,17 +108,15 @@ a:hover {
     .user-instructions {
       font-size: 2.0rem; } }
 
+/*
 .title-divider {
-  width: 50vw;
-  background-color: #fffdfd33;
-  margin-top: 0;
-  height: 0.5; }
 
-.gen-word__word {
-  font-family: "DJB Chalk It Up", sans-serif;
-  color: #fff; }
-
-.score, .result-message {
+    width: 50vw;
+    background-color: #fffdfd33;
+    margin-top: 0;
+    height: 0.5;
+}*/
+.gen-word__word, .score, .result-message {
   font-family: "DJB Chalk It Up", sans-serif;
   color: #fff; }
 
@@ -147,23 +153,26 @@ a:hover {
   align-items: center; }
 
 .nav__top-scores {
-  justify-content: right; }
-  @media (min-width: 767px) {
-    .nav__top-scores {
-      justify-content: right;
-      margin-right: 3rem; } }
+  justify-content: center; }
 
 .nav__top-scores-link {
-  text-align: left;
+  text-align: center;
   font-family: "KGSecondChancesSketch", sans-serif;
   color: #fff;
-  font-size: 1.0rem; }
+  font-size: 1.0rem;
+  transition: color, 0.3s, ease-in-out; }
   @media (min-width: 767px) {
     .nav__top-scores-link {
       font-size: 2rem; } }
   @media (min-width: 991px) {
     .nav__top-scores-link {
       font-size: 1.5rem; } }
+
+.nav__top-scores-link:hover {
+  color: #b3b3b3; }
+
+.nav__top-scores-link--clicked {
+  color: #b3b3b3; }
 
 .nav__user {
   justify-content: left; }
@@ -185,6 +194,34 @@ a:hover {
     .nav__user-message {
       font-size: 1.5rem; } }
 
+.nav__logout {
+  display: flex;
+  justify-content: right; }
+  @media (min-width: 767px) {
+    .nav__logout {
+      padding-left: 3rem; } }
+
+.nav__logout-link {
+  text-align: right;
+  font-family: "KGSecondChancesSketch", sans-serif;
+  color: #fff;
+  font-size: 1.0rem;
+  margin-bottom: 0;
+  transition: color, 0.3s, ease-in-out; }
+  @media (min-width: 767px) {
+    .nav__logout-link {
+      font-size: 2rem;
+      padding-right: 3rem; } }
+  @media (min-width: 991px) {
+    .nav__logout-link {
+      font-size: 1.5rem; } }
+
+.nav__logout-link:hover {
+  color: #b3b3b3; }
+
+.nav__logout-link--clicked {
+  color: #b3b3b3; }
+
 .guess-container {
   max-width: 100vw; }
   @media (min-width: 767px) {
@@ -197,20 +234,28 @@ a:hover {
 .generate {
   display: flex;
   justify-content: center;
-  margin-bottom: 1rem; }
+  margin-bottom: 1rem;
+  margin-top: 1rem; }
 
 .generate__button--style {
   font-family: "DJB Chalk It Up", sans-serif;
   font-size: 1.5rem;
   color: #fff;
   border: none;
-  background-color: #fff0; }
+  background-color: #fff0;
+  transition: color, 0.2s, ease-in-out; }
   @media (min-width: 767px) {
     .generate__button--style {
       font-size: 2.5rem; } }
   @media (min-width: 991px) {
     .generate__button--style {
       font-size: 2rem; } }
+
+.generate__button--style:hover {
+  cursor: pointer; }
+
+.generate__button--clicked {
+  color: #666666; }
 
 .guess {
   display: flex;
@@ -223,7 +268,8 @@ a:hover {
   font-size: 1.5rem;
   color: #fff;
   border: none;
-  background-color: #fff0; }
+  background-color: #fff0;
+  transition: color, 0.3s, ease-in; }
   @media (min-width: 767px) {
     .guess-form__button {
       font-size: 2.5rem; } }
@@ -231,13 +277,29 @@ a:hover {
     .guess-form__button {
       font-size: 2rem; } }
 
-@media (min-width: 767px) {
-  .word-info__text {
-    font-size: 1.5rem; } }
+.guess-form__button--clicked {
+  color: #494949; }
+
+.guess-form__button:hover {
+  cursor: pointer; }
+
+/*.word-info__text {
+
+    //padding-left: 0.5rem;
+    @extend %message-text-shared;
+    @include tablet {
+
+        font-size: 1.5rem;
+    }
+
+}
 
 .word-info__number {
-  font-size: 2.0rem; }
 
+    @extend %message-text-shared;
+    font-size: 2.0rem;
+
+}*/
 .score__text {
   font-size: 1.2rem;
   text-align: left;
@@ -250,6 +312,9 @@ a:hover {
     .score__text {
       font-size: 2rem; } }
 
+.win__message {
+  margin-top: 1rem; }
+
 .win__text {
   font-size: 1.2rem; }
   @media (min-width: 767px) {
@@ -259,12 +324,17 @@ a:hover {
     .win__text {
       margin-top: 1.5rem; } }
 
-.lose__text {
-  font-size: 1.2rem; }
-  @media (min-width: 767px) {
-    .lose__text {
-      font-size: 1.5rem; } }
+/*.lose__text {
 
+    @extend %message-text-shared;
+    font-size: 1.2rem;
+
+    @include tablet {
+        
+        font-size: 1.5rem;
+
+    }
+}*/
 .guesses {
   justify-content: center; }
 
@@ -545,7 +615,8 @@ a:hover {
   font-family: "KGSecondChancesSketch", sans-serif;
   color: #fff;
   font-size: 1.0rem;
-  margin-bottom: 0; }
+  margin-bottom: 0;
+  transition: color, 0.3s, ease-in-out; }
   @media (min-width: 767px) {
     .nav__back-to-game-link {
       font-size: 2rem; } }
@@ -553,25 +624,10 @@ a:hover {
     .nav__back-to-game-link {
       font-size: 1.5rem; } }
 
-.nav__logout {
-  display: flex;
-  justify-content: right; }
-  @media (min-width: 767px) {
-    .nav__logout {
-      padding-left: 3rem; } }
+.nav__back-to-game-link:hover {
+  color: #b3b3b3; }
 
-.nav__logout-link {
-  text-align: right;
-  font-family: "KGSecondChancesSketch", sans-serif;
-  color: #fff;
-  font-size: 1.0rem;
-  margin-bottom: 0; }
-  @media (min-width: 767px) {
-    .nav__logout-link {
-      font-size: 2rem;
-      padding-right: 3rem; } }
-  @media (min-width: 991px) {
-    .nav__logout-link {
-      font-size: 1.5rem; } }
+.nav__back-to-game-link--clicked {
+  color: #b3b3b3; }
 
 /*# sourceMappingURL=main.css.map */

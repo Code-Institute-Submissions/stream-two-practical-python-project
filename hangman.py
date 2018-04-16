@@ -275,17 +275,6 @@ def are_number_of_guesses_equal_to_word(number_of_correct_guesses, word):
     else:
         return False  
 
-def if_guessed_correct_message_to_user(are_total_correct_guesses_the_word, word):
-    if are_total_correct_guesses_the_word == True:
-        win_message = "You are correct! You get {0} points.".format((len(word) - 1))
-
-        return win_message
-
-def if_guessed_incorrect_message_to_user(word):
-    lose_message = "YOU LOSE! The word was {0}. Hit GET WORD to play again!".format(word)
-
-    return lose_message
-
 def display_correct_guesses(word, correct_guesses):
     word_list = list(word)
     word_length = len(word_list)
@@ -313,18 +302,20 @@ def set_image_id(incorrect_guess_count):
 
 @app.route("/", methods=["GET","POST"])
 def index(): 
-    username_taken = ""
+    username_message = ""
     if request.method=="POST":
         username_file = "data/usernames.txt"
         username = request.form["username"].lower()
         usernames = read_doc(username_file)
         
-        if username in usernames:
-            username_taken = "Username taken, enter an original username."
+        if username == "":
+            username_message = "Please enter a username."
+        elif username in usernames:
+            username_message = "Username taken, enter an original username."
         else: 
             write_to_doc(username_file, username + "\n")
             return redirect(username)
-    return render_template("index.html", username_taken=username_taken)
+    return render_template("index.html", username_message=username_message)
 
 @app.route("/<username>") 
 def user(username):
@@ -343,9 +334,7 @@ def user(username):
 def scores(username):
     scores_file = "data/current_score.txt"
     top_scores = get_scores_for_leaderboard(scores_file)
-    
-    ##print(top_scores)
-
+ 
     return render_template("scores.html", username=username, top_scores=top_scores)
 
 @app.route("/<username>/word")
@@ -356,14 +345,14 @@ def message(username):
     clear_old_guesses_from_file(username, current_word_file)
     write_username_and_current_word_to_file(username, letter_string, current_word_file)
 
-    ## return letter-string as JSON object instead of HTML Template here ####
+    guess_word = {
 
-    letter_list_json = json.dumps(letter_list)
-    print(json.dumps(letter_list))
-    print(type(letter_list_json))
+        "guessWord":letter_list
+    }
 
-    return letter_list_json
-    ##render_template("word.html", username=username, letter_string=letter_string)
+    guess_word_json = json.dumps(guess_word)
+
+    return guess_word_json
 
 @app.route("/<username>/<guess_data>", methods=["GET","POST"])
 def guess(username, guess_data): 
@@ -427,9 +416,7 @@ def guess(username, guess_data):
 
         results_json = json.dumps(results)
 
-
     return results_json
-    ##render_template("guess.html", guess=guess, word=word, display_correct_guess=display_correct_guess, win_message=win_message, current_score=current_score, lose_message=lose_message, image_id=image_id)
 
 if __name__ == "__main__":
     app.run(host=os.getenv("IP"),port=os.getenv("PORT"), debug=True)

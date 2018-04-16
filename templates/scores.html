@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HangMan</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
     <script src="../static/js/main.js"></script>
     <link rel="stylesheet" href="../static/scss/main.css" type="text/css">
 </head>
@@ -21,22 +20,17 @@
     <nav class="container-fluid">
         <div class="row nav-container">
             <div class="col nav__user">
-                <p class="nav__user-message">Hello: {{ username }}</p>
+                <p class="nav__user-message">Hello: {{ username }}.</p>
             </div>
             <div class="col nav__back-to-game">
-                <a class="nav__back-to-game-link" href="{{ url_for('user', username=username) }}">Back to Game</a>
+                <a id="back-to-game" class="nav__back-to-game-link" href="{{ url_for('user', username=username) }}">Back to Game.</a>
             </div>
             <div class="col nav__logout">
-                <a class="nav__logout-link" href="{{ url_for('index') }}">Log Out</a>
+                <a id="log-out" class="nav__logout-link" href="{{ url_for('index') }}">Log Out.</a>
             </div>
         </div>
     </nav>
     <section class="container-fluid">
-        <!--<div class="row">
-            <div class="col leaderboard ">
-                <h2 class="leaderboard__heading leaderboard__heading--style">Top Scores</h2>
-            </div>
-        </div>-->
         <div class="row">
             <div class="col leaderboard-container">
                 <table class="leaderboard">

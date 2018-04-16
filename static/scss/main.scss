@@ -132,12 +132,24 @@ a:hover {
     color: #fff;
     border: none;
     background-color: #fff0;
+    transition: color, 0.3s, ease-in-out;
 
     @include desktop {
 
         font-size: 2.5rem;
     }
     
+}
+
+.input-form__button--style:hover {
+
+    color: #b3b3b3;
+    cursor: pointer;
+}
+
+.input-form__button--clicked {
+
+    color: #b3b3b3;
 }
 
 .user-instructions {
@@ -159,26 +171,19 @@ a:hover {
     }
     
 }
-
+/*
 .title-divider {
 
     width: 50vw;
     background-color: #fffdfd33;
     margin-top: 0;
     height: 0.5;
-}
+}*/
 
 //------------- GAME PAGE -------------------//
 
-//------------------ REFACTOR-STYLES ------------------//
 
-.gen-word__word {
-
-    font-family: $text-font;
-    color: #fff;
-}
-
-.score, .result-message {
+.gen-word__word, .score, .result-message {
 
     font-family: $text-font;
     color: #fff;
@@ -244,25 +249,17 @@ a:hover {
 
 .nav__top-scores {
 
-    //margin-bottom: 1.0rem;
-    //margin-top: 1.0rem;
-    justify-content: right;
-   // margin-right: 0rem;
-
-    @include tablet {
-    justify-content: right;
-    margin-right: 3rem;
-
-    }
+    justify-content: center;
+  
 }
 
 .nav__top-scores-link { 
 
-    text-align: left;
+    text-align: center;
     font-family: $title-font;
     color: #fff;
     font-size: 1.0rem;
-   
+    transition: color, 0.3s, ease-in-out;
 
     @include tablet {
 
@@ -276,6 +273,20 @@ a:hover {
     }
 
 }
+
+.nav__top-scores-link:hover {
+
+    color: #b3b3b3;
+
+}
+
+.nav__top-scores-link--clicked {
+
+    color: #b3b3b3;
+    
+}
+
+
 .nav__user {
 
     justify-content: left;
@@ -306,6 +317,53 @@ a:hover {
 
 }
 
+.nav__logout {
+    display: flex;
+    //margin-bottom: 1.0rem;
+    //margin-top: 1.0rem;
+    justify-content: right;
+
+    @include tablet {
+    //justify-content: right;
+    padding-left: 3rem;
+}
+
+}
+
+
+.nav__logout-link {
+
+    text-align: right;
+    font-family: $title-font;
+    color: #fff;
+    font-size: 1.0rem;
+    margin-bottom: 0;
+    transition: color, 0.3s, ease-in-out;
+
+    @include tablet {
+
+        font-size: 2rem;
+        padding-right: 3rem;
+    }
+
+    @include desktop {
+
+        font-size: 1.5rem;
+    }
+}
+
+.nav__logout-link:hover {
+
+    color: #b3b3b3;
+
+}
+
+.nav__logout-link--clicked {
+
+    color: #b3b3b3;
+    
+}
+
 
 .guess-container {
 
@@ -327,6 +385,7 @@ a:hover {
     display: flex;
     justify-content: center;
     margin-bottom: 1rem;
+    margin-top: 1rem;
 
 }
 
@@ -337,6 +396,7 @@ a:hover {
     color: #fff;
     border: none;
     background-color: #fff0;
+    transition: color, 0.2s, ease-in-out;
 
     @include tablet {
 
@@ -348,6 +408,18 @@ a:hover {
         font-size: 2rem;
     }
 }
+
+.generate__button--style:hover {
+
+    cursor: pointer;
+}
+
+.generate__button--clicked {
+
+    color: #666666;
+
+}
+
 
 .guess {
 
@@ -364,7 +436,7 @@ a:hover {
     color: #fff;
     border: none;
     background-color: #fff0;
-
+    transition: color, 0.3s, ease-in;
     @include tablet {
 
         font-size: 2.5rem;
@@ -376,7 +448,21 @@ a:hover {
     }
 }
 
-.word-info__text {
+.guess-form__button--clicked {
+
+    color: rgb(73, 73, 73);
+}
+
+.guess-form__button:hover {
+
+    cursor: pointer;
+}
+
+
+
+
+
+/*.word-info__text {
 
     //padding-left: 0.5rem;
     @extend %message-text-shared;
@@ -392,7 +478,7 @@ a:hover {
     @extend %message-text-shared;
     font-size: 2.0rem;
 
-}
+}*/
 
 .score__text {
 
@@ -413,6 +499,10 @@ a:hover {
     }
 }
 
+.win__message {
+
+    margin-top: 1rem;
+}
 .win__text {
 
     @extend %message-text-shared;
@@ -430,7 +520,7 @@ a:hover {
     }
 }
 
-.lose__text {
+/*.lose__text {
 
     @extend %message-text-shared;
     font-size: 1.2rem;
@@ -440,7 +530,7 @@ a:hover {
         font-size: 1.5rem;
 
     }
-}
+}*/
 
 
 //.hangman-image {
@@ -647,6 +737,7 @@ a:hover {
     color: #fff;
     font-size: 1.0rem;
     margin-bottom: 0;
+    transition: color, 0.3s, ease-in-out;
 
     @include tablet {
 
@@ -660,37 +751,15 @@ a:hover {
 }
 
 
+.nav__back-to-game-link:hover {
 
-.nav__logout {
-    display: flex;
-    //margin-bottom: 1.0rem;
-    //margin-top: 1.0rem;
-    justify-content: right;
-
-    @include tablet {
-    //justify-content: right;
-    padding-left: 3rem;
-}
+    color: #b3b3b3;
 
 }
 
+.nav__back-to-game-link--clicked {
 
-.nav__logout-link {
-
-    text-align: right;
-    font-family: $title-font;
-    color: #fff;
-    font-size: 1.0rem;
-    margin-bottom: 0;
-
-    @include tablet {
-
-        font-size: 2rem;
-        padding-right: 3rem;
-    }
-
-    @include desktop {
-
-        font-size: 1.5rem;
-    }
+    color: #b3b3b3;
 }
+
+

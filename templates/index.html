@@ -6,39 +6,34 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HangMan</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="crossorigin="anonymous"></script>
     <script src="../static/js/main.js"></script>
     <link rel="stylesheet" href="../static/scss/main.css" type="text/css">
 </head>
 <!-- image credit <a href="https://www.freepik.com/free-photo/black-background_1200051.htm">Designed by Freepik</a> -->
 <body class="background-image">
-    <!--<div class="mask">-->
-        <div class="container-fluid ">
-            <header class="row">
-                <div class="col d-sm-none title">
-                    <h1 class="title__text-mobile title__text--style">HANG<br>MAN.</h1>
-                </div>
-                <div class="col d-none d-sm-block ">
-                    <h1 class="title__text-desktop title__text--style">HANGMAN.</h1>
-                </div>
-            </header>
-           <!-- <hr class="title-divider"> -->
-            <div class="row">
-                <div class="col">
-                    <p class="user-instructions">Enter your name:</p>
-                    <form class="input-form input-form--style" id = "username-form" method="POST">
-                        <input class="input-form__input input-form__input--style" type="text" placeholder="username" id="username" name="username"></input>
-                        <button class="input-form__button input-form__button--style" >( PLAY )</button>     
-                    </form>
-                </div>
+    <div class="container-fluid ">
+        <header class="row">
+            <div class="col d-sm-none title">
+                <h1 class="title__text-mobile title__text--style">HANG<br>MAN.</h1>
             </div>
-            <div class="row">
-                <div class="col ">
-                    <p class="user-instructions">{{ username_taken }}</p>
-                </div>
+            <div class="col d-none d-sm-block ">
+                <h1 class="title__text-desktop title__text--style">HANGMAN.</h1>
+            </div>
+        </header>
+        <div class="row">
+            <div class="col">
+                <p class="user-instructions">Enter your name:</p>
+                <form class="input-form input-form--style" id = "username-form" method="POST">
+                    <input class="input-form__input input-form__input--style" type="text" placeholder="username" id="username" name="username" value=""></input>
+                    <button id="play"class="input-form__button input-form__button--style" >( PLAY )</button>     
+                </form>
             </div>
         </div>
-    <!--</div>-->
+        <div class="row">
+            <div class="col ">
+                <p class="user-instructions">{{ username_message }}</p>
+            </div>
+        </div>
+    </div>
 </body>
-
 </html>

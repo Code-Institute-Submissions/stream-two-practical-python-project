@@ -44,3 +44,7 @@ major
 messy
 majors
 wordmaster
+safari
+plyr
+mster
+sega

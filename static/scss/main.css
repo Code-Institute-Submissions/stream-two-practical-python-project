@@ -18,6 +18,9 @@ a:hover {
   color: #fff;
   text-decoration: none; }
 
+button:focus {
+  outline: none; }
+
 .title__text-mobile {
   text-align: center;
   font-family: "KGSecondChancesSketch", sans-serif;
@@ -61,6 +64,9 @@ a:hover {
   @media (min-width: 991px) {
     .input-form__input {
       width: 12rem; } }
+
+.input-form__input:focus {
+  outline: none; }
 
 .input-form__input--style {
   font-family: "DJB Chalk It Up", sans-serif, sans-serif;
@@ -108,14 +114,6 @@ a:hover {
     .user-instructions {
       font-size: 2.0rem; } }
 
-/*
-.title-divider {
-
-    width: 50vw;
-    background-color: #fffdfd33;
-    margin-top: 0;
-    height: 0.5;
-}*/
 .gen-word__word, .score, .result-message {
   font-family: "DJB Chalk It Up", sans-serif;
   color: #fff; }
@@ -283,23 +281,6 @@ a:hover {
 .guess-form__button:hover {
   cursor: pointer; }
 
-/*.word-info__text {
-
-    //padding-left: 0.5rem;
-    @extend %message-text-shared;
-    @include tablet {
-
-        font-size: 1.5rem;
-    }
-
-}
-
-.word-info__number {
-
-    @extend %message-text-shared;
-    font-size: 2.0rem;
-
-}*/
 .score__text {
   font-size: 1.2rem;
   text-align: left;
@@ -324,17 +305,6 @@ a:hover {
     .win__text {
       margin-top: 1.5rem; } }
 
-/*.lose__text {
-
-    @extend %message-text-shared;
-    font-size: 1.2rem;
-
-    @include tablet {
-        
-        font-size: 1.5rem;
-
-    }
-}*/
 .guesses {
   justify-content: center; }
 

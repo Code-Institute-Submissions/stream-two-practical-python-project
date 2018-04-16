@@ -1,0 +1,648 @@
+@font-face {
+    font-family: 'KGSecondChancesSketch';
+    src: url("../fonts/KGSecondChancesSketch.ttf"); }
+  @font-face {
+    font-family: 'DJB Chalk It Up';
+    src: url("../fonts/DJB Chalk It Up.ttf"); }
+  .score__text, .win__text {
+    font-family: "DJB Chalk It Up", sans-serif;
+    font-size: 1.0rem;
+    color: #fff;
+    text-align: center; }
+  
+  body, html {
+    height: 100%;
+    margin: 0; }
+  
+  a:hover {
+    color: #fff;
+    text-decoration: none; }
+  
+  button:focus {
+    outline: none; }
+  
+  .title__text-mobile {
+    text-align: center;
+    font-family: "KGSecondChancesSketch", sans-serif;
+    color: #fff;
+    font-size: 4.5rem;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem; }
+  
+  .title__text-desktop {
+    text-align: center;
+    font-family: "KGSecondChancesSketch", sans-serif;
+    color: #fff;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    margin-top: 1.5rem; }
+    @media (min-width: 767px) {
+      .title__text-desktop {
+        font-size: 5.5rem;
+        margin-bottom: 4.5rem;
+        margin-top: 5.5rem; } }
+    @media (min-width: 991px) {
+      .title__text-desktop {
+        font-size: 7.5rem; } }
+  
+  .background-image {
+    height: 100%;
+    background: url("../img/OT8PER0.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed; }
+  
+  .input-form {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  
+  .input-form__input {
+    height: 3rem;
+    width: 9rem; }
+    @media (min-width: 991px) {
+      .input-form__input {
+        width: 12rem; } }
+  
+  .input-form__input:focus {
+    outline: none; }
+  
+  .input-form__input--style {
+    font-family: "DJB Chalk It Up", sans-serif, sans-serif;
+    color: #fff;
+    background-color: #fff0;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    font-size: 1.5rem; }
+    @media (min-width: 991px) {
+      .input-form__input--style {
+        font-size: 2.0rem; } }
+  
+  .input-form__button {
+    padding-left: 1rem; }
+  
+  .input-form__button--style {
+    font-family: "DJB Chalk It Up", sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    border: none;
+    background-color: #fff0;
+    -webkit-transition: color, 0.3s, ease-in-out;
+    transition: color, 0.3s, ease-in-out; }
+    @media (min-width: 991px) {
+      .input-form__button--style {
+        font-size: 2.5rem; } }
+  
+  .input-form__button--style:hover {
+    color: #b3b3b3;
+    cursor: pointer; }
+  
+  .input-form__button--clicked {
+    color: #b3b3b3; }
+  
+  .user-instructions {
+    font-family: "DJB Chalk It Up", sans-serif;
+    text-align: center;
+    color: #ffffff;
+    font-size: 1.5rem;
+    margin-top: 0.5rem; }
+    @media (min-width: 767px) {
+      .user-instructions {
+        margin-top: 2.0rem; } }
+    @media (min-width: 991px) {
+      .user-instructions {
+        font-size: 2.0rem; } }
+  
+  .gen-word__word, .score, .result-message {
+    font-family: "DJB Chalk It Up", sans-serif;
+    color: #fff; }
+  
+  .title__text-game {
+    text-align: center;
+    font-family: "KGSecondChancesSketch", sans-serif;
+    color: #fff;
+    font-size: 3.0rem;
+    margin-bottom: 0rem;
+    margin-top: 1.5rem; }
+    @media (min-width: 767px) {
+      .title__text-game {
+        font-size: 5rem; } }
+    @media (min-width: 991px) {
+      .title__text-game {
+        font-size: 3rem; } }
+    @media (min-width: 1199px) {
+      .title__text-game {
+        font-size: 4rem; } }
+  
+  .nav-container {
+    margin-top: 1rem; }
+    @media (min-width: 767px) {
+      .nav-container {
+        margin-top: 2rem;
+        margin-bottom: 1rem; } }
+    @media (min-width: 991px) {
+      .nav-container {
+        margin-top: 1rem;
+        margin-bottom: 1rem; } }
+  
+  .nav__user, .nav__top-scores {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center; }
+  
+  .nav__top-scores {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  
+  .nav__top-scores-link {
+    text-align: center;
+    font-family: "KGSecondChancesSketch", sans-serif;
+    color: #fff;
+    font-size: 1.0rem;
+    -webkit-transition: color, 0.3s, ease-in-out;
+    transition: color, 0.3s, ease-in-out; }
+    @media (min-width: 767px) {
+      .nav__top-scores-link {
+        font-size: 2rem; } }
+    @media (min-width: 991px) {
+      .nav__top-scores-link {
+        font-size: 1.5rem; } }
+  
+  .nav__top-scores-link:hover {
+    color: #b3b3b3; }
+  
+  .nav__top-scores-link--clicked {
+    color: #b3b3b3; }
+  
+  .nav__user {
+    -webkit-box-pack: left;
+        -ms-flex-pack: left;
+            justify-content: left; }
+    @media (min-width: 767px) {
+      .nav__user {
+        -webkit-box-pack: left;
+            -ms-flex-pack: left;
+                justify-content: left;
+        padding-left: 3rem; } }
+  
+  .nav__user-message {
+    text-align: left;
+    font-family: "KGSecondChancesSketch", sans-serif;
+    color: #fff;
+    font-size: 1.0rem;
+    margin-bottom: 0; }
+    @media (min-width: 767px) {
+      .nav__user-message {
+        font-size: 2rem; } }
+    @media (min-width: 991px) {
+      .nav__user-message {
+        font-size: 1.5rem; } }
+  
+  .nav__logout {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: right;
+        -ms-flex-pack: right;
+            justify-content: right; }
+    @media (min-width: 767px) {
+      .nav__logout {
+        padding-left: 3rem; } }
+  
+  .nav__logout-link {
+    text-align: right;
+    font-family: "KGSecondChancesSketch", sans-serif;
+    color: #fff;
+    font-size: 1.0rem;
+    margin-bottom: 0;
+    -webkit-transition: color, 0.3s, ease-in-out;
+    transition: color, 0.3s, ease-in-out; }
+    @media (min-width: 767px) {
+      .nav__logout-link {
+        font-size: 2rem;
+        padding-right: 3rem; } }
+    @media (min-width: 991px) {
+      .nav__logout-link {
+        font-size: 1.5rem; } }
+  
+  .nav__logout-link:hover {
+    color: #b3b3b3; }
+  
+  .nav__logout-link--clicked {
+    color: #b3b3b3; }
+  
+  .guess-container {
+    max-width: 100vw; }
+    @media (min-width: 767px) {
+      .guess-container {
+        max-width: 36rem; } }
+    @media (min-width: 991px) {
+      .guess-container {
+        max-width: 100vw; } }
+  
+  .generate {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 1rem;
+    margin-top: 1rem; }
+  
+  .generate__button--style {
+    font-family: "DJB Chalk It Up", sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    border: none;
+    background-color: #fff0;
+    -webkit-transition: color, 0.2s, ease-in-out;
+    transition: color, 0.2s, ease-in-out; }
+    @media (min-width: 767px) {
+      .generate__button--style {
+        font-size: 2.5rem; } }
+    @media (min-width: 991px) {
+      .generate__button--style {
+        font-size: 2rem; } }
+  
+  .generate__button--style:hover {
+    cursor: pointer; }
+  
+  .generate__button--clicked {
+    color: #666666; }
+  
+  .guess {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    text-align: center;
+    margin-bottom: 1rem; }
+  
+  .guess-form__button {
+    font-family: "DJB Chalk It Up", sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+    border: none;
+    background-color: #fff0;
+    -webkit-transition: color, 0.3s, ease-in;
+    transition: color, 0.3s, ease-in; }
+    @media (min-width: 767px) {
+      .guess-form__button {
+        font-size: 2.5rem; } }
+    @media (min-width: 991px) {
+      .guess-form__button {
+        font-size: 2rem; } }
+  
+  .guess-form__button--clicked {
+    color: #494949; }
+  
+  .guess-form__button:hover {
+    cursor: pointer; }
+  
+  .score__text {
+    font-size: 1.2rem;
+    text-align: left;
+    margin-bottom: 0; }
+    @media (min-width: 767px) {
+      .score__text {
+        font-size: 1.5rem;
+        padding-left: 2rem; } }
+    @media (min-width: 1199px) {
+      .score__text {
+        font-size: 2rem; } }
+  
+  .win__message {
+    margin-top: 1rem; }
+  
+  .win__text {
+    font-size: 1.2rem; }
+    @media (min-width: 767px) {
+      .win__text {
+        font-size: 1.5rem; } }
+    @media (min-width: 1199px) {
+      .win__text {
+        margin-top: 1.5rem; } }
+  
+  .guesses {
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+  
+  .guesses__dash {
+    font-family: "DJB Chalk It Up", sans-serif;
+    font-size: 2.0rem;
+    color: #fff;
+    text-align: center; }
+    @media (min-width: 767px) {
+      .guesses__dash {
+        font-size: 3rem; } }
+    @media (min-width: 991px) {
+      .guesses__dash {
+        margin-bottom: 0;
+        font-size: 2rem; } }
+    @media (min-width: 1199px) {
+      .guesses__dash {
+        font-size: 3rem; } }
+  
+  #image_1 {
+    background: url("../img/image_1.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_1 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_1 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_2 {
+    background: url("../img/image_2.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_2 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_2 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_3 {
+    background: url("../img/image_3.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_3 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_3 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_4 {
+    background: url("../img/image_4.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_4 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_4 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_5 {
+    background: url("../img/image_5.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_5 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_5 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_6 {
+    background: url("../img/image_6.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_6 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_6 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_7 {
+    background: url("../img/image_7.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_7 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_7 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_8 {
+    background: url("../img/image_8.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_8 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_8 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_9 {
+    background: url("../img/image_9.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_9 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_9 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  #image_10 {
+    background: url("../img/image_10.png");
+    height: 6rem;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 1.5rem;
+    margin-top: 0.5rem;
+    background-attachment: scroll; }
+    @media (min-width: 767px) {
+      #image_10 {
+        height: 15rem;
+        margin-bottom: 2rem; } }
+    @media (min-width: 1199px) {
+      #image_10 {
+        height: 22rem;
+        margin-bottom: 2rem; } }
+  
+  /*------------------ SCORES PAGE ----------------------*/
+  .leaderboard-container {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    margin-bottom: 2rem; }
+  
+  .leaderboard__heading {
+    text-align: center;
+    font-family: "DJB Chalk It Up", sans-serif;
+    color: #fff;
+    font-size: 4.0rem; }
+  
+  .leaderboard__table--headings {
+    text-align: center;
+    font-family: "DJB Chalk It Up", sans-serif;
+    color: #fff;
+    font-size: 2.0rem; }
+    @media (min-width: 1199px) {
+      .leaderboard__table--headings {
+        font-size: 3rem; } }
+  
+  .leaderboard__table--data {
+    text-align: center;
+    font-family: "DJB Chalk It Up", sans-serif;
+    color: #fff;
+    font-size: 1.5rem; }
+    @media (min-width: 1199px) {
+      .leaderboard__table--data {
+        font-size: 2rem; } }
+  
+  .leaderboard {
+    width: 15rem;
+    height: 25rem;
+    margin-top: 1rem;
+    padding-bottom: 2rem; }
+    @media (min-width: 767px) {
+      .leaderboard {
+        margin-top: 2rem; } }
+    @media (min-width: 1199px) {
+      .leaderboard {
+        width: 25rem;
+        height: 25rem;
+        margin-top: 2.5rem; } }
+  
+  .leaderboard__table--headings {
+    border-bottom: 1px solid #fff; }
+  
+  .leaderboard__table--left-data {
+    border-right: 1px solid #fff;
+    width: 50%; }
+  
+  .leaderboard__table--right-data {
+    width: 50%; }
+  
+  .leaderboard__table--left-header,
+  .leaderboard__table--right-header {
+    width: 50%; }
+  
+  .nav__back-to-game {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center; }
+    @media (min-width: 767px) {
+      .nav__back-to-game {
+        -webkit-box-pack: center;
+            -ms-flex-pack: center;
+                justify-content: center;
+        padding-left: 3rem; } }
+  
+  .nav__back-to-game-link {
+    text-align: center;
+    font-family: "KGSecondChancesSketch", sans-serif;
+    color: #fff;
+    font-size: 1.0rem;
+    margin-bottom: 0;
+    -webkit-transition: color, 0.3s, ease-in-out;
+    transition: color, 0.3s, ease-in-out; }
+    @media (min-width: 767px) {
+      .nav__back-to-game-link {
+        font-size: 2rem; } }
+    @media (min-width: 991px) {
+      .nav__back-to-game-link {
+        font-size: 1.5rem; } }
+  
+  .nav__back-to-game-link:hover {
+    color: #b3b3b3; }
+  
+  .nav__back-to-game-link--clicked {
+    color: #b3b3b3; }
+  

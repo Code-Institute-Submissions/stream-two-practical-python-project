@@ -277,7 +277,7 @@ addEventListener("DOMContentLoaded", function() {
             e.preventDefault();
             let guess_data = this.getAttribute('data');
 
-            if (guess_data != "false") {
+            if ((guess_data != "false") && (this.classList.contains("guess-form__button--clicked") == false)) {
 
                 this.classList.add("guess-form__button--clicked");
 

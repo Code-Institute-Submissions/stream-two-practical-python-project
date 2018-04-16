@@ -26,6 +26,11 @@ a:hover {
     color: #fff;
     text-decoration: none;
 }
+
+button:focus {
+
+    outline: none;
+}
 //------------ LOGIN PAGE --------------------//
 .title__text-mobile {
 
@@ -70,15 +75,6 @@ a:hover {
     
 }
 
-//.mask {
-
-    //height:inherit;
-    //background-color: #0006;
-    ///background-size: cover;
-    ///background-repeat: no-repeat;
-//height: inherit;
-
-//}
 
 .input-form {
 
@@ -92,15 +88,17 @@ a:hover {
 
     height: 3rem;
     width: 9rem;
-    //padding-bottom: 0.3rem;
 
     @include desktop {
 
-       // height: 3rem;
         width: 12rem;
-       // padding-bottom: 0rem;
     }
 
+}
+
+.input-form__input:focus {
+
+    outline: none;
 }
 
 .input-form__input--style {
@@ -171,14 +169,6 @@ a:hover {
     }
     
 }
-/*
-.title-divider {
-
-    width: 50vw;
-    background-color: #fffdfd33;
-    margin-top: 0;
-    height: 0.5;
-}*/
 
 //------------- GAME PAGE -------------------//
 
@@ -237,14 +227,7 @@ a:hover {
 
     display: flex;
     align-items: center;
-    //justify-content: center;
-    //margin-top: 1.5rem;
-    @include tablet {
-
-        //justify-content: center;
-        //margin-top: 2rem;
-    }
-
+ 
 }
 
 .nav__top-scores {
@@ -264,7 +247,7 @@ a:hover {
     @include tablet {
 
         font-size: 2rem;
-        //justify-content: right;
+        
     }
 
     @include desktop {
@@ -294,7 +277,7 @@ a:hover {
     @include tablet {
     justify-content: left;
     padding-left: 3rem;
-}
+    }
 }
 
 .nav__user-message {
@@ -318,13 +301,11 @@ a:hover {
 }
 
 .nav__logout {
+
     display: flex;
-    //margin-bottom: 1.0rem;
-    //margin-top: 1.0rem;
     justify-content: right;
 
     @include tablet {
-    //justify-content: right;
     padding-left: 3rem;
 }
 
@@ -363,7 +344,6 @@ a:hover {
     color: #b3b3b3;
     
 }
-
 
 .guess-container {
 
@@ -459,27 +439,6 @@ a:hover {
 }
 
 
-
-
-
-/*.word-info__text {
-
-    //padding-left: 0.5rem;
-    @extend %message-text-shared;
-    @include tablet {
-
-        font-size: 1.5rem;
-    }
-
-}
-
-.word-info__number {
-
-    @extend %message-text-shared;
-    font-size: 2.0rem;
-
-}*/
-
 .score__text {
 
     @extend %message-text-shared;
@@ -519,25 +478,6 @@ a:hover {
         margin-top: 1.5rem;
     }
 }
-
-/*.lose__text {
-
-    @extend %message-text-shared;
-    font-size: 1.2rem;
-
-    @include tablet {
-        
-        font-size: 1.5rem;
-
-    }
-}*/
-
-
-//.hangman-image {
-
-    
-//}
-
 
 .guesses {
 
@@ -707,7 +647,6 @@ a:hover {
 
 .leaderboard__table--right-data {
 
-    //border-right: 1px solid #fff;
     width: 50%;
 }
 
@@ -720,7 +659,6 @@ a:hover {
 
 .nav__back-to-game {
 
-    //margin-bottom: 1.0rem;
     display: flex;
     justify-content: center;
 

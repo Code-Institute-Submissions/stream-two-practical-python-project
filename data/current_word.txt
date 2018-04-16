@@ -143,3 +143,23 @@ majors
 majors_guesses:(1, 'A'):(4, 'E'):;
 LADDER
 majors_fail_count:8:
+
+safari
+safari_guesses:(2, 'S'):(4, 'S'):(7, 'R'):;
+DISASTER
+safari_fail_count:1:
+
+plyr
+plyr_guesses:(3, 'L'):;
+TWILIGHT
+plyr_fail_count:1:
+
+mster
+mster_guesses:(4, 'N'):(2, 'O'):;
+DROWN
+mster_fail_count:5:
+
+sega
+sega_guesses:(7, 'N'):;
+ILLUSION
+sega_fail_count:5:

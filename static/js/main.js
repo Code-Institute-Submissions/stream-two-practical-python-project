@@ -259,7 +259,7 @@ addEventListener("DOMContentLoaded", function() {
                 createDashes(wordArray);
                 clearWinLoseMessage();
                 clearImage();
-                console.log(wordArray);
+                //console.log(wordArray);
 
             })
             .catch((error) => {

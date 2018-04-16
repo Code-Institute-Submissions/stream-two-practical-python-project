@@ -130,7 +130,7 @@ button:focus {
     color: #fff;
     border: none;
     background-color: #fff0;
-    transition: color, 0.3s, ease-in-out;
+    transition: color 0.3s, ease-in-out;
 
     @include desktop {
 
@@ -242,7 +242,7 @@ button:focus {
     font-family: $title-font;
     color: #fff;
     font-size: 1.0rem;
-    transition: color, 0.3s, ease-in-out;
+    transition: color 0.3s, ease-in-out;
 
     @include tablet {
 
@@ -319,7 +319,7 @@ button:focus {
     color: #fff;
     font-size: 1.0rem;
     margin-bottom: 0;
-    transition: color, 0.3s, ease-in-out;
+    transition: color 0.3s, ease-in-out;
 
     @include tablet {
 
@@ -376,7 +376,7 @@ button:focus {
     color: #fff;
     border: none;
     background-color: #fff0;
-    transition: color, 0.2s, ease-in-out;
+    transition: color 0.2s, ease-in-out;
 
     @include tablet {
 
@@ -416,7 +416,7 @@ button:focus {
     color: #fff;
     border: none;
     background-color: #fff0;
-    transition: color, 0.3s, ease-in;
+    transition: color 0.3s, ease-in;
     @include tablet {
 
         font-size: 2.5rem;
@@ -675,7 +675,7 @@ button:focus {
     color: #fff;
     font-size: 1.0rem;
     margin-bottom: 0;
-    transition: color, 0.3s, ease-in-out;
+    transition: color 0.3s, ease-in-out;
 
     @include tablet {
 

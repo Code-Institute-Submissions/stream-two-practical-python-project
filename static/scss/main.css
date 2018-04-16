@@ -89,7 +89,7 @@ button:focus {
   color: #fff;
   border: none;
   background-color: #fff0;
-  transition: color, 0.3s, ease-in-out; }
+  transition: color 0.3s, ease-in-out; }
   @media (min-width: 991px) {
     .input-form__button--style {
       font-size: 2.5rem; } }
@@ -158,7 +158,7 @@ button:focus {
   font-family: "KGSecondChancesSketch", sans-serif;
   color: #fff;
   font-size: 1.0rem;
-  transition: color, 0.3s, ease-in-out; }
+  transition: color 0.3s, ease-in-out; }
   @media (min-width: 767px) {
     .nav__top-scores-link {
       font-size: 2rem; } }
@@ -203,7 +203,7 @@ button:focus {
   color: #fff;
   font-size: 1.0rem;
   margin-bottom: 0;
-  transition: color, 0.3s, ease-in-out; }
+  transition: color 0.3s, ease-in-out; }
   @media (min-width: 767px) {
     .nav__logout-link {
       font-size: 2rem; } }
@@ -238,7 +238,7 @@ button:focus {
   color: #fff;
   border: none;
   background-color: #fff0;
-  transition: color, 0.2s, ease-in-out; }
+  transition: color 0.2s, ease-in-out; }
   @media (min-width: 767px) {
     .generate__button--style {
       font-size: 2.5rem; } }
@@ -264,7 +264,7 @@ button:focus {
   color: #fff;
   border: none;
   background-color: #fff0;
-  transition: color, 0.3s, ease-in; }
+  transition: color 0.3s, ease-in; }
   @media (min-width: 767px) {
     .guess-form__button {
       font-size: 2.5rem; } }
@@ -582,7 +582,7 @@ button:focus {
   color: #fff;
   font-size: 1.0rem;
   margin-bottom: 0;
-  transition: color, 0.3s, ease-in-out; }
+  transition: color 0.3s, ease-in-out; }
   @media (min-width: 767px) {
     .nav__back-to-game-link {
       font-size: 2rem; } }

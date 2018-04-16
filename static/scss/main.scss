@@ -275,7 +275,7 @@ button:focus {
     justify-content: left;
 
     @include tablet {
-    justify-content: left;
+    //justify-content: left;
     padding-left: 3rem;
     }
 }
@@ -302,12 +302,12 @@ button:focus {
 
 .nav__logout {
 
-    display: flex;
-    justify-content: right;
+    //display: flex;
+    text-align: right;
 
     @include tablet {
-    padding-left: 3rem;
-}
+    padding-right: 3rem;
+    }
 
 }
 
@@ -324,7 +324,7 @@ button:focus {
     @include tablet {
 
         font-size: 2rem;
-        padding-right: 3rem;
+       
     }
 
     @include desktop {
@@ -575,7 +575,7 @@ button:focus {
 
     display: flex;
     justify-content: center;
-    margin-bottom: 2rem;
+    //margin-bottom: 2rem;
 }
 
 .leaderboard__heading {
@@ -618,7 +618,7 @@ button:focus {
     width: 15rem;
     height: 25rem;
     margin-top: 1rem;
-    padding-bottom: 2rem;
+    margin-bottom: 3rem;
 
     @include tablet {
 

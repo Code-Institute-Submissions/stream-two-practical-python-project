@@ -1,4 +1,4 @@
-addEventListener("DOMContentLoaded", function() {
+(() => {
 
     const topScores = document.getElementById("top-scores");
     const logOut = document.getElementById("log-out");
@@ -33,7 +33,7 @@ addEventListener("DOMContentLoaded", function() {
 
                     const response = xhr.responseText;
                     resolve(response)
-               
+                
                 } else {
                     const error = xhr.responseText;
                     reject(error)
@@ -43,7 +43,7 @@ addEventListener("DOMContentLoaded", function() {
             xhr.send()  
         })
     }
-    
+
     const postRequest = (url, guess_data) => {
 
         return new Promise((resolve, reject) => {
@@ -56,10 +56,10 @@ addEventListener("DOMContentLoaded", function() {
             xhr.onload = function() {
         
                 if (xhr.readyState == 4 && xhr.status == 200) { 
-             
+                
                     const response = xhr.responseText;
                     resolve(response, guess_data)
-                  
+                    
                 } else {
                     const error = xhr.responseText;
                     reject(error)
@@ -67,7 +67,7 @@ addEventListener("DOMContentLoaded", function() {
             };
             
             xhr.send(guess_data)
-          
+            
         })
 
     }
@@ -77,6 +77,8 @@ addEventListener("DOMContentLoaded", function() {
     const displayDashes = () => {
         // JOIN THE LIST OF DASHES MADE BY THE FUNCTION BELOW //
         word.innerHTML = dashes.join(" ");
+
+        return word.innerHTML
 
     }
 
@@ -104,7 +106,7 @@ addEventListener("DOMContentLoaded", function() {
 
     const displayScore = (guessResponse) => {
         // DISPLAY THE RETURNED SCORE //
-        score.innerHTML = guessResponse.currentScore;;
+        score.innerHTML = guessResponse.currentScore;
 
     }
 
@@ -122,7 +124,7 @@ addEventListener("DOMContentLoaded", function() {
 
     const winMessage = (guessResponse) => {
         // IF THE GAME IS WON, DISPLAY THIS MESSAGE //
-        wordLength = wordArray.length; 
+        const wordLength = wordArray.length; 
         const winMessageToUser = `You are correct! You get ${wordLength} points! Hit GET WORD to play again.`;
         const winLose = isGameWon(guessResponse);
         
@@ -137,7 +139,7 @@ addEventListener("DOMContentLoaded", function() {
         // BASED ON THE FAIL COUNTER, IF THE COUNTER == 1 THEN DISPLAY LOSE MESSAGE //
         const theWordWas = wordArray.join("");
         const loseMessageToUser = `You LOSE! The word was ${theWordWas}. Hit GET WORD to play again.`
-    
+
         if (guessResponse.guessCount == 1 ) {
 
             winLoseMessage.innerHTML = loseMessageToUser;
@@ -194,7 +196,7 @@ addEventListener("DOMContentLoaded", function() {
             setGuessButtonsToLetter();
 
         } 
-    
+
     }
 
     const stopSelectionsOnLoss = (guessResponse) => {
@@ -204,22 +206,22 @@ addEventListener("DOMContentLoaded", function() {
             setGuessButtonsToFalse();
         }
     }
-    
+
     //----------------- UI STYLE FUNCTIONS ------------------------//
 
 
-   const mouseDownUp = (documentElement, className) => {
+    const mouseDownUp = (documentElement, className) => {
 
         documentElement.addEventListener("mousedown", () => {
             
             documentElement.classList.add(className);
-     
+        
         });
 
         documentElement.addEventListener("mouseup", () => {
             
             documentElement.classList.remove(className);
-       
+        
         });
 
     }
@@ -269,9 +271,9 @@ addEventListener("DOMContentLoaded", function() {
                     
     });
 
-    
+
     for (let i = 0; i < guessButton.length; i++){
-    
+
         guessButton[i].addEventListener("click", function(e) {
 
             e.preventDefault();
@@ -312,7 +314,7 @@ addEventListener("DOMContentLoaded", function() {
     addStyleOnClick(logOut,"input-form__button--clicked");
     addStyleOnClick(topScores,"input-form__button--clicked");
     addStyleOnClick(backToGame,"nav__back-to-game-link--clicked");
-    
+
    
-});
+})();
 

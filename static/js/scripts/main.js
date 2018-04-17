@@ -1,4 +1,3 @@
-
 (() => {
     const topScores = document.getElementById("top-scores");
     const logOut = document.getElementById("log-out");
@@ -171,7 +170,7 @@
         // SET THE GUESS BUTTON DATA ATTRIBUTE TO FALSE, USED LATER TO STOP BUTTONS MAKING REQUESTS BEFORE A WORD IS GENERATED //
         for (let i = 0; i < guessButton.length; i++) {
 
-            guessButton[i].setAttribute("data", false);
+            guessButton[i].setAttribute("data-letter", false);
 
         }
     }
@@ -181,7 +180,7 @@
         for (let i = 0; i < guessButton.length; i++) {
 
             let letter = guessButton[i].value;
-            guessButton[i].setAttribute("data", letter);
+            guessButton[i].setAttribute("data-letter", letter);
 
         }
     }
@@ -280,7 +279,7 @@
         guessButton[i].addEventListener("click", function(e) {
 
             e.preventDefault();
-            let guess_data = this.getAttribute('data');
+            let guess_data = this.getAttribute('data-letter');
 
             if ((guess_data != "false") && (this.classList.contains("guess-form__button--clicked") == false)) {
 

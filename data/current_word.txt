@@ -183,3 +183,8 @@ frop
 frop_guesses:(3, 'E'):;
 TIME
 frop_fail_count:7:
+
+safaf
+safaf_guesses:(8, 'E'):(2, 'G'):(3, 'H'):;
+NIGHTMARE
+safaf_fail_count:9:

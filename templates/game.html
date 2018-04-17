@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HangMan</title>
-     <!-------------- SCRIPTS/STYLES ------------------>
+      <!---##################################### SCRIPTS/STYLES ##################################-->
      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
      <link rel="stylesheet" href="../static/scss/prefix-main.css" type="text/css">
      <link rel="icon" href="../static/img/hang.ico" type="image/ico">
@@ -42,9 +42,9 @@
     <div class="container guess-container">
         <div class="row">
             <div class="col guess">
-                <form method="" id="guess-form">
+                <form id="guess-form">
                     {% for letter in alphabet %}
-                    <button class="guess-form__button" id="guess-button-{{ letter }}" value="{{ letter }}" data="{{ letter }}">{{ letter }}</button>
+                    <button class="guess-form__button" id="guess-button-{{ letter }}" value="{{ letter }}" data-letter="{{ letter }}">{{ letter }}</button>
                     {% endfor %}
                 </form>
             </div>
@@ -61,12 +61,11 @@
         </div>
     </div>
     <div class="container-fluid">
-        <div class="row">
-                <div class="col image">
-                    <div id="" class="image__image"></div>
-                </div>
+    <div class="row">
+            <div class="col image">
+                <div id="" class="image__image"></div>
             </div>
-        <div>
+        </div>
     </div>
     <div class="container-fluid">
         <div class="row win">
@@ -76,8 +75,5 @@
         </div>
     </div>
 </body>
-<!------------------ JS ---------------------------------->
-
-
 </html>
 

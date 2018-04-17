@@ -1,4 +1,4 @@
-//const hangman = (() => {
+
 (() => {
     const topScores = document.getElementById("top-scores");
     const logOut = document.getElementById("log-out");
@@ -110,9 +110,7 @@
 
     }
 
-   //return {
-        //"result" : function () {
-            
+ 
     const isGameWon = (guessResponse) => {
     // RETURN BOOLEAN BASED ON GAME WIN/LOSE STATE //
         if(guessResponse.win == true) {
@@ -124,8 +122,8 @@
             return false;
         }
     }
-        //}
-    //}
+      
+    
 
     const winMessage = (guessResponse) => {
         // IF THE GAME IS WON, DISPLAY THIS MESSAGE //

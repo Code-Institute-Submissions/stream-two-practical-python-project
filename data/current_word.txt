@@ -91,7 +91,7 @@ qwd_fail_count:11:
 
 useruser
 useruser_guesses:;
-ACCOUNT
+TIME
 useruser_fail_count:11:
 
 player1
@@ -178,3 +178,8 @@ maher
 maher_guesses:(2, 'L'):(5, 'A'):(0, 'O'):(8, 'O'):(9, 'N'):(6, 'T'):(1, 'B'):(4, 'G'):(3, 'I'):(7, 'I'):;
 OBLIGATION
 maher_fail_count:5:
+
+frop
+frop_guesses:(3, 'E'):;
+TIME
+frop_fail_count:7:

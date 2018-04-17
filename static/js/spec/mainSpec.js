@@ -5,7 +5,7 @@ describe("Hangman", function() {
 
                 "win": true
             }
-            expect(isGameWon(guessResponse)).toBe(true);
+            expect(hangman.result(guessResponse)).toBe(true);
         });
     });
 

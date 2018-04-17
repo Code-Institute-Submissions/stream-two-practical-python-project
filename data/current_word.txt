@@ -161,7 +161,7 @@ mster_fail_count:5:
 
 sega
 sega_guesses:(7, 'N'):;
-ILLUSION
+OBLIGATION
 sega_fail_count:5:
 
 jasmine
@@ -173,3 +173,8 @@ sash
 sash_guesses:(1, 'O'):(3, 'M'):(0, 'W'):;
 WORM
 sash_fail_count:1:
+
+maher
+maher_guesses:(2, 'L'):(5, 'A'):(0, 'O'):(8, 'O'):(9, 'N'):(6, 'T'):(1, 'B'):(4, 'G'):(3, 'I'):(7, 'I'):;
+OBLIGATION
+maher_fail_count:5:

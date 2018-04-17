@@ -417,13 +417,14 @@ def guess(username, guess_data):
         results_json = json.dumps(results)
 
     return results_json
-
+    
+"""
 if __name__ == "__main__":
     app.run(host=os.getenv("IP"),port=os.getenv("PORT"), debug=True)
-"""
 
+"""
 port = int(os.environ.get("PORT",5000))
+##host = int(os.environ.get("IP",0.0.0.0))
 
 if __name__ == '__main__':
     app.run(debug=False, host="0.0.0.0", port = port)
-"""

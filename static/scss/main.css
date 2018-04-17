@@ -542,7 +542,7 @@ button:focus {
 
 .leaderboard {
   width: 15rem;
-  height: 25rem;
+  height: auto;
   margin-top: 1rem;
   margin-bottom: 3rem; }
   @media (min-width: 767px) {

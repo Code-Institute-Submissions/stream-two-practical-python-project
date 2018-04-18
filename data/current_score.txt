@@ -67,3 +67,6 @@
 
 :player23
 :player23:6:
+
+:player25
+:player25:4:

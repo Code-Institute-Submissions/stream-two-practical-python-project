@@ -186,7 +186,7 @@ frop_fail_count:7:
 
 safaf
 safaf_guesses:(8, 'E'):(2, 'G'):(3, 'H'):;
-NIGHTMARE
+KNEE
 safaf_fail_count:9:
 
 player21
@@ -195,11 +195,26 @@ INSURANCE
 player21_fail_count:11:
 
 player22
-player22_guesses:(2, 'A'):(3, 'I'):(0, 'G'):(1, 'R'):(4, 'N'):;
-GRAIN
-player22_fail_count:3:
+player22_guesses:;
+SELECTION
+player22_fail_count:11:
 
 player23
 player23_guesses:;
 UNCLE
 player23_fail_count:11:
+
+player 25
+player 25_guesses:;
+KNEE
+player 25_fail_count:11:
+
+player 26
+player 26_guesses:(2, 'N'):(0, 'W'):;
+WING
+player 26_fail_count:1:
+
+player25
+player25_guesses:;
+ADDITION
+player25_fail_count:11:

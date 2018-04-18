@@ -300,6 +300,7 @@ class TestHangman(unittest.TestCase):
         self.assertEqual(results_object["imageId"], "image_5")
         self.assertEqual(results_object["guessCount"], "5")
         
+        
 class ExpectedFailuretTestCase(unittest.TestCase):
     @unittest.expectedFailure
     def test_clear_old_guesses_from_file(self):

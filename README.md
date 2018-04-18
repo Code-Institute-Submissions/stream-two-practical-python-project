@@ -31,7 +31,8 @@ Details of the UX design and research process is available in the repo "document
 
 ## Build Approach
 
-1. I began the build by first concentrating on the Python logic and functionality. I used a TDD approach, unit testing each function as I progressed. 
+1. I began the build by first concentrating on the Python logic and functionality. I used a TDD approach, unit testing each function as I progressed. As the application 
+grew I decided to split off the script into separate modules to make the codebase more readable.
 2. To track the results of the Python app I used the console in the most part, but also basic Flask routes and Jinja to display HTML templates of the information I eventually wanted the user to see. Until happy with the Python functionality I decided not to write any SCSS styles or Javascript to enhance the feel of the game. 
 3. I decided to store the game's key information in 4 text files. One for usernames, one with a list of 1000 words, one for in game tracking of correct guesses and incorrect guesses, and one for the users score. These files are referenced/written to at different stages of the application.
 4. Initially I used AJAX requests to return HTML templates displaying the result of user interaction. For example, a Flask Route returning an HTML template displaying the dashes array of the generated word. However, I eventually refactored the Python code, HTML and JS to return JSON objects rather than HTML. I decided on this approach for various reasons. Returning data instead of HTML is better inline with standard practice, and aided in maintaining a better separation of concerns in my code. Keeping data and the logic on the backend, and markup/rendering of information on the frontend. Returning JSON also gives me more control when displaying data on the front-end. All in all, I feel deciding to do this has resulted in a better performing application and user experience. 
@@ -40,15 +41,17 @@ Details of the UX design and research process is available in the repo "document
 7. I used Bootstrap for it's grid system. Other than that, all SCSS styles are my own.
 8. I used http://pleeease.io/play/ to generate vendor prefixes once the building of the appplication was complete. This allowed me to concentrate on writing clean SCSS until the end of the project and ready for submission/deployment.
 
+
 ## Testing
 
 Automated, manual and technical testing of the site was undertaken and passed. 
 
 1. Python Unit Tests were undertaken as I built the logic of the game. All tests pass.
-1. Chrome/Firefox dev tools used throughout to test responsiveness and function.
-2. Testing the site across different devices in real world scenarios. Mobiles, Tablets, Laptops, and Desktops.
-3. Giving the applcation to third party users to get feedback, and see if they could "break" the application.
-4. W3C code validator to pass HTML, CSS and JS. 
+2. Chrome/Firefox dev tools used throughout to test JS, responsiveness and function.
+3. Testing the site across different devices in real world scenarios. Mobiles, Tablets, Laptops, and Desktops.
+4. Giving the applcation to third party users to get feedback, and see if they could "break" the application.
+5. W3C code validator to pass HTML, CSS and JS. 
+
 
 ## Authors
 

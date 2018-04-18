@@ -2,17 +2,13 @@ import os
 import doc_func
 import logic
 import game
-##import random
-##import string
-##import tempfile 
-##import time
-##import operator
 import json
 from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
     
-   
+################### MAIN RUN FILE ################################
+
 ###################### ROUTES #######################################
 #####################################################################
 
@@ -62,7 +58,7 @@ def guess(username, guess_data):
 
     return guess_results
     
-
+"""
 if __name__ == "__main__":
     app.run(host=os.getenv("IP"),port=os.getenv("PORT"), debug=True)
 """
@@ -73,4 +69,4 @@ port = int(os.environ.get("PORT",5000))
 if __name__ == '__main__':
     app.run(debug=False, host="0.0.0.0", port = port)
 
-"""
+

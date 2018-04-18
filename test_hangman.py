@@ -260,6 +260,46 @@ class TestHangman(unittest.TestCase):
         self.assertTrue(sorted_scores, list)
         self.assertEqual(len(sorted_scores), 10)
 
+########################### GAME LOOP FUNCTION TESTS #############################################
+
+    def test_get_current_score_on_first_visit_to_user_game_page(self):
+        username = "test"
+        file = tempfile.mkstemp()[1]
+        word = "WORD\n"
+        
+        hangman.write_current_scores_to_file(username, file, word)
+        try:
+            current_score = hangman.get_current_score_on_first_visit_to_user_game_page(username)
+        finally:
+            os.remove(file)
+
+        self.assertEqual(type(current_score), str)
+       
+
+    def test_generate_word(self):
+        username = "test"
+        file = tempfile.mkstemp()[1]
+
+        guess_word = hangman.generate_word(username, file)
+
+        self.assertEqual(type(guess_word), str )
+
+    def test_results_object_for_front_end(self):
+        display_correct_guess = []
+        current_score = "22"
+        are_total_correct_guesses_the_word = False
+        image_id = "image_5"
+        incorrect_guesses_count = "5"
+
+        results_object = hangman.results_object_for_front_end(display_correct_guess, current_score, are_total_correct_guesses_the_word,image_id,incorrect_guesses_count)
+        
+        self.assertEqual(type(results_object), dict)
+        self.assertEqual(results_object["displayGuess"], [])
+        self.assertEqual(results_object["currentScore"], "22")
+        self.assertEqual(results_object["win"], False)
+        self.assertEqual(results_object["imageId"], "image_5")
+        self.assertEqual(results_object["guessCount"], "5")
+        
 class ExpectedFailuretTestCase(unittest.TestCase):
     @unittest.expectedFailure
     def test_clear_old_guesses_from_file(self):

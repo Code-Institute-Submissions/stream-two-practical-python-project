@@ -319,7 +319,7 @@ def generate_word(username, current_word_file):
         "guessWord":letter_list
     }
     guess_word_json = json.dumps(guess_word)
-    print(letter_list)
+    ##print(letter_list)
 
     return guess_word_json
     

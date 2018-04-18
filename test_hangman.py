@@ -2,7 +2,10 @@ import os
 import unittest
 import random
 import string
-import tempfile 
+import tempfile
+import doc_func
+import logic
+import game
 import hangman
 
 class TestHangman(unittest.TestCase):
@@ -12,7 +15,7 @@ class TestHangman(unittest.TestCase):
         data = "HELLO WORLD"
 
         try:
-            hangman.write_to_doc(file, data)
+            doc_func.write_to_doc(file, data)
             content = open(file).read()
         finally:
             os.remove(file)
@@ -23,9 +26,9 @@ class TestHangman(unittest.TestCase):
         file = tempfile.mkstemp()[1]
         data = "HELLO WORLD"
 
-        hangman.write_to_doc(file, data)
+        doc_func.write_to_doc(file, data)
         try:
-            read_file = hangman.read_doc(file)
+            read_file = doc_func.read_doc(file)
         finally:
              os.remove(file)
 
@@ -36,7 +39,7 @@ class TestHangman(unittest.TestCase):
         letter_list = "HELLO"
 
         file = tempfile.mkstemp()[1]
-        hangman.write_username_and_current_word_to_file(username, letter_list, file)
+        doc_func.write_username_and_current_word_to_file(username, letter_list, file)
 
         try:
             read_file = open(file).read()  
@@ -52,10 +55,10 @@ class TestHangman(unittest.TestCase):
         letter_string = "WORD"
         file = tempfile.mkstemp()[1]
 
-        hangman.write_username_and_current_word_to_file(username, letter_string, file)
+        doc_func.write_username_and_current_word_to_file(username, letter_string, file)
 
         try:
-            read_file = hangman.get_users_current_word(username, file)
+            read_file = doc_func.get_users_current_word(username, file)
         finally:
             os.remove(file)
 
@@ -67,8 +70,8 @@ class TestHangman(unittest.TestCase):
         current_word_file = tempfile.mkstemp()[1]
         guess = "(0, W)"
 
-        hangman.write_username_and_current_word_to_file(username, word, current_word_file)
-        hangman.write_guesses_to_current_word_file(username, word, current_word_file, guess)
+        doc_func.write_username_and_current_word_to_file(username, word, current_word_file)
+        doc_func.write_guesses_to_current_word_file(username, word, current_word_file, guess)
 
         try:
             read_file = open(current_word_file).read()
@@ -83,19 +86,19 @@ class TestHangman(unittest.TestCase):
         guess = "W"
         word = "WORD"
 
-        correct_guess = hangman.get_string_of_guess(check_guess, guess, word)
+        correct_guess = logic.get_string_of_guess(check_guess, guess, word)
 
         self.assertEqual(correct_guess, "(0, 'W')")
         self.assertIsInstance(correct_guess, str)
 
 
     def test_get_word_from_dict(self):
-        word = hangman.get_word()
+        word = logic.get_word()
 
         self.assertIsInstance(word, str)
 
     def test_letter_list_is_more_than_three_less_than_eleven(self):
-        letters = hangman.correct_length_letter_list()
+        letters = logic.correct_length_letter_list()
         letters_length = int(len(letters))
         answer = ""
         if letters_length >= 4 and letters_length <= 10:
@@ -109,7 +112,7 @@ class TestHangman(unittest.TestCase):
 
         
     def test_create_alphabet_list(self):
-        alphabet = hangman.create_alphabet_list()
+        alphabet = logic.create_alphabet_list()
 
         i = "".join(alphabet)
 
@@ -126,11 +129,11 @@ class TestHangman(unittest.TestCase):
         incorrect_letters = list(set(alphabet).difference(set(guesses)))
 
         for guess in guesses:
-            guess_is_in = hangman.is_guess_in_word(guess, word)
+            guess_is_in = logic.is_guess_in_word(guess, word)
             self.assertEqual(guess_is_in, True)
 
         for guess in incorrect_letters:
-            guess_not_in = hangman.is_guess_in_word(guess, word)
+            guess_not_in = logic.is_guess_in_word(guess, word)
             self.assertEqual(guess_not_in, False)
     
     def test_get_list_index_of_correct_guess(self):
@@ -140,7 +143,7 @@ class TestHangman(unittest.TestCase):
         counter = -1
 
         for guess in guesses:
-            get_list_number = hangman.get_list_index_of_correct_guess(guess, word)
+            get_list_number = logic.get_list_index_of_correct_guess(guess, word)
             counter += 1
             self.assertEqual(get_list_number, [(counter, guess)])
 
@@ -151,11 +154,11 @@ class TestHangman(unittest.TestCase):
         current_word_file = tempfile.mkstemp()[1]
         guesses = "me_guesses:(0, W):;\n"
 
-        hangman.write_username_and_current_word_to_file(username, word, current_word_file)
-        hangman.write_guesses_to_current_word_file(username, word, current_word_file, guess)
+        doc_func.write_username_and_current_word_to_file(username, word, current_word_file)
+        doc_func.write_guesses_to_current_word_file(username, word, current_word_file, guess)
        
         try:
-            file_guesses = hangman.get_users_correct_guesses(username, current_word_file)
+            file_guesses = doc_func.get_users_correct_guesses(username, current_word_file)
         finally:
             os.remove(current_word_file)
 
@@ -168,7 +171,7 @@ class TestHangman(unittest.TestCase):
         file = tempfile.mkstemp()[1]
         word = "WORD\n"
         
-        hangman.write_current_scores_to_file(username, file, word)
+        doc_func.write_current_scores_to_file(username, file, word)
         try:
             read_file = open(file).read()
         finally:
@@ -179,10 +182,10 @@ class TestHangman(unittest.TestCase):
         file = tempfile.mkstemp()[1]
         username = "test"
         word = "WORD\n"
-        hangman.write_current_scores_to_file(username, file, word)
+        doc_func.write_current_scores_to_file(username, file, word)
 
         try:
-            read_file = hangman.get_current_user_score(username, file)
+            read_file = doc_func.get_current_user_score(username, file)
         finally:
             os.remove(file)
 
@@ -191,7 +194,7 @@ class TestHangman(unittest.TestCase):
     def test_get_correct_guesses_list(self):
         correct_guesses = "me_guesses:(0, W):(1, O):;\n"
 
-        number_of_guesses = hangman.get_correct_guesses_list(correct_guesses)
+        number_of_guesses = logic.get_correct_guesses_list(correct_guesses)
         
         self.assertEqual(len(number_of_guesses), 2)
         self.assertIsInstance(len(number_of_guesses), int)
@@ -201,9 +204,9 @@ class TestHangman(unittest.TestCase):
         print(word)
         correct_guesses = "me_guesses:(0, W):(1, O)::(2, R)::(3, D):;\n"
 
-        number_of_guesses = hangman.get_correct_guesses_list(correct_guesses)
+        number_of_guesses = logic.get_correct_guesses_list(correct_guesses)
         number_of_guesses_length = len(number_of_guesses)
-        guesses_equal_to_word = hangman.are_number_of_guesses_equal_to_word(number_of_guesses_length, word)
+        guesses_equal_to_word = logic.are_number_of_guesses_equal_to_word(number_of_guesses_length, word)
 
         self.assertTrue(word, guesses_equal_to_word)
   
@@ -212,7 +215,7 @@ class TestHangman(unittest.TestCase):
         correct_guesses = "test_guesses:(0, 'W'):(1, 'O'):;"
         expected_display = ["W","O","_","_"]
 
-        actual_display_guesses = hangman.display_correct_guesses(word, correct_guesses)
+        actual_display_guesses = logic.display_correct_guesses(word, correct_guesses)
 
         self.assertEqual(actual_display_guesses, expected_display )
     
@@ -222,8 +225,8 @@ class TestHangman(unittest.TestCase):
         counter = "10"
         letter_string = "WORD"
 
-        hangman.write_username_and_current_word_to_file(username, letter_string,file)
-        hangman.incorrect_guesses_counter_iterator(file, username)
+        doc_func.write_username_and_current_word_to_file(username, letter_string,file)
+        doc_func.incorrect_guesses_counter_iterator(file, username)
 
         try:
             total_guesses = open(file).read()
@@ -237,10 +240,10 @@ class TestHangman(unittest.TestCase):
         file = tempfile.mkstemp()[1]
         letter_string = "WORD"
 
-        hangman.write_username_and_current_word_to_file(username, letter_string,file)
+        doc_func.write_username_and_current_word_to_file(username, letter_string,file)
     
         try:
-            total_guesses = hangman.get_incorrect_guesses_counter(file, username)
+            total_guesses = doc_func.get_incorrect_guesses_counter(file, username)
         finally:
             os.remove(file)
 
@@ -249,13 +252,13 @@ class TestHangman(unittest.TestCase):
     def test_set_image_id(self):
         incorrect_guess_count = 10
         expected_id = "image_{0}".format(incorrect_guess_count)
-        image_id = hangman.set_image_id(incorrect_guess_count) 
+        image_id = logic.set_image_id(incorrect_guess_count) 
 
         self.assertEqual(image_id, expected_id)
 
     def test_get_scores_for_leaderboard(self):
         scores_file = "data/current_score.txt"
-        sorted_scores = hangman.get_scores_for_leaderboard(scores_file)
+        sorted_scores = doc_func.get_scores_for_leaderboard(scores_file)
 
         self.assertTrue(sorted_scores, list)
         self.assertEqual(len(sorted_scores), 10)
@@ -267,9 +270,9 @@ class TestHangman(unittest.TestCase):
         file = tempfile.mkstemp()[1]
         word = "WORD\n"
         
-        hangman.write_current_scores_to_file(username, file, word)
+        doc_func.write_current_scores_to_file(username, file, word)
         try:
-            current_score = hangman.get_current_score_on_first_visit_to_user_game_page(username)
+            current_score = game.get_current_score_on_first_visit_to_user_game_page(username)
         finally:
             os.remove(file)
 
@@ -280,7 +283,7 @@ class TestHangman(unittest.TestCase):
         username = "test"
         file = tempfile.mkstemp()[1]
 
-        guess_word = hangman.generate_word(username, file)
+        guess_word = game.generate_word(username, file)
 
         self.assertEqual(type(guess_word), str )
 
@@ -291,7 +294,7 @@ class TestHangman(unittest.TestCase):
         image_id = "image_5"
         incorrect_guesses_count = "5"
 
-        results_object = hangman.results_object_for_front_end(display_correct_guess, current_score, are_total_correct_guesses_the_word,image_id,incorrect_guesses_count)
+        results_object = game.results_object_for_front_end(display_correct_guess, current_score, are_total_correct_guesses_the_word,image_id,incorrect_guesses_count)
         
         self.assertEqual(type(results_object), dict)
         self.assertEqual(results_object["displayGuess"], [])
@@ -309,9 +312,9 @@ class ExpectedFailuretTestCase(unittest.TestCase):
         current_word_file = tempfile.mkstemp()[1]
         guess = "(0, W)"
 
-        hangman.write_username_and_current_word_to_file(username, word, current_word_file)
-        hangman.write_guesses_to_current_word_file(username, word, current_word_file, guess)
-        hangman.clear_old_guesses_from_file(username, current_word_file)
+        doc_func.write_username_and_current_word_to_file(username, word, current_word_file)
+        doc_func.write_guesses_to_current_word_file(username, word, current_word_file, guess)
+        doc_func.clear_old_guesses_from_file(username, current_word_file)
 
         try:
             read_file = open(current_word_file).read()

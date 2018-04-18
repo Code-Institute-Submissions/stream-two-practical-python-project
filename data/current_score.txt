@@ -70,3 +70,9 @@
 
 :player25
 :player25:4:
+
+:player27
+:player27:8:
+
+:hfhf
+:hfhf:6:

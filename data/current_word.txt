@@ -21,17 +21,17 @@ mister_fail_count:10:
 
 bliss
 bliss_guesses:(0, 'E'):(9, 'E'):(1, 'A'):(7, 'A'):(2, 'R'):(3, 'T'):(4, 'H'):(5, 'Q'):(6, 'U'):(8, 'K'):;
-SELECTION
+RECOMMEND
 bliss_fail_count:10:
 
 siissi
 siissi_guesses:(0, 'L'):(6, 'L'):(1, 'I'):(2, 'K'):(3, 'E'):(7, 'E'):(4, 'A'):(5, 'B'):;
-SELECTION
+RECOMMEND
 siissi_fail_count:10:
 
 whatever
 whatever_guesses:(0, 'C'):(1, 'A'):(2, 'K'):(3, 'E'):(4, 'S'):;
-SELECTION
+RECOMMEND
 whatever_fail_count:9:
 
 daf
@@ -41,12 +41,12 @@ daf_fail_count:9:
 
 daf_test
 daf_test_guesses:;
-SELECTION
+RECOMMEND
 daf_test_fail_count:10:
 
 dasfs
 dasfs_guesses:;
-SELECTION
+RECOMMEND
 dasfs_fail_count:8:
 
 gamer
@@ -56,7 +56,7 @@ gamer_fail_count:11:
 
 megaman
 megaman_guesses:;
-SELECTION
+RECOMMEND
 megaman_fail_count:10:
 
 max
@@ -76,12 +76,12 @@ testers_fail_count:1:
 
 player
 player_guesses:(0, 'M'):;
-SELECTION
+RECOMMEND
 player_fail_count:11:
 
 player 1
 player 1_guesses:;
-SELECTION
+RECOMMEND
 player 1_fail_count:1:
 
 qwd
@@ -101,12 +101,12 @@ player1_fail_count:1:
 
 player 11
 player 11_guesses:(4, 'H'):(1, 'I'):(5, 'I'):(0, 'K'):(2, 'N'):(6, 'P'):(3, 'S'):;
-SELECTION
+RECOMMEND
 player 11_fail_count:1:
 
 player 12
 player 12_guesses:;
-SELECTION
+RECOMMEND
 player 12_fail_count:1:
 
 player 16
@@ -121,7 +121,7 @@ player 17_fail_count:11:
 
 player 18
 player 18_guesses:(6, 'E'):(1, 'O'):(2, 'N'):(3, 'S'):(4, 'I'):(5, 'D'):(0, 'C'):(7, 'R'):;
-SELECTION
+RECOMMEND
 player 18_fail_count:11:
 
 player 19
@@ -131,12 +131,12 @@ player 19_fail_count:11:
 
 player19
 player19_guesses:(2, 'A'):(0, 'P'):;
-SELECTION
+RECOMMEND
 player19_fail_count:5:
 
 maddog
 maddog_guesses:(8, 'N'):;
-SELECTION
+RECOMMEND
 maddog_fail_count:11:
 
 majors
@@ -196,7 +196,7 @@ player21_fail_count:11:
 
 player22
 player22_guesses:;
-SELECTION
+RECOMMEND
 player22_fail_count:11:
 
 player23
@@ -218,3 +218,13 @@ player25
 player25_guesses:;
 ADDITION
 player25_fail_count:11:
+
+player27
+player27_guesses:;
+CENSORSHIP
+player27_fail_count:11:
+
+hfhf
+hfhf_guesses:(6, 'O'):(2, 'I'):(5, 'I'):(7, 'N'):;
+AVIATION
+hfhf_fail_count:1:

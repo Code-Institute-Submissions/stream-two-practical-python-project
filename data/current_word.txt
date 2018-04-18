@@ -188,3 +188,18 @@ safaf
 safaf_guesses:(8, 'E'):(2, 'G'):(3, 'H'):;
 NIGHTMARE
 safaf_fail_count:9:
+
+player21
+player21_guesses:;
+INSURANCE
+player21_fail_count:11:
+
+player22
+player22_guesses:(2, 'A'):(3, 'I'):(0, 'G'):(1, 'R'):(4, 'N'):;
+GRAIN
+player22_fail_count:3:
+
+player23
+player23_guesses:;
+UNCLE
+player23_fail_count:11:

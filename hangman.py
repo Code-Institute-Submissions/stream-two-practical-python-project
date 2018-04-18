@@ -9,7 +9,7 @@ from flask import Flask, redirect, render_template, request
 
 app = Flask(__name__)
 
-################## DOCUMENT FUNCTIONS ###############################
+################## READ/WRITE FUNCTIONS ###############################
 
 def write_to_doc(file, data):
     with open(file, "a") as file:
@@ -43,7 +43,7 @@ def write_username_and_current_word_to_file(username, letter_string, file):
                 new_word = letter_string
                 break
             for line in f:
-                print(line)
+                ##print(line)
                 old_counter = line
                 new_counter = "{0}_fail_count:11:\n".format(username)
                 break
@@ -177,7 +177,7 @@ def get_incorrect_guesses_counter(current_word_file, username):
             for line in f:
                 incorrect_list = list(map(str, line.split(":")))
                 incorrect_count = int(incorrect_list[1])
-                print(incorrect_count)
+                ##print(incorrect_count)
                 break
 
             return incorrect_count
@@ -296,6 +296,129 @@ def set_image_id(incorrect_guess_count):
     image_id = "image_{0}".format(incorrect_guess_count)
 
     return image_id
+
+########################### GAME LOOP FUNCTIONS #############################################
+
+def get_current_score_on_first_visit_to_user_game_page(username):
+    scores_file = "data/current_score.txt"
+    current_score = get_current_user_score(username, scores_file)
+
+    if current_score == None: 
+        current_score = ""
+    else:
+        current_score = get_current_user_score(username, scores_file)
+
+    return current_score
+
+def generate_word(username, current_word_file):
+    letter_list = correct_length_letter_list()
+    letter_string = "".join(letter_list)
+    write_username_and_current_word_to_file(username, letter_string, current_word_file)
+    guess_word = {
+
+        "guessWord":letter_list
+    }
+    guess_word_json = json.dumps(guess_word)
+    print(letter_list)
+
+    return guess_word_json
+    
+def get_correct_guesses_list_for_ui(username, current_word_file, word, check_guess):
+    """ GET A LIST OF ALL CORRECT GUESSES """
+    correct_guesses = get_users_correct_guesses(username, current_word_file)
+    make_list_of_guesses = display_correct_guesses(word, correct_guesses) 
+
+    return make_list_of_guesses
+
+def iterate_and_return_failed_guesses_counter(current_word_file, username):
+    """ ITERATE THE INCORRECT GUESSES COUNTER AND WRITE TO FILE, RETURN THE CURRENT SCORE """
+    incorrect_guesses_counter_iterator(current_word_file, username) 
+    incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+
+    return incorrect_guesses_count
+
+def has_the_user_guessed_correctly(username, current_word_file, word):
+    """ HAS THE USER GUESSED CORRECTLY OVERALL, RETURN THE TRUE OR FALSE """
+    correct_guesses = get_users_correct_guesses(username, current_word_file)
+    number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))
+    are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
+
+    return are_total_correct_guesses_the_word
+
+def if_the_letter_guess_is_correct_write_to_file(check_guess, guess, word, username, current_word_file):
+    """ IF THE LETTER IS GUESSED CORRECTLY WRITE TO FILE """
+    correct_guess = get_string_of_guess(check_guess, guess, word)
+    write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
+
+def results_object_for_front_end(display_correct_guess, current_score, are_total_correct_guesses_the_word,image_id,incorrect_guesses_count):
+    results = {
+
+        "displayGuess": display_correct_guess,
+        "currentScore": current_score,
+        "win": are_total_correct_guesses_the_word,
+        "imageId":image_id,
+        "guessCount": incorrect_guesses_count
+
+    }
+    return results
+
+def if_guess_is_true(check_guess, current_word_file, username, word, guess, scores_file):
+    incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+    image_id = set_image_id(incorrect_guesses_count)
+    current_score = get_current_user_score(username, scores_file)
+
+    if incorrect_guesses_count > 1:
+        if_the_letter_guess_is_correct_write_to_file(check_guess, guess, word, username, current_word_file) 
+        display_correct_guess = get_correct_guesses_list_for_ui(username, current_word_file, word, check_guess)
+        are_total_correct_guesses_the_word = has_the_user_guessed_correctly(username, current_word_file, word) 
+        if are_total_correct_guesses_the_word == True:
+            write_current_scores_to_file(username, scores_file, word)
+            current_score = get_current_user_score(username, scores_file)
+    elif incorrect_guesses_count == 1:
+        image_id = set_image_id(incorrect_guesses_count) 
+
+    results = results_object_for_front_end(display_correct_guess, current_score, are_total_correct_guesses_the_word,image_id,incorrect_guesses_count)
+
+    return results
+
+def if_guess_is_false(check_guess, current_word_file, username, word, guess, scores_file):
+    are_total_correct_guesses_the_word = has_the_user_guessed_correctly(username, current_word_file, word)
+    incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
+    current_score = get_current_user_score(username, scores_file)
+
+    if incorrect_guesses_count > 1 and  are_total_correct_guesses_the_word == False:
+        incorrect_guesses_count = iterate_and_return_failed_guesses_counter(current_word_file, username)
+        image_id = set_image_id(incorrect_guesses_count)
+        display_correct_guess = get_correct_guesses_list_for_ui(username, current_word_file, word, check_guess)
+    elif incorrect_guesses_count == 1:
+        image_id = set_image_id(incorrect_guesses_count)
+        display_correct_guess = get_correct_guesses_list_for_ui(username, current_word_file, word, check_guess)
+        
+    results = results_object_for_front_end(display_correct_guess, current_score, are_total_correct_guesses_the_word,image_id,incorrect_guesses_count)
+   
+    return results
+
+def overall_results_of_guess(current_word_file, username, word, guess, scores_file):
+    check_guess = is_guess_in_word(guess, word)
+    if check_guess == True:
+        results = if_guess_is_true(check_guess, current_word_file, username, word, guess, scores_file)             
+    elif check_guess == False:
+        results = if_guess_is_false(check_guess, current_word_file, username, word, guess, scores_file)
+
+    return results
+
+def play_game(username, guess_data):
+    current_word_file = "data/current_word.txt"
+    scores_file = "data/current_score.txt"
+    guess = guess_data
+    word = get_users_current_word(username, current_word_file)
+    get_current_user_score(username, scores_file)
+
+    results = overall_results_of_guess(current_word_file, username, word, guess, scores_file)
+    results_json = json.dumps(results)
+
+    return results_json
+    
     
 ###################### ROUTES #######################################
 #####################################################################
@@ -304,8 +427,8 @@ def set_image_id(incorrect_guess_count):
 def index(): 
     username_message = ""
     if request.method=="POST":
-        username_file = "data/usernames.txt"
         username = request.form["username"].lower()
+        username_file = "data/usernames.txt"
         usernames = read_doc(username_file)
         
         if username == "":
@@ -320,14 +443,8 @@ def index():
 @app.route("/<username>") 
 def user(username):
     alphabet = create_alphabet_list()
-    scores_file = "data/current_score.txt"
-    current_score = get_current_user_score(username, scores_file)
-
-    if current_score == None: 
-        current_score = ""
-    else:
-        current_score = get_current_user_score(username, scores_file)
-        
+    current_score = get_current_score_on_first_visit_to_user_game_page(username)
+    
     return render_template("game.html", username=username, alphabet=alphabet, score=current_score)
 
 @app.route("/<username>/scores")
@@ -340,85 +457,19 @@ def scores(username):
 @app.route("/<username>/word")
 def message(username):
     current_word_file = "data/current_word.txt"
-    letter_list = correct_length_letter_list()
-    letter_string = "".join(letter_list)
     clear_old_guesses_from_file(username, current_word_file)
-    write_username_and_current_word_to_file(username, letter_string, current_word_file)
-
-    guess_word = {
-
-        "guessWord":letter_list
-    }
-
-    guess_word_json = json.dumps(guess_word)
+    guess_word_json = generate_word(username, current_word_file)
 
     return guess_word_json
 
 @app.route("/<username>/<guess_data>", methods=["GET","POST"])
 def guess(username, guess_data): 
     if request.method=="POST":
-        current_word_file = "data/current_word.txt"
-        scores_file = "data/current_score.txt"
-        guess = guess_data
-        word = get_users_current_word(username, current_word_file)
-        current_score = ""
-        image_id = ""
-
-        check_guess = is_guess_in_word(guess, word)
-        correct_guesses = get_users_correct_guesses(username, current_word_file)
-        display_correct_guess = display_correct_guesses(word, correct_guesses)
-        current_score = get_current_user_score(username, scores_file)
+        guess_results = play_game(username, guess_data)
+        
+    return guess_results
     
-        if check_guess == True:
-            incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
-            image_id = set_image_id(incorrect_guesses_count)
-            if incorrect_guesses_count > 1:
-                correct_guess = get_string_of_guess(check_guess, guess, word)
-                write_guesses_to_current_word_file(username, word, current_word_file, correct_guess)
-                correct_guesses = get_users_correct_guesses(username, current_word_file)
-                display_correct_guess = display_correct_guesses(word, correct_guesses)   
-                number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))
-                are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
 
-                if are_total_correct_guesses_the_word == True:
-                    write_current_scores_to_file(username, scores_file, word)
-                    current_score = get_current_user_score(username, scores_file)
-
-            elif incorrect_guesses_count == 1:
-                image_id = set_image_id(incorrect_guesses_count) 
-                 
-        elif check_guess == False:
-            number_of_correct_guesses = len(get_correct_guesses_list(correct_guesses))
-            are_total_correct_guesses_the_word = are_number_of_guesses_equal_to_word(number_of_correct_guesses, word)
-            incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
-
-            if incorrect_guesses_count > 1 and  are_total_correct_guesses_the_word == False:
-                incorrect_guesses_counter_iterator(current_word_file, username) 
-                incorrect_guesses_count = get_incorrect_guesses_counter(current_word_file, username)
-                image_id = set_image_id(incorrect_guesses_count)
-                correct_guesses = get_users_correct_guesses(username, current_word_file)
-                display_correct_guess = display_correct_guesses(word, correct_guesses)
-            elif incorrect_guesses_count == 1:
-                correct_guesses = get_users_correct_guesses(username, current_word_file)
-                display_correct_guess = display_correct_guesses(word, correct_guesses)
-
-                image_id = set_image_id(incorrect_guesses_count)
-
-        results = {
-            
-            "displayGuess": display_correct_guess,
-            "currentScore": current_score,
-            "win": are_total_correct_guesses_the_word,
-            "imageId":image_id,
-            "guessCount": incorrect_guesses_count
-
-        }
-
-        results_json = json.dumps(results)
-
-    return results_json
-    
-"""
 if __name__ == "__main__":
     app.run(host=os.getenv("IP"),port=os.getenv("PORT"), debug=True)
 
@@ -428,3 +479,5 @@ port = int(os.environ.get("PORT",5000))
 
 if __name__ == '__main__':
     app.run(debug=False, host="0.0.0.0", port = port)
+
+"""

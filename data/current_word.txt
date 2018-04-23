@@ -228,3 +228,13 @@ hfhf
 hfhf_guesses:(6, 'O'):(2, 'I'):(5, 'I'):(7, 'N'):;
 AVIATION
 hfhf_fail_count:1:
+
+gamers
+gamers_guesses:(1, 'M'):(3, 'O'):(4, 'R'):(5, 'T'):(8, 'T'):(0, 'I'):(2, 'P'):(7, 'N'):(6, 'A'):;
+IMPORTANT
+gamers_fail_count:8:
+
+gamers2
+gamers2_guesses:(4, 'I'):(2, 'A'):(0, 'C'):(3, 'R'):(1, 'L'):(6, 'Y'):(5, 'F'):;
+CLARIFY
+gamers2_fail_count:2:

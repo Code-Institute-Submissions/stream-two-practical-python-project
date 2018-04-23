@@ -1,41 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>HangMan</title>
-    <!---##################################### SCRIPTS/STYLES ##################################-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="../static/scss/prefix-main.css" type="text/css">
-    <link rel="icon" href="../static/img/hang.ico" type="image/ico"> <!--https://www.iconfinder.com/search/?q=hanging&price=free-->
-    <script defer src="../static/js/scripts/landing-page.js"></script>
-</head>
+{% extends 'base.html' %}
+{% block content %}
 <!-- image credit <a href="https://www.freepik.com/free-photo/black-background_1200051.htm">Designed by Freepik</a> -->
-<body class="background-image">
-    <div class="container-fluid ">
-        <header class="row">
-            <div class="col d-sm-none title">
-                <h1 class="title__text-mobile title__text--style">HANG<br>MAN.</h1>
-            </div>
-            <div class="col d-none d-sm-block ">
-                <h1 class="title__text-desktop title__text--style">HANGMAN.</h1>
-            </div>
-        </header>
-        <div class="row">
-            <div class="col">
-                <p class="user-instructions">Enter your name:</p>
-                <form class="input-form input-form--style" id = "username-form" method="POST">
-                    <input class="input-form__input input-form__input--style" type="text" placeholder="username" id="username" name="username" value="">
-                    <button id="play" class="input-form__button input-form__button--style">( PLAY )</button>     
-                </form>
-            </div>
+<div class="container-fluid ">
+    <header class="row">
+        <div class="col d-sm-none title">
+            <h1 class="title__text-mobile title__text--style">HANG<br>MAN.</h1>
         </div>
-        <div class="row">
-            <div class="col ">
-                <p class="user-instructions">{{ username_message }}</p>
-            </div>
+        <div class="col d-none d-sm-block ">
+            <h1 class="title__text-desktop title__text--style">HANGMAN.</h1>
+        </div>
+    </header>
+    <div class="row">
+        <div class="col">
+            <p class="user-instructions">Enter your name:</p>
+            <form class="input-form input-form--style" id = "username-form" method="POST">
+                <input class="input-form__input input-form__input--style" type="text" placeholder="username" id="username" name="username" value="">
+                <button id="play" class="input-form__button input-form__button--style">( PLAY )</button>     
+            </form>
         </div>
     </div>
-</body>
-</html>
+    <div class="row">
+        <div class="col ">
+            <p class="user-instructions">{{ username_message }}</p>
+        </div>
+    </div>
+</div>
+{% endblock %}
+

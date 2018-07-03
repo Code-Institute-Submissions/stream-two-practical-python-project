@@ -238,3 +238,8 @@ gamers2
 gamers2_guesses:(4, 'I'):(2, 'A'):(0, 'C'):(3, 'R'):(1, 'L'):(6, 'Y'):(5, 'F'):;
 CLARIFY
 gamers2_fail_count:2:
+
+debs
+debs_guesses:;
+CALF
+debs_fail_count:11:

@@ -75,7 +75,6 @@ class TestHangman(unittest.TestCase):
 
         try:
             read_file = open(current_word_file).read()
-            #print(read_file)
         finally:
             os.remove(current_word_file)
 
@@ -201,7 +200,6 @@ class TestHangman(unittest.TestCase):
 
     def test_is_number_of_guesses_equal_to_current_word(self):
         word = "WORD"
-        print(word)
         correct_guesses = "me_guesses:(0, W):(1, O)::(2, R)::(3, D):;\n"
 
         number_of_guesses = logic.get_correct_guesses_list(correct_guesses)

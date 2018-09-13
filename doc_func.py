@@ -33,7 +33,6 @@ def write_username_and_current_word_to_file(username, letter_string, file):
                 new_word = letter_string
                 break
             for line in f:
-                ##print(line)
                 old_counter = line
                 new_counter = "{0}_fail_count:11:\n".format(username)
                 break
@@ -167,7 +166,6 @@ def get_incorrect_guesses_counter(current_word_file, username):
             for line in f:
                 incorrect_list = list(map(str, line.split(":")))
                 incorrect_count = int(incorrect_list[1])
-                ##print(incorrect_count)
                 break
 
             return incorrect_count

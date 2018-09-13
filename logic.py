@@ -7,7 +7,6 @@ def get_word():
     with open("data/words.txt","r") as words:
         word_list = words.read().split()
         word = random.choice(word_list).upper()
-        #print(word)
     return word
 
 def correct_length_letter_list():

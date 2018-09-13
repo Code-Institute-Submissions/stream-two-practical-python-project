@@ -252,7 +252,6 @@
                 createDashes(wordArray);
                 clearWinLoseMessage();
                 clearImage();
-                //console.log(wordArray);
 
             })
             .catch((error) => {

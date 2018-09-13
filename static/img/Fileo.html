@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fileo</title>
+    <link rel="stylesheet" href="Fileo_files/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="Fileo_files/css.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="Fileo_files/main.css">
+    <script src="Fileo_files/jquery.js"></script>
+    
+    
+</head>
+    <body>
+        
+
+
+
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fileo</title>
+    <link rel="stylesheet" href="Fileo_files/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link href="Fileo_files/css.css" rel="stylesheet"> 
+    <link rel="stylesheet" href="Fileo_files/main.css">
+    <script src="Fileo_files/jquery.js"></script>
+    
+<script defer="defer" type="text/javascript" src="Fileo_files/utility.js"></script>
+<script defer="defer" type="text/javascript" src="Fileo_files/head.js"></script>
+<script defer="defer" type="text/javascript" src="Fileo_files/cycles.js"></script>
+
+
+    
+        
+<!-- MAIN HEADER PARTIAL -->
+<header class="main-header">
+    <nav class="main-header__nav">
+        <a href="http://127.0.0.1:5000/"><div class="main-header__logo" alt="Fileo Logo"></div></a>
+        <ul class="mobile-nav">
+            <!--<li><a href="/profile/edit/darchard/"><i class="far fa-user-circle"></i></a></li>-->
+            <li><a href="http://127.0.0.1:5000/profile/manage_clients/darchard"><i class="fas fa-user-plus mobile-nav__icons" aria-hidden="true"></i></a></li>
+            <li><a href="http://127.0.0.1:5000/profile/manage_jobs/darchard"><i class="fas fa-briefcase mobile-nav__icons" aria-hidden="true"></i></a> </li>
+            <li><a href="http://127.0.0.1:5000/profile/manage_cycles/darchard"><i class="far fa-circle mobile-nav__icons" aria-hidden="true"></i></a></li>
+        </ul>
+        <ul id="drop-down-icon" class="mobile-more">
+            <li><i class="fas fa-circle mobile-more__icon" aria-hidden="true"></i></li>
+            <li><i class="fas fa-circle mobile-more__icon" aria-hidden="true"></i></li>
+            <li><i class="fas fa-circle mobile-more__icon" aria-hidden="true"></i></li>
+        </ul>
+    </nav>
+    <div id="drop-down-menu" class="main-header__dropdown">
+        <ul>
+            <li class="main-header__dropdown-item"><a href="http://127.0.0.1:5000/profile/edit/darchard/">Profile</a></li>
+            <li class="main-header__dropdown-item"><a href="">Dash</a></li>
+            <li class="main-header__dropdown-item"><a href="http://127.0.0.1:5000/accounts/logout">Logout</a></li>
+        </ul>
+    </div>
+</header>
+<div class="cycles-bg-color">
+  
+    <!--<p>Total Value of Completed Cycles: £1,003,310.00</p>
+    <p>Total Value of Pending Cycles: £0.00</p>
+    <p>Total Value of Active Cycles: £12,312.00</p>
+    <p>Total Value of Cancelled Cycles: £3,123.00</p>-->
+
+    <!--<h2>Search Your Cycles</h2>-->
+    <!--<p>Search by Job Title, Job Name, Fileo ID, and Client</p>-->
+    <div class="cycles-info">
+        <h2 class="cycles-info__heading">Search Your Cycles.</h2>
+        
+            
+            <div class="cycles-info__profile-exp">
+                <p class="cycles-info__text">Search your cycles by Job, Fileo ID or Client.</p>
+            </div>
+            
+        
+    </div>
+    <div class="cycles-search">
+        <form class="cycles-search__form">
+            
+            <div class="cycles-search__input-wrapper">
+                <span class="cycles-search__magnify"><i class="fas fa-search " aria-hidden="true"></i></span>
+                <input class="cycles-search__input" name="search" placeholder="" value="d" minlength="0" maxlength="50" required="" type="text">
+                <button class="cycles-search__button" type="submit">Search</button> 
+                <!--<form class="cycles-search-reset" action="/cycles/darchard/">-->
+                <!--</form>-->
+            </div>
+            
+            <div class="cycles-search__filters">
+                <div class="cycles-search__filter--styled">
+                    <select name="sort" class="cycles-search__select">
+                        <option selected="selected" value="all">All</option>
+                        <option value="active">Active</option>
+                        <option value="pending">Pending</option>
+                        <option value="complete">Complete</option>
+                        <option value="cancelled">Cancelled</option>  
+                    </select>
+                    <i class="fas fa-sort-down cycles-search__filter--arrow"></i>
+                </div>
+                <div class="cycles-search__filter--styled">
+                    <select name="order" class="cycles-search__select">
+                        <option selected="selected" value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                    </select>
+                    <i class="fas fa-sort-down cycles-search__filter--arrow"></i>
+                </div>
+            </div>
+             
+        </form>
+    </div>
+    
+    <div class="cycles-search-reset">
+        <a href="http://127.0.0.1:5000/cycles/darchard/" class="cycles-search-reset__button"><span><span>"d"</span><i class="fas fa-times-circle" aria-hiden="true"></i></span></a>
+    </div>
+    
+    <hr class="hr-cycles">
+    
+    
+   <!-- <br>
+    
+    <hr>
+    
+        
+            <p>Found 4 Cycles.</p>
+        
+    
+    <hr>
+    <div>
+        
+            <hr>
+            
+            <div>
+                <div>
+                    <p>created: July 31, 2018, 8:44 p.m.</p>
+                    <h3>Cycle Title</h3>
+                    <p>Cancelled Cycle</p>
+                    <h4>Fileo Cycle ID: 4</h4>
+                    
+                    <p>Cancelled</p>
+                    
+                    <h3>Description</h3>
+                    <p>Cancelled</p>
+                    <h3>Job</h3>
+                    <p>MTV Video</p>
+                    
+                    <h3>Client</h3>
+                    <p>Frances Ulph</p>
+                    <h3>Client Username</h3>
+                    <p>fulpher</p>
+                    <hr>
+                    
+                    
+                    <p><strong>Quote Status:</strong> No Status.</p>
+                    
+                    <hr>
+                    
+                    <p><strong>PO Status:</strong> No Status.</p>
+                    
+                    <hr>
+                    
+                    <p><strong>Invoice Status:</strong> No Status.</p>
+                    
+                </div>
+                <hr>
+                <form action="/porthole/darchard/4/">
+                    <button type="submit">Go to Cycle</button>
+                </form>
+            </div>
+            <hr>
+            
+            <div>
+                <div>
+                    <p>created: July 31, 2018, 8:44 p.m.</p>
+                    <h3>Cycle Title</h3>
+                    <p>Pending Cycle</p>
+                    <h4>Fileo Cycle ID: 3</h4>
+                    
+                    <p>Active</p>
+                    
+                    <h3>Description</h3>
+                    <p>Pending</p>
+                    <h3>Job</h3>
+                    <p>ITV</p>
+                    
+                    <h3>Client</h3>
+                    <p>Jane Doe</p>
+                    <h3>Client Username</h3>
+                    <p>jdoe</p>
+                    <hr>
+                    
+                    
+                    <p><strong>Quote Status:</strong> Approved</p>
+                    
+                    <hr>
+                    
+                    <p><strong>PO Status:</strong> Approved</p>
+                    
+                    <hr>
+                    
+                    <p><strong>Invoice Status:</strong> Contesed</p>
+                    
+                </div>
+                <hr>
+                <form action="/porthole/darchard/3/">
+                    <button type="submit">Go to Cycle</button>
+                </form>
+            </div>
+            <hr>
+            
+            <div>
+                <div>
+                    <p>created: July 31, 2018, 7:55 p.m.</p>
+                    <h3>Cycle Title</h3>
+                    <p>ITV main set</p>
+                    <h4>Fileo Cycle ID: 2</h4>
+                    
+                    <p>Cycle Complete</p>
+                    
+                    <h3>Description</h3>
+                    <p>main set build</p>
+                    <h3>Job</h3>
+                    <p>ITV</p>
+                    
+                    <h3>Client</h3>
+                    <p>Jane Doe</p>
+                    <h3>Client Username</h3>
+                    <p>jdoe</p>
+                    <hr>
+                    
+                    
+                    <p><strong>Quote Status:</strong> Approved</p>
+                    
+                    <hr>
+                    
+                    <p><strong>PO Status:</strong> Approved</p>
+                    
+                    <hr>
+                    
+                    <p><strong>Invoice Status:</strong> Approved</p>
+                    
+                </div>
+                <hr>
+                <form action="/porthole/darchard/2/">
+                    <button type="submit">Go to Cycle</button>
+                </form>
+            </div>
+            <hr>
+            
+            <div>
+                <div>
+                    <p>created: July 31, 2018, 4:29 p.m.</p>
+                    <h3>Cycle Title</h3>
+                    <p>MTV Set for Rihanna</p>
+                    <h4>Fileo Cycle ID: 1</h4>
+                    
+                    <p>Cycle Complete</p>
+                    
+                    <h3>Description</h3>
+                    <p>Set build at Pinewood for Video Shoot</p>
+                    <h3>Job</h3>
+                    <p>MTV Video</p>
+                    
+                    <h3>Client</h3>
+                    <p>Frances Ulph</p>
+                    <h3>Client Username</h3>
+                    <p>fulpher</p>
+                    <hr>
+                    
+                    
+                    <p><strong>Quote Status:</strong> Approved</p>
+                    
+                    <hr>
+                    
+                    <p><strong>PO Status:</strong> Approved</p>
+                    
+                    <hr>
+                    
+                    <p><strong>Invoice Status:</strong> Approved</p>
+                    
+                </div>
+                <hr>
+                <form action="/porthole/darchard/1/">
+                    <button type="submit">Go to Cycle</button>
+                </form>
+            </div>
+            <hr>
+            
+        
+    </div>-->
+</div>
+
+        
+        
+    
+
+
+        
+        
+    
+</body></html>

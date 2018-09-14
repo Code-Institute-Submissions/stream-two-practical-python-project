@@ -50,6 +50,7 @@ Automated, manual and technical testing of the site was undertaken and passed.
 3. Testing the site across different devices in real world scenarios. Mobiles, Tablets, Laptops, and Desktops.
 4. Giving the applcation to third party users to get feedback, and see if they could "break" the application.
 5. W3C code validator to pass HTML, CSS and JS. 
+6. I tested the application across multiple desktop browsers including Firefox, Chrome, Opera and Safari and all is well with these browsers. However, I am aware of some styling issues with IE and Edge.
 
 ## Authors
 
